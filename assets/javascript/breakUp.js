@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 // Add the Firebase Database
  // Initialize Firebase
   var config = {
@@ -9,6 +11,33 @@
     messagingSenderId: "317199683141"
   };
   firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+  	var name = "";
+    var gender = "";
+    var age = 0;
+    var mood = "";
+    var zipcode = 0;
+    var breakupdate = 0;
+    var currentmood = "";
+
+     database.ref().push({
+        name: name,
+        gender: gender,
+        age: age,
+        mood: mood,
+        zipcode: zipcode,
+        breakupdate: breakupdate,
+        currentmood: currentmood
+        
+      });
+
+});
+
+
+
+
 
 // Add the Spotify API
 

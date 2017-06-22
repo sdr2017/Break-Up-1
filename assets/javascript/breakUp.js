@@ -10,5 +10,7 @@
   };
   firebase.initializeApp(config);
 
-// Add the Spotify API
+	// Adding the restaurant API
+	var zomatoKey = "b853dcffd2d93f88579c208dec0d059f";
+	var cuisines = "https://developers.zomato.com/api/v2.1/cuisines/search?q=";
 

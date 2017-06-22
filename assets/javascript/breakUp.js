@@ -1,3 +1,23 @@
+var $select;
+
+$(document).ready(function() {
+
+// Forloops that populate the pulldown menues for age, day of the month, and year.
+  $select = $(".1-100");
+    for (i=1;i<=100;i++){
+      $select.append($('<option></option>').val(i).html(i))
+    }
+
+  $select = $(".1-31");
+    for (i=1;i<=31;i++){
+      $select.append($('<option></option>').val(i).html(i))
+    }
+
+  $select = $(".2000-2020");
+    for (i=2000;i<=2020;i++){
+      $select.append($('<option></option>').val(i).html(i))
+  }
+
 // Add the Firebase Database
  // Initialize Firebase
   var config = {
@@ -9,8 +29,26 @@
     messagingSenderId: "317199683141"
   };
   firebase.initializeApp(config);
+  var database = firebase.database();
 
-	// Adding the restaurant API
-	var zomatoKey = "b853dcffd2d93f88579c208dec0d059f";
-	var cuisines = "https://developers.zomato.com/api/v2.1/cuisines/search?q=";
+  	var name = "";
+    var gender = "";
+    var age = 0;
+    var mood = "";
+    var zipcode = 0;
+    var breakupdate = 0;
+    var currentmood = "";
+
+     database.ref().push({
+        name: name,
+        gender: gender,
+        age: age,
+        mood: mood,
+        zipcode: zipcode,
+        breakupdate: breakupdate,
+        currentmood: currentmood
+        
+      });
+
+});
 

@@ -64,7 +64,23 @@
 									<select class="1-100"></select>		
 								</div>
 
-<!-- Date of breakup input field (Maybe we make this a pulldown too?) -->
+<!-- Gender selecter pull down menue -->
+								<div class="form-group">
+						   			<label for="gender">Gender:</label>
+						    			<select id="genderSelector">
+	    									<option selected value='1'>Female</option>
+	    									<option value='2'>Male</option>
+	    									<option value='3'>Agender</option>
+	    									<option value='4'>Gender Fluid</option>
+	    									<option value='5'>Genderqueer</option>
+	    									<option value='6'>Intersex</option>
+	    									<option value='7'>Gender Non-conforming</option>
+	    									<option value='8'>Transgender Female</option>
+	    									<option value='9'>Transgender Male</option>
+	    								</select>
+	    						</div>
+
+<!-- Date of breakup input field -->
 								<div class="form-group">
 						   			<label for="breakupDate">Date of Breakup:</label>
 						    			<select id="startMonth">
@@ -115,28 +131,28 @@
 						<div class="panel-body">
 							
 							<div class="col-lg-1"></div>
-							<div class="col-lg-1 buttonOne">
-								<button type="submit" class="btn btn-default" id="choseOne">1</button>
+							<div class="col-lg-1 buttonDenial">
+								<button type="submit" class="btn btn-default" id="choseDenial">Denial</button>
 							</div>
 
 							<div class="col-lg-1"></div>
-							<div class="col-lg-1 buttonTwo">
-								<button type="submit" class="btn btn-default" id="choseTwo">2</button>
+							<div class="col-lg-1 buttonAnger">
+								<button type="submit" class="btn btn-default" id="choseAnger">Anger</button>
 							</div>
 
 							<div class="col-lg-1"></div>
-							<div class="col-lg-1 buttonThree">
-								<button type="submit" class="btn btn-default" id="choseThree">3</button>
+							<div class="col-lg-1 buttonMisery">
+								<button type="submit" class="btn btn-default" id="choseMisery">Misery</button>
 							</div>
 
 							<div class="col-lg-1"></div>
-							<div class="col-lg-1 buttonFour">
-								<button type="submit" class="btn btn-default" id="choseFour">4</button>
+							<div class="col-lg-1 buttonAffirmation">
+								<button type="submit" class="btn btn-default" id="choseAffirmation">Affirmation</button>
 							</div>
 
 							<div class="col-lg-1"></div>
-							<div class="col-lg-1 buttonFive">
-								<button type="submit" class="btn btn-default" id="choseFive">5</button>
+							<div class="col-lg-1 buttonGrooveOn">
+								<button type="submit" class="btn btn-default" id="choseGrooveOn">Groove On</button>
 							</div>
 
 						</div>
@@ -196,7 +212,7 @@
 
 <!-- Links to jQery and our javaScriot page (feel free to rename it.) -->
 	  		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-   			<script src=BreakupApp.js></script>
+   			<script src=assets/javascript/breakUp.js></script>
    			
 <!-- Some Jqury that populates the age pulldown menu with one to 100-->
    			<script>

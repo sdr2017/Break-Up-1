@@ -1,5 +1,25 @@
 $(document).ready(function() {
 
+        $(document).on("click", ".1-100", function() {
+            var $select = $(".1-100");
+            for (i=1;i<=100;i++){
+              $select.append($('<option></option>').val(i).html(i))
+            }
+        });
+
+        $(document).on("click", ".2000-2020", function() {
+            var $select = $(".1-31");
+            for (i=1;i<=31;i++){
+              $select.append($('<option></option>').val(i).html(i))
+            }
+        });
+        $(document).on("click", ".1-31", function() {
+            var $select = $(".2000-2020");
+            for (i=2000;i<=2020;i++){
+              $select.append($('<option></option>').val(i).html(i))
+            }
+        });
+
 // Add the Firebase Database
  // Initialize Firebase
   var config = {

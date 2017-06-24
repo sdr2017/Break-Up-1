@@ -132,5 +132,12 @@ $(document).ready(function() {
         
       });
 
+//taking user to the input fields if clicking "I Just Broke Up!"
+  $(document).on("click", "#justBrokeUp", function() {
+    hideSignIn();
+    showInputs();
+
+  });
+
 });
 

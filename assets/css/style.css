@@ -1,0 +1,42 @@
+.container-fluid {
+	padding: 0px;
+	margin: 0px;
+}
+
+#logoDisplay {
+	border-radius: 0px;
+	height: 100px;
+	width: 100%;
+}
+
+#signIn {
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+}
+
+.signingIn {
+	padding: 0px;
+	margin: 0px;
+}
+
+#singInColumn {
+	padding: 0px;
+}
+
+.initialButtons {
+	width: 100%;
+	margin: 20px;
+	border: none;
+	height: 60px;
+	border-radius: 0px;
+	background: #c4c4c4;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	color: #ffffff;
+	text-shadow: none;
+}
+
+
+

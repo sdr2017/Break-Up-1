@@ -142,6 +142,9 @@ $(document).ready(function() {
   $(document).on("click", "#recovering", function() {
     hideSignIn();
     showStageButtons();
+    showSongs();
+    showFood();
+    showMovies();
   });
 
 //taking user to the stages after clicking "submit" in input fields

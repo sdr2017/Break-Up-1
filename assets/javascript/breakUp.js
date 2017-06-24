@@ -79,13 +79,13 @@ $(document).ready(function() {
           };
 
 
-        function hideFood() { //for hiding the food panel
-            $("#food").hide();
+        function hideBooks() { //for hiding the food panel
+            $("#books").hide();
           };
-          hideFood();
+          hideBooks();
 
-        function showFood() {
-            $("#food").show();
+        function showBooks() {
+            $("#books").show();
           };
 
         function hideMovies() { //for hiding the movie panel
@@ -143,7 +143,7 @@ $(document).ready(function() {
     hideSignIn();
     showStageButtons();
     showSongs();
-    showFood();
+    showBooks();
     showMovies();
   });
 
@@ -155,37 +155,69 @@ $(document).ready(function() {
     hideInputs();
     showStageButtons();
     showSongs();
-    showFood();
+    showBooks();
     showMovies();
 
   });
 
 //Stages on click functions//////////////////////////////////
-  var songs = $("#stageDisplaySongs");
+  var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
+  var books = $("#stageDisplayBooks"); //variable of where to push books items in html
+  var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
 
+//Denial
   $(document).on("click", "#choseDenial", function() {
+    //Songs
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(denialIFrame);
+
+    //Books
+
+    //Movies
   });
 
+//Anger
   $(document).on("click", "#choseAnger", function() {
+    //Songs
     var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(angerIFrame);
+
+    //Books
+
+    //Movies
   });
 
+//Misery
   $(document).on("click", "#choseMisery", function() {
+    //Songs
     var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(miseryIFrame);
+
+    //Books
+
+    //Movies
   });
 
+//Affirmation
   $(document).on("click", "#choseAffirmation", function() {
+    //Songs
     var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(affirmationIFrame);
+
+    //Books
+
+    //Movies
   });
 
+//Groove On
   $(document).on("click", "#choseGrooveOn", function() {
+    //Songs
     var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(grooveIFrame);
+
+    //Books
+
+    //Movies
   });
 
 ////////////////////////////////////////////////////////////

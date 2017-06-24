@@ -145,7 +145,8 @@ $(document).ready(function() {
   });
 
 //taking user to the stages after clicking "submit" in input fields
-  $(document).on("click", "#submitDetails", function() {
+  $(document).on("click", "#submitDetails", function(event) {
+    console.log("what's up?");
     event.preventDefault();
     hideSignIn();
     hideInputs();

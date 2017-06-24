@@ -190,5 +190,27 @@ $(document).ready(function() {
 
 ////////////////////////////////////////////////////////////
 
+// Book Suggestions
+var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
+"Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help", 
+"Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
+var angerBooks = ["The+Long+Way+to+a+Small+Angry+Planet", "Brilliance", 
+"A+Darker+Shade+of+Magic", "Year+Zero", "The+Paradox+Trilogy", 
+"A+Knight+of+the+Seven+Kingdoms", "Persona", "Frostborn", "The+October+Daye", "Libriomancer"];
+var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop", 
+"The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
+"The Way I Used to Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
+var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
+"The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
+"I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
+var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
+"The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
+"I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
+
+var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
+
+// Book Suggestion API
+
+
 });
 

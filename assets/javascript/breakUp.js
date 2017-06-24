@@ -246,6 +246,14 @@ var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q
 
 // Book Suggestion API
 
+//Movie Suggestions
+var denialMovies = ["Brazil", "Eternal Sunshine of the Spotless Mind", "The Way We Were"];
+var angerMovies = ["John Tucker Must Die", "Wreck it Ralph", "Mad Max: Fury Road"];
+var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
+var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
+var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
+
+]
 
 });
 

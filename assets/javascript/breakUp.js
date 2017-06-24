@@ -160,6 +160,39 @@ $(document).ready(function() {
 
   });
 
+//Stages on click functions//////////////////////////////////
+  var songs = $("#stageDisplaySongs");
+
+  $(document).on("click", "#choseDenial", function() {
+    var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    songs.html(denialIFrame);
+  });
+
+  $(document).on("click", "#choseAnger", function() {
+    var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    songs.html(angerIFrame);
+  });
+
+  $(document).on("click", "#choseMisery", function() {
+    var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    songs.html(miseryIFrame);
+  });
+
+  $(document).on("click", "#choseAffirmation", function() {
+    var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    songs.html(affirmationIFrame);
+  });
+
+  $(document).on("click", "#choseGrooveOn", function() {
+    var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    songs.html(grooveIFrame);
+  });
+
+////////////////////////////////////////////////////////////
+
+
+
+
 
 
 });

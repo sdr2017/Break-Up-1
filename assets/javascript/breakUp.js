@@ -151,6 +151,10 @@ $(document).ready(function() {
     hideSignIn();
     hideInputs();
     showStageButtons();
+    showSongs();
+    showFood();
+    showMovies();
+
   });
 
 

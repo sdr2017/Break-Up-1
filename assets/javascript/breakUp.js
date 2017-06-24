@@ -136,8 +136,23 @@ $(document).ready(function() {
   $(document).on("click", "#justBrokeUp", function() {
     hideSignIn();
     showInputs();
-
   });
+
+//taking user to the stages if clicking "I'm recovering"
+  $(document).on("click", "#recovering", function() {
+    hideSignIn();
+    showStageButtons();
+  });
+
+//taking user to the stages after clicking "submit" in input fields
+  $(document).on("click", "#submitDetails", function() {
+    event.preventDefault();
+    hideSignIn();
+    hideInputs();
+    showStageButtons();
+  });
+
+
 
 });
 

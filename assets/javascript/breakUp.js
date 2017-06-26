@@ -239,7 +239,7 @@ var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+
 "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
 "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
-var randomDenialBooks = [var i=]; 
+//var randomDenialBooks = [var i=]; 
 
 
 var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
@@ -255,13 +255,16 @@ var grooveOnMovies = ["Princess Bride", "Michael Boltonâ€™s Big Sexy Valentineâ€
 
 //]
 
+//test movie input
+var Movie = "";
+movie = denialMovies[0];
+
   $("#choseDenial").on("click", function(event) {
 
         // Preventing the submit button from trying to submit the form
-        // We're optionally using a form so the user may hit Enter to search instead of clicking the button
         event.preventDefault();
 
-    var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
+      var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
 
 
       // CODE GOES HERE

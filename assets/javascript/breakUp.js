@@ -253,7 +253,37 @@ var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
 var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
 var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
 
-]
+//]
+
+  $("#choseDenial").on("click", function(event) {
+
+        // Preventing the submit button from trying to submit the form
+        // We're optionally using a form so the user may hit Enter to search instead of clicking the button
+        event.preventDefault();
+
+    var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
+
+
+      // CODE GOES HERE
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+      })
+      // We store all of the retrieved data inside of an object called "response"
+      .done(function(response) {
+
+        // Log the queryURL
+        console.log(movieURL);
+
+        // Log the resulting object
+        console.log(response);
+
+        // Transfer content to HTML
+        //var moviestring = JSON.stringify(response);
+        //$("#movie-view").html("Response data" + moviestring);
+      
+      });
+  });
 
 });
 

@@ -334,7 +334,6 @@ movie = denialMovies[0];
         var movieImage = $('<img id="movieimage">');
         movieImage.attr("src", response.Poster);
         $("#stageDisplayMovies").append(movieImage);
-       
 
       
       });

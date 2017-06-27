@@ -268,12 +268,13 @@ function getRandomIndexes(booksArray, numberOfIndexes) {
 // -- pull from url
 // -- update ui with stuff
 
-// var randomDenialBooks = function () {
-//   var bookLimit =Object.keys(denialBooks.length);
-//     randomDenial = Math.floor((Math.random() * bookLimit) +1);
-//     $("#stageDisplayMovies").html(randomDenial+queryURL);
-// };
+var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
 
+var randomDenialBooks = function () {
+  var bookLimit =Object.keys(denialBooks.length);
+    randomDenial = Math.floor((Math.random() * bookLimit) +1);
+    $("#stageDisplayBooks").html(randomDenial+queryURL);
+};
 // Book Suggestion API
 
 //Movie Suggestions
@@ -287,17 +288,28 @@ var grooveOnMovies = ["Princess Bride", "Michael Boltonâ€™s Big Sexy Valentineâ€
 
 //test movie input
 var Movie = "";
-movie = denialMovies[0];
 
   $("#choseDenial").on("click", function(event) {
 
         // Preventing the submit button from trying to submit the form
         event.preventDefault();
 
-      var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
+        //loop for denial movies
+        for(var i=0; i<denialMovies.length; i++) {
+          movie = denialMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
+     
+  });
 
 
-      // CODE GOES HERE
+
+  //function for movies
+  function getMovies(movieStage){
+   var movieURL = "http://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
+
+    // CODE GOES HERE
     $.ajax({
         url: movieURL,
         method: "GET"
@@ -305,15 +317,8 @@ movie = denialMovies[0];
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
 
-        // Log the queryURL
-        console.log(movieURL);
-
-        // Log the resulting object
-        console.log(response);
-
         // Transfer content to HTML
-        //var moviestring = JSON.stringify(response);
-        $("#stageDisplayMovies").html(response.Title + '<br><br>');
+        $("#stageDisplayMovies").append('<br><br><strong>' + response.Title + '</strong><br><br>');
         $("#stageDisplayMovies").append(response.Plot + '<br>');
         var movieImage = $('<img id="movieimage">');
         movieImage.attr("src", response.Poster);
@@ -321,7 +326,7 @@ movie = denialMovies[0];
 
       
       });
-  });
+  }
 
 });
 

@@ -76,7 +76,45 @@ $(document).ready(function() {
           };
 
   ///////////////////////////////////////////
+  $("#submitDetails").on('click', function() {
+    // Get values from user input
+    var startMonth = $("#startMonth option:selected").text();
+    var startDay = $("#startDay option:selected").text();
+    var startYear = $("#startYear option:selected").text();
 
+    console.log(startMonth);
+    console.log(startDay);
+    console.log(startYear);
+
+    // Make user input into string of format "MM-DD-YYYY"
+    var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;
+
+    console.log(dateEnteredString)
+
+    // Make into a moment.js object - specify format of date we're using
+    var dateEnteredObject = moment(
+      dateEnteredString,
+      "MMMM-DD-YYYY"
+      );
+
+    console.log("Entered: ", dateEnteredObject);
+
+    // Making a moment.js object that has a value of right now
+    var dateTodayObject = moment();
+
+    // Get the time since break up in years AS A NUMBER
+    var timeSinceBreakUpInYears = dateTodayObject.diff(
+      dateEnteredObject, "years"
+      );
+
+    // Get the time since break up in days AS A NUMBER
+    var timeSinceBreakUpInDays = dateTodayObject.diff(
+      dateEnteredObject, "days"
+      );
+    console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
+    console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
+    
+  });
 
 // Add the Firebase Database
  // Initialize Firebase

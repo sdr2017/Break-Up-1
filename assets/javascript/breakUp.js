@@ -290,8 +290,8 @@ var Movie = "";
 
         //loop for denial movies
         for(var i=0; i<denialMovies.length; i++) {
-          movie = denialMovies[i];
-          getMovies (movie);
+          movie = denialMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
 
         };
      
@@ -303,8 +303,7 @@ var Movie = "";
   function getMovies(movieStage){
    var movieURL = "http://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
 
-
-      // CODE GOES HERE
+    // CODE GOES HERE
     $.ajax({
         url: movieURL,
         method: "GET"

@@ -284,7 +284,10 @@ movie = denialMovies[0];
         // Transfer content to HTML
         //var moviestring = JSON.stringify(response);
         $("#stageDisplayMovies").html(response.Title + '<br><br>');
-        $("#stageDisplayMovies").append(response.Plot);
+        $("#stageDisplayMovies").append(response.Plot + '<br>');
+        $("#stageDisplayMovies").append('src', '' + response.Poster);
+       
+
       
       });
   });

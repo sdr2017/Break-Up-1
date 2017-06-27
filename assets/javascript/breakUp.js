@@ -303,7 +303,6 @@ var grooveOnMovies = ["Princess Bride", "Michael Boltonâ€™s Big Sexy Valentineâ€
 
 //test movie input
 var Movie = "";
-movie = denialMovies[0];
 
   $("#choseDenial").on("click", function(event) {
 

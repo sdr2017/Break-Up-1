@@ -283,7 +283,8 @@ movie = denialMovies[0];
 
         // Transfer content to HTML
         //var moviestring = JSON.stringify(response);
-        //$("#movie-view").html("Response data" + moviestring);
+        $("#stageDisplayMovies").html(response.Title + '<br><br>');
+        $("#stageDisplayMovies").append(response.Plot);
       
       });
   });

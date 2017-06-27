@@ -278,9 +278,7 @@ var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
 var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
 var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
 
-//]
-
-//test movie input
+//declaring movie var
 var Movie = "";
 
   $("#choseDenial").on("click", function(event) {

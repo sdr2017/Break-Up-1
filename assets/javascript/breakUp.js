@@ -172,7 +172,7 @@ $(document).ready(function() {
     songs.html(denialIFrame);
 
     //Books
-
+    randomDenialBooks();
     //Movies
   });
 
@@ -222,9 +222,11 @@ $(document).ready(function() {
 
 ////////////////////////////////////////////////////////////
 
+var randomDenial = 0;
+
 // Book Suggestions
 var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
-"Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help", 
+"Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
 "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
 var angerBooks = ["The+Long+Way+to+a+Small+Angry+Planet", "Brilliance", 
 "A+Darker+Shade+of+Magic", "Year+Zero", "The+Paradox+Trilogy", 
@@ -239,10 +241,13 @@ var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+
 "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
 "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
-//var randomDenialBooks = [var i=]; 
-
-
 var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
+
+var randomDenialBooks = function () {
+  var bookLimit =Object.keys(denialBooks.length);
+    randomDenial = Math.floor((Math.random() * bookLimit) +1);
+    $("#stageDisplayMovies").html(randomDenial+queryURL);
+};
 
 // Book Suggestion API
 

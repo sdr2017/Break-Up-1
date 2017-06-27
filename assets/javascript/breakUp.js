@@ -310,7 +310,20 @@ movie = denialMovies[0];
         // Preventing the submit button from trying to submit the form
         event.preventDefault();
 
-      var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
+        //loop for denial movies
+        for(var i=0; i<denialMovies.length; i++) {
+          movie = denialMovies[i];
+          getMovies (movie);
+
+        };
+     
+  });
+
+
+
+  //function for movies
+  function getMovies(movieStage){
+   var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
 
 
       // CODE GOES HERE
@@ -321,15 +334,8 @@ movie = denialMovies[0];
       // We store all of the retrieved data inside of an object called "response"
       .done(function(response) {
 
-        // Log the queryURL
-        console.log(movieURL);
-
-        // Log the resulting object
-        console.log(response);
-
         // Transfer content to HTML
-        //var moviestring = JSON.stringify(response);
-        $("#stageDisplayMovies").html(response.Title + '<br><br>');
+        $("#stageDisplayMovies").append('<br>' + response.Title + '<br><br>');
         $("#stageDisplayMovies").append(response.Plot + '<br>');
         var movieImage = $('<img id="movieimage">');
         movieImage.attr("src", response.Poster);
@@ -337,7 +343,7 @@ movie = denialMovies[0];
 
       
       });
-  });
+  }
 
 });
 

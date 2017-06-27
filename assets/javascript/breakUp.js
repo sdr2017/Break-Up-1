@@ -241,6 +241,46 @@ var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+
 "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
 "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
+// Randomly select 3 books
+// -- Get one random number within the range of array length
+// -- Get index immediately after and two indexes after
+// -- if (randomIndex > array.length - 1)
+// ---- randomIndex - arr.length
+
+// Randomly select 3 books - ALTERNATIVE
+// -- Make an array with 3 random numbers
+// -- [Math.random * array.length]
+
+console.log(getRandomIndexes(grooveOnBooks, 5));
+
+function getRandomIndexes(booksArray, numberOfIndexes) {
+  if (numberOfIndexes > booksArray.length) {
+    throw new Error(
+      "Too many indexes requested!" +
+      "It can't be greater than the array length"
+      );
+  }
+  var randomIndexes = [];
+  for (var i = 0; i < numberOfIndexes; i += 1) {
+    randomIndexes.push(getRandomIndex(booksArray));
+  }
+
+  return randomIndexes;
+
+  function getRandomIndex(booksArray) {
+    var arrayLength = booksArray.length;
+    var randomDecimal = Math.random();
+    var arrayLengthDecimal = randomDecimal * arrayLength;
+    var randomArrayIndex = Math.floor(arrayLengthDecimal);
+    return randomArrayIndex;
+  }
+}
+
+// Randomly select 3 books
+// For each book
+// -- build the query url
+// -- pull from url
+// -- update ui with stuff
 
 var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
 
@@ -291,8 +331,9 @@ movie = denialMovies[0];
         //var moviestring = JSON.stringify(response);
         $("#stageDisplayMovies").html(response.Title + '<br><br>');
         $("#stageDisplayMovies").append(response.Plot + '<br>');
-        $("#stageDisplayMovies").append('src', response.Poster);
-       
+        var movieImage = $('<img id="movieimage">');
+        movieImage.attr("src", response.Poster);
+        $("#stageDisplayMovies").append(movieImage);
 
       
       });

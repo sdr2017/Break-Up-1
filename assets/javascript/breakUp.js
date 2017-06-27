@@ -2,28 +2,6 @@ var $select;
 
 $(document).ready(function() {
 
-
-        // $(document).on("click", ".1-100", function() {
-        //     var $select = $(".1-100");
-        //     for (i=1;i<=100;i++){
-        //       $select.append($('<option></option>').val(i).html(i))
-        //     }
-        // });
-
-        // $(document).on("click", ".2000-2020", function() {
-        //     var $select = $(".1-31");
-        //     for (i=1;i<=31;i++){
-        //       $select.append($('<option></option>').val(i).html(i))
-        //     }
-        // });
-        // $(document).on("click", ".1-31", function() {
-        //     var $select = $(".2000-2020");
-        //     for (i=2000;i<=2020;i++){
-        //       $select.append($('<option></option>').val(i).html(i))
-        //     }
-        // });
-
-// Forloops that populate the pulldown menues for age, day of the month, and year.
   $select = $(".1-100");
     for (i=1;i<=100;i++){
       $select.append($('<option></option>').val(i).html(i))
@@ -164,6 +142,8 @@ $(document).ready(function() {
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q=";
+
 
 //Denial
   $(document).on("click", "#choseDenial", function() {
@@ -172,7 +152,13 @@ $(document).ready(function() {
     songs.html(denialIFrame);
 
     //Books
-    randomDenialBooks();
+    var randomBooks = getRandomIndexes(denialBooks, 3);
+    for (var index = 0; index < 3; index++) {
+      $.ajax({
+        url: queryURL + randomBooks[index],
+        method: "GET"}).done(function(response){console.log(response);}); 
+    }
+    // randomDenialBooks();
     //Movies
   });
 
@@ -237,7 +223,7 @@ var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop",
 var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
 "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
 "I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
-var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
+var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
 "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
 "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
@@ -250,9 +236,9 @@ var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+
 // Randomly select 3 books - ALTERNATIVE
 // -- Make an array with 3 random numbers
 // -- [Math.random * array.length]
+// console.log(getRandomIndexes(grooveOnBooks, 5));
 
-console.log(getRandomIndexes(grooveOnBooks, 5));
-
+// Returns an array
 function getRandomIndexes(booksArray, numberOfIndexes) {
   if (numberOfIndexes > booksArray.length) {
     throw new Error(
@@ -262,7 +248,7 @@ function getRandomIndexes(booksArray, numberOfIndexes) {
   }
   var randomIndexes = [];
   for (var i = 0; i < numberOfIndexes; i += 1) {
-    randomIndexes.push(getRandomIndex(booksArray));
+    randomIndexes.push(booksArray[getRandomIndex(booksArray)]);
   }
 
   return randomIndexes;
@@ -282,13 +268,11 @@ function getRandomIndexes(booksArray, numberOfIndexes) {
 // -- pull from url
 // -- update ui with stuff
 
-var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
-
-var randomDenialBooks = function () {
-  var bookLimit =Object.keys(denialBooks.length);
-    randomDenial = Math.floor((Math.random() * bookLimit) +1);
-    $("#stageDisplayMovies").html(randomDenial+queryURL);
-};
+// var randomDenialBooks = function () {
+//   var bookLimit =Object.keys(denialBooks.length);
+//     randomDenial = Math.floor((Math.random() * bookLimit) +1);
+//     $("#stageDisplayMovies").html(randomDenial+queryURL);
+// };
 
 // Book Suggestion API
 

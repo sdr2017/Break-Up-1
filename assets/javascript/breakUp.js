@@ -3,25 +3,25 @@ var $select;
 $(document).ready(function() {
 
 
-        $(document).on("click", ".1-100", function() {
-            var $select = $(".1-100");
-            for (i=1;i<=100;i++){
-              $select.append($('<option></option>').val(i).html(i))
-            }
-        });
+        // $(document).on("click", ".1-100", function() {
+        //     var $select = $(".1-100");
+        //     for (i=1;i<=100;i++){
+        //       $select.append($('<option></option>').val(i).html(i))
+        //     }
+        // });
 
-        $(document).on("click", ".2000-2020", function() {
-            var $select = $(".1-31");
-            for (i=1;i<=31;i++){
-              $select.append($('<option></option>').val(i).html(i))
-            }
-        });
-        $(document).on("click", ".1-31", function() {
-            var $select = $(".2000-2020");
-            for (i=2000;i<=2020;i++){
-              $select.append($('<option></option>').val(i).html(i))
-            }
-        });
+        // $(document).on("click", ".2000-2020", function() {
+        //     var $select = $(".1-31");
+        //     for (i=1;i<=31;i++){
+        //       $select.append($('<option></option>').val(i).html(i))
+        //     }
+        // });
+        // $(document).on("click", ".1-31", function() {
+        //     var $select = $(".2000-2020");
+        //     for (i=2000;i<=2020;i++){
+        //       $select.append($('<option></option>').val(i).html(i))
+        //     }
+        // });
 
 // Forloops that populate the pulldown menues for age, day of the month, and year.
   $select = $(".1-100");
@@ -241,7 +241,6 @@ var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+
 "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
 "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
-
 var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
 
 var randomDenialBooks = function () {
@@ -252,6 +251,51 @@ var randomDenialBooks = function () {
 
 // Book Suggestion API
 
+//Movie Suggestions
+var denialMovies = ["Brazil", "Eternal Sunshine of the Spotless Mind", "The Way We Were"];
+var angerMovies = ["John Tucker Must Die", "Wreck it Ralph", "Mad Max: Fury Road"];
+var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
+var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
+var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
+
+//]
+
+//test movie input
+var Movie = "";
+movie = denialMovies[0];
+
+  $("#choseDenial").on("click", function(event) {
+
+        // Preventing the submit button from trying to submit the form
+        event.preventDefault();
+
+      var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
+
+
+      // CODE GOES HERE
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+      })
+      // We store all of the retrieved data inside of an object called "response"
+      .done(function(response) {
+
+        // Log the queryURL
+        console.log(movieURL);
+
+        // Log the resulting object
+        console.log(response);
+
+        // Transfer content to HTML
+        //var moviestring = JSON.stringify(response);
+        $("#stageDisplayMovies").html(response.Title + '<br><br>');
+        $("#stageDisplayMovies").append(response.Plot + '<br>');
+        $("#stageDisplayMovies").append('src', '' + response.Poster);
+       
+
+      
+      });
+  });
 
 });
 

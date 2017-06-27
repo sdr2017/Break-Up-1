@@ -287,7 +287,7 @@ var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q
 var randomDenialBooks = function () {
   var bookLimit =Object.keys(denialBooks.length);
     randomDenial = Math.floor((Math.random() * bookLimit) +1);
-    $("#stageDisplayMovies").html(randomDenial+queryURL);
+    $("#stageDisplayBooks").html(randomDenial+queryURL);
 };
 
 // Book Suggestion API
@@ -323,7 +323,7 @@ movie = denialMovies[0];
 
   //function for movies
   function getMovies(movieStage){
-   var movieURL = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
+   var movieURL = "http://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
 
 
       // CODE GOES HERE
@@ -335,7 +335,7 @@ movie = denialMovies[0];
       .done(function(response) {
 
         // Transfer content to HTML
-        $("#stageDisplayMovies").append('<br>' + response.Title + '<br><br>');
+        $("#stageDisplayMovies").append('<br><br><strong>' + response.Title + '</strong><br><br>');
         $("#stageDisplayMovies").append(response.Plot + '<br>');
         var movieImage = $('<img id="movieimage">');
         movieImage.attr("src", response.Poster);

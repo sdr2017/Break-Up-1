@@ -82,22 +82,15 @@ $(document).ready(function() {
     var startDay = $("#startDay option:selected").text();
     var startYear = $("#startYear option:selected").text();
 
-    console.log(startMonth);
-    console.log(startDay);
-    console.log(startYear);
-
     // Make user input into string of format "MM-DD-YYYY"
     var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;
 
-    console.log(dateEnteredString)
 
     // Make into a moment.js object - specify format of date we're using
     var dateEnteredObject = moment(
       dateEnteredString,
       "MMMM-DD-YYYY"
       );
-
-    console.log("Entered: ", dateEnteredObject);
 
     // Making a moment.js object that has a value of right now
     var dateTodayObject = moment();

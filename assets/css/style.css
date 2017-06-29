@@ -24,6 +24,10 @@
 	padding: 0px;
 }
 
+.panel-heading {
+	text-align: center;
+}
+
 .initialButtons {
 	width: 100%;
 	margin: 20px;
@@ -38,6 +42,58 @@
 	text-shadow: none;
 }
 
+#choseDenial, #choseAnger, #choseMisery, #choseAffirmation, #choseGrooveOn {
+	width: 100%;
+	border: none;
+	height: 60px;
+	border-radius: 0px;
+	background: #c4c4c4;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	color: #ffffff;
+	text-shadow: none;
+}
+
+#choseDenial:focus {
+	background-color: #8aa583;
+}
+
+#choseDenial:hover {
+	background-color: #5a6751;
+}
+
+#choseAnger:focus {
+	background-color: #a95959;
+}
+
+#choseAnger:hover {
+	background-color: #942827;
+}
+
+#choseMisery:focus {
+	background-color: #9fbec4;
+}
+
+#choseMisery:hover {
+	background-color: #39727a;
+}
+
+#choseAffirmation:focus {
+	background-color: #dfca94;
+}
+
+#choseAffirmation:hover {
+	background-color: #cab354;
+}
+
+#choseGrooveOn:focus {
+	background-color: #f7b45f;
+}
+
+#choseGrooveOn:hover {
+	background-color: #e0863f;
+}
 
 
 

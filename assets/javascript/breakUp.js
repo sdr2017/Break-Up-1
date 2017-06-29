@@ -1,6 +1,8 @@
 var $select;
 
 $(document).ready(function() {
+//homepage Background
+  $("#body").attr('background', 'assets/images/homePattern.jpg');
 
   $select = $(".1-100");
     for (i=1;i<=100;i++){

@@ -141,6 +141,26 @@ $(document).ready(function() {
         
       });
 
+     
+     // Book Suggestions
+      var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
+      "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
+      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
+      var angerBooks = ["The+Long+Way+to+a+Small+Angry+Planet", "Brilliance", 
+      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Paradox+Trilogy", 
+      "A+Knight+of+the+Seven+Kingdoms", "Persona", "Frostborn", "The+October+Daye", "Libriomancer"];
+      var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop", 
+      "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
+      "The Way I Used to Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
+      var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
+      "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
+      "I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
+      var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
+      "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
+      "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
+
+
+
 //taking user to the input fields if clicking "I Just Broke Up!"
   $(document).on("click", "#justBrokeUp", function() {
     hideSignIn();
@@ -173,6 +193,8 @@ $(document).ready(function() {
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  
+  // GoodReads API Search
   var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q=";
 
 
@@ -182,18 +204,33 @@ $(document).ready(function() {
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     //background
       $("#body").attr('background', 'assets/images/denialPattern.jpg');
+      $(".panel-heading").css("color", "#8aa583");  // Changes the color of the panel heading text to match the button color
    
     //Songs
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(denialIFrame);
 
-    //Books
+    //Picks a random book from the Denial Books
     var randomBooks = getRandomIndexes(denialBooks, 3);
     for (var index = 0; index < 3; index++) {
       $.ajax({
         url: queryURL + randomBooks[index],
-        method: "GET"}).done(function(response){console.log(response);}); 
+        method: "GET"}).done(function(response){
+        console.log(response);
+        var bookInfoObject = xmlToJson(response);
+        // Locates the correct JSON information
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        // Locates the image and title for the books.
+        var image = workArray[0].best_book.image_url["#text"];
+        var title = workArray[0].best_book.title["#text"];
+        // Appends the title and image to the stage display books.
+        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
+        var bookImage = $('<img id="bookImage">');
+        bookImage.attr("src", image);
+        $("#stageDisplayBooks").append(bookImage);
+      }); 
     }
+
     // randomDenialBooks();
     //Movies
 
@@ -204,6 +241,7 @@ $(document).ready(function() {
           getMovies (movie); //call movie function
 
         };
+
   });
 
 //Anger
@@ -212,6 +250,7 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/angerPattern.jpg');
 
     $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#942827");  // Changes the color of the panel heading text to match the button color
 
     //Songs
     var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
@@ -235,6 +274,7 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/miseryPattern.jpg');
 
     $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#39727a");  // Changes the color of the panel heading text to match the button color
 
     //Songs
     var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
@@ -258,6 +298,7 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/affirmationPattern.jpg');
 
     $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#cab354");  // Changes the color of the panel heading text to match the button color
 
     //Songs
     var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
@@ -281,6 +322,7 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/groovePattern.jpg');
 
     $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#e0863f");  // Changes the color of the panel heading text to match the button color
 
     //Songs
     var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
@@ -299,36 +341,6 @@ $(document).ready(function() {
   });
 
 ////////////////////////////////////////////////////////////
-
-var randomDenial = 0;
-
-// Book Suggestions
-var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
-"Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
-"Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
-var angerBooks = ["The+Long+Way+to+a+Small+Angry+Planet", "Brilliance", 
-"A+Darker+Shade+of+Magic", "Year+Zero", "The+Paradox+Trilogy", 
-"A+Knight+of+the+Seven+Kingdoms", "Persona", "Frostborn", "The+October+Daye", "Libriomancer"];
-var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop", 
-"The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
-"The Way I Used to Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
-var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
-"The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
-"I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
-var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
-"The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
-"I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
-
-// Randomly select 3 books
-// -- Get one random number within the range of array length
-// -- Get index immediately after and two indexes after
-// -- if (randomIndex > array.length - 1)
-// ---- randomIndex - arr.length
-
-// Randomly select 3 books - ALTERNATIVE
-// -- Make an array with 3 random numbers
-// -- [Math.random * array.length]
-// console.log(getRandomIndexes(grooveOnBooks, 5));
 
 // Returns an array
 function getRandomIndexes(booksArray, numberOfIndexes) {
@@ -354,12 +366,6 @@ function getRandomIndexes(booksArray, numberOfIndexes) {
   }
 }
 
-// Randomly select 3 books
-// For each book
-// -- build the query url
-// -- pull from url
-// -- update ui with stuff
-
 var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
 
 var randomDenialBooks = function () {
@@ -378,22 +384,6 @@ var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine�
 
 //declaring movie var
 var Movie = "";
-
-  // $("#choseDenial").on("click", function(event) {
-
-  //       // Preventing the submit button from trying to submit the form
-  //       event.preventDefault();
-
-  //       //loop for denial movies
-  //       for(var i=0; i<denialMovies.length; i++) {
-  //         movie = denialMovies[i]; //setting movie to new array value
-  //         getMovies (movie); //call movie function
-
-  //       };
-     
-  // });
-
-
 
   //function for movies
   function getMovies(movieStage){

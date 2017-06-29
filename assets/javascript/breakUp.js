@@ -1,6 +1,8 @@
 var $select;
 
 $(document).ready(function() {
+//homepage Background
+  $("#body").attr('background', 'assets/images/homePattern.jpg');
 
   $select = $(".1-100");
     for (i=1;i<=100;i++){
@@ -13,7 +15,7 @@ $(document).ready(function() {
     }
 
   $select = $(".2000-2020");
-    for (i=2000;i<=2020;i++){
+    for (i=2015;i<=2018;i++){
       $select.append($('<option></option>').val(i).html(i))
   }
 

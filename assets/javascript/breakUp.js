@@ -195,6 +195,14 @@ $(document).ready(function() {
     }
     // randomDenialBooks();
     //Movies
+
+        //loop for denial movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<denialMovies.length; i++) {
+          movie = denialMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 //Anger
@@ -210,6 +218,13 @@ $(document).ready(function() {
     //Books
 
     //Movies
+     //loop for anger movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<angerMovies.length; i++) {
+          movie = angerMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 //Misery
@@ -225,6 +240,13 @@ $(document).ready(function() {
     //Books
 
     //Movies
+     //loop for misery movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<miseryMovies.length; i++) {
+          movie = miseryMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 //Affirmation
@@ -240,6 +262,13 @@ $(document).ready(function() {
     //Books
 
     //Movies
+     //loop for affirmation movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<affirmationMovies.length; i++) {
+          movie = affirmationMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 //Groove On
@@ -255,6 +284,13 @@ $(document).ready(function() {
     //Books
 
     //Movies
+     //loop for grooveOn movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<grooveOnMovies.length; i++) {
+          movie = grooveOnMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 ////////////////////////////////////////////////////////////
@@ -338,19 +374,19 @@ var grooveOnMovies = ["Princess Bride", "Michael Boltonâ€™s Big Sexy Valentineâ€
 //declaring movie var
 var Movie = "";
 
-  $("#choseDenial").on("click", function(event) {
+  // $("#choseDenial").on("click", function(event) {
 
-        // Preventing the submit button from trying to submit the form
-        event.preventDefault();
+  //       // Preventing the submit button from trying to submit the form
+  //       event.preventDefault();
 
-        //loop for denial movies
-        for(var i=0; i<denialMovies.length; i++) {
-          movie = denialMovies[i]; //setting movie to new array value
-          getMovies (movie); //call movie function
+  //       //loop for denial movies
+  //       for(var i=0; i<denialMovies.length; i++) {
+  //         movie = denialMovies[i]; //setting movie to new array value
+  //         getMovies (movie); //call movie function
 
-        };
+  //       };
      
-  });
+  // });
 
 
 

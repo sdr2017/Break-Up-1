@@ -3,6 +3,10 @@
 	margin: 0px;
 }
 
+#body {
+	background-size: 200px;
+}
+
 .jumbotron {
 	padding: 10px;
 }
@@ -154,6 +158,8 @@ label {
 #submitDetails:hover{
 	background-color: #a7bd56;
 	color: #5a6751;
+	margin: auto;
+	display: block;
 }
 
 select {
@@ -171,6 +177,10 @@ iframe {
 
 #stageDisplaySongs {
 	padding: 0px;
+}
+
+#songsPanel {
+	background-color: #000000;
 }
 
 

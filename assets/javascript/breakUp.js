@@ -180,6 +180,8 @@ $(document).ready(function() {
   $(document).on("click", "#choseDenial", function() {
     
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
+    //background
+      $("#body").attr('background', 'assets/images/denialPattern.jpg');
    
     //Songs
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
@@ -198,6 +200,8 @@ $(document).ready(function() {
 
 //Anger
   $(document).on("click", "#choseAnger", function() {
+    //background
+      $("#body").attr('background', 'assets/images/angerPattern.jpg');
 
     $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
 
@@ -212,6 +216,8 @@ $(document).ready(function() {
 
 //Misery
   $(document).on("click", "#choseMisery", function() {
+    //background
+      $("#body").attr('background', 'assets/images/miseryPattern.jpg');
 
     $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
 
@@ -226,6 +232,8 @@ $(document).ready(function() {
 
 //Affirmation
   $(document).on("click", "#choseAffirmation", function() {
+    //background
+      $("#body").attr('background', 'assets/images/affirmationPattern.jpg');
 
     $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
 
@@ -240,6 +248,8 @@ $(document).ready(function() {
 
 //Groove On
   $(document).on("click", "#choseGrooveOn", function() {
+    //background
+      $("#body").attr('background', 'assets/images/groovePattern.jpg');
 
     $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
 

@@ -13,7 +13,7 @@ $(document).ready(function() {
     }
 
   $select = $(".2000-2020");
-    for (i=2000;i<=2020;i++){
+    for (i=2015;i<=2018;i++){
       $select.append($('<option></option>').val(i).html(i))
   }
 

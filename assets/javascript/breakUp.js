@@ -76,7 +76,38 @@ $(document).ready(function() {
           };
 
   ///////////////////////////////////////////
+  $("#submitDetails").on('click', function() {
+    // Get values from user input
+    var startMonth = $("#startMonth option:selected").text();
+    var startDay = $("#startDay option:selected").text();
+    var startYear = $("#startYear option:selected").text();
 
+    // Make user input into string of format "MM-DD-YYYY"
+    var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;
+
+
+    // Make into a moment.js object - specify format of date we're using
+    var dateEnteredObject = moment(
+      dateEnteredString,
+      "MMMM-DD-YYYY"
+      );
+
+    // Making a moment.js object that has a value of right now
+    var dateTodayObject = moment();
+
+    // Get the time since break up in years AS A NUMBER
+    var timeSinceBreakUpInYears = dateTodayObject.diff(
+      dateEnteredObject, "years"
+      );
+
+    // Get the time since break up in days AS A NUMBER
+    var timeSinceBreakUpInDays = dateTodayObject.diff(
+      dateEnteredObject, "days"
+      );
+    console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
+    console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
+    
+  });
 
 // Add the Firebase Database
  // Initialize Firebase
@@ -147,6 +178,9 @@ $(document).ready(function() {
 
 //Denial
   $(document).on("click", "#choseDenial", function() {
+    
+    $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
+   
     //Songs
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(denialIFrame);
@@ -164,6 +198,9 @@ $(document).ready(function() {
 
 //Anger
   $(document).on("click", "#choseAnger", function() {
+
+    $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
+
     //Songs
     var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(angerIFrame);
@@ -175,6 +212,9 @@ $(document).ready(function() {
 
 //Misery
   $(document).on("click", "#choseMisery", function() {
+
+    $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
+
     //Songs
     var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(miseryIFrame);
@@ -186,6 +226,9 @@ $(document).ready(function() {
 
 //Affirmation
   $(document).on("click", "#choseAffirmation", function() {
+
+    $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
+
     //Songs
     var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(affirmationIFrame);
@@ -197,6 +240,9 @@ $(document).ready(function() {
 
 //Groove On
   $(document).on("click", "#choseGrooveOn", function() {
+
+    $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
+
     //Songs
     var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(grooveIFrame);

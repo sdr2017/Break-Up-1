@@ -108,7 +108,31 @@ $(document).ready(function() {
       );
     console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
     console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
-    
+
+    if (timeSinceBreakUpInDays < 7) {
+      $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+    }
+
+    if (timeSinceBreakUpInDays > 7 && timeSinceBreakUpInDays < 14) {
+      $("#stagePanel").append("You broke up over a week ago. We recommend moving on to the Anger stage.");
+    }
+
+      if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 21) {
+      $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Misery stage.");
+    }
+
+    if (timeSinceBreakUpInDays >= 21 && timeSinceBreakUpInDays < 28) {
+      $("#stagePanel").append("You broke up over three weeks ago. We recommend moving on to the Affirmation stage.");
+    }
+
+    if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 35) {
+      $("#stagePanel").append("You broke up over a month ago. We think you're ready to GrOoVe On!");
+    }
+
+    if (timeSinceBreakUpInDays >= 35) {
+      $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+    }
+
   });
 
 // Add the Firebase Database
@@ -212,8 +236,11 @@ $(document).ready(function() {
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(denialIFrame);
 
+
+    // Books
     //Picks a random book from the Denial Books
     var randomBooks = getRandomIndexes(denialBooks, 3);
+    $("#stageDisplayBooks").empty();
     for (var index = 0; index < 3; index++) {
       $.ajax({
         url: queryURL + randomBooks[index],
@@ -233,7 +260,6 @@ $(document).ready(function() {
       }); 
     }
 
-    // randomDenialBooks();
     //Movies
 
         //loop for denial movies
@@ -257,7 +283,28 @@ $(document).ready(function() {
     var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(angerIFrame);
 
-    //Books
+    // Books
+    //Picks a random book from the Anger Books
+    var randomBooks = getRandomIndexes(angerBooks, 3);
+    $("#stageDisplayBooks").empty();
+    for (var j = 0; j < 3; j++) {
+      $.ajax({
+        url: queryURL + randomBooks[j],
+        method: "GET"}).done(function(response){
+        console.log(response);
+        var bookInfoObject = xmlToJson(response);
+        // Locates the correct JSON information
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        // Locates the image and title for the books.
+        var image = workArray[1].best_book.image_url["#text"];
+        var title = workArray[1].best_book.title["#text"];
+        // Appends the title and image to the stage display books.
+        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
+        var bookImage = $('<img id="bookImage">');
+        bookImage.attr("src", image);
+        $("#stageDisplayBooks").append(bookImage);
+      }); 
+    }
 
     //Movies
      //loop for anger movies
@@ -280,7 +327,28 @@ $(document).ready(function() {
     var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(miseryIFrame);
 
-    //Books
+    // Books
+    //Picks a random book from the Misery Books
+    var randomBooks = getRandomIndexes(miseryBooks, 3);
+    $("#stageDisplayBooks").empty();
+    for (var k = 0; k < 3; k++) {
+      $.ajax({
+        url: queryURL + randomBooks[k],
+        method: "GET"}).done(function(response){
+        console.log(response);
+        var bookInfoObject = xmlToJson(response);
+        // Locates the correct JSON information
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        // Locates the image and title for the books.
+        var image = workArray[2].best_book.image_url["#text"];
+        var title = workArray[2].best_book.title["#text"];
+        // Appends the title and image to the stage display books.
+        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
+        var bookImage = $('<img id="bookImage">');
+        bookImage.attr("src", image);
+        $("#stageDisplayBooks").append(bookImage);
+      }); 
+    }
 
     //Movies
      //loop for misery movies
@@ -303,7 +371,28 @@ $(document).ready(function() {
     var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(affirmationIFrame);
 
-    //Books
+      // Books
+    //Picks a random book from the Affirmation Books
+    var randomBooks = getRandomIndexes(affirmationBooks, 3);
+    $("#stageDisplayBooks").empty();
+    for (var l = 0; l < 3; l++) {
+      $.ajax({
+        url: queryURL + randomBooks[l],
+        method: "GET"}).done(function(response){
+        console.log(response);
+        var bookInfoObject = xmlToJson(response);
+        // Locates the correct JSON information
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        // Locates the image and title for the books.
+        var image = workArray[3].best_book.image_url["#text"];
+        var title = workArray[3].best_book.title["#text"];
+        // Appends the title and image to the stage display books.
+        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
+        var bookImage = $('<img id="bookImage">');
+        bookImage.attr("src", image);
+        $("#stageDisplayBooks").append(bookImage);
+      }); 
+    }
 
     //Movies
      //loop for affirmation movies
@@ -326,7 +415,28 @@ $(document).ready(function() {
     var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(grooveIFrame);
 
-    //Books
+     // Books
+    //Picks a random book from the Groove On Books
+    var randomBooks = getRandomIndexes(grooveOnBooks, 3);
+    $("#stageDisplayBooks").empty();
+    for (var m = 0; m < 3; m++) {
+      $.ajax({
+        url: queryURL + randomBooks[m],
+        method: "GET"}).done(function(response){
+        console.log(response);
+        var bookInfoObject = xmlToJson(response);
+        // Locates the correct JSON information
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        // Locates the image and title for the books.
+        var image = workArray[4].best_book.image_url["#text"];
+        var title = workArray[4].best_book.title["#text"];
+        // Appends the title and image to the stage display books.
+        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
+        var bookImage = $('<img id="bookImage">');
+        bookImage.attr("src", image);
+        $("#stageDisplayBooks").append(bookImage);
+      }); 
+    }
 
     //Movies
      //loop for grooveOn movies
@@ -371,7 +481,6 @@ var randomDenialBooks = function () {
     randomDenial = Math.floor((Math.random() * bookLimit) +1);
     $("#stageDisplayBooks").html(randomDenial+queryURL);
 };
-// Book Suggestion API
 
 //Movie Suggestions
 var denialMovies = ["Brazil", "Eternal Sunshine of the Spotless Mind", "The Way We Were"];

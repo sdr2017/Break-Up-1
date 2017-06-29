@@ -106,7 +106,31 @@ $(document).ready(function() {
       );
     console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
     console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
-    
+
+    if (timeSinceBreakUpInDays < 7) {
+      $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+    }
+
+    if (timeSinceBreakUpInDays > 7 && timeSinceBreakUpInDays < 14) {
+      $("#stagePanel").append("You broke up over a week ago. We recommend moving on to the Anger stage.");
+    }
+
+      if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 21) {
+      $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Misery stage.");
+    }
+
+    if (timeSinceBreakUpInDays >= 21 && timeSinceBreakUpInDays < 28) {
+      $("#stagePanel").append("You broke up over three weeks ago. We recommend moving on to the Affirmation stage.");
+    }
+
+    if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 35) {
+      $("#stagePanel").append("You broke up over a month ago. We think you're ready to GrOoVe On!");
+    }
+
+    if (timeSinceBreakUpInDays >= 35) {
+      $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+    }
+
   });
 
 // Add the Firebase Database

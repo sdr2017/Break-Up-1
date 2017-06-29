@@ -76,7 +76,38 @@ $(document).ready(function() {
           };
 
   ///////////////////////////////////////////
+  $("#submitDetails").on('click', function() {
+    // Get values from user input
+    var startMonth = $("#startMonth option:selected").text();
+    var startDay = $("#startDay option:selected").text();
+    var startYear = $("#startYear option:selected").text();
 
+    // Make user input into string of format "MM-DD-YYYY"
+    var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;
+
+
+    // Make into a moment.js object - specify format of date we're using
+    var dateEnteredObject = moment(
+      dateEnteredString,
+      "MMMM-DD-YYYY"
+      );
+
+    // Making a moment.js object that has a value of right now
+    var dateTodayObject = moment();
+
+    // Get the time since break up in years AS A NUMBER
+    var timeSinceBreakUpInYears = dateTodayObject.diff(
+      dateEnteredObject, "years"
+      );
+
+    // Get the time since break up in days AS A NUMBER
+    var timeSinceBreakUpInDays = dateTodayObject.diff(
+      dateEnteredObject, "days"
+      );
+    console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
+    console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
+    
+  });
 
 // Add the Firebase Database
  // Initialize Firebase
@@ -169,8 +200,12 @@ var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simpl
 
 //Denial
   $(document).on("click", "#choseDenial", function() {
+    
+    $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#8aa583");  // Changes the color of the panel heading text to match the button color
+   
     //Songs
-    var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(denialIFrame);
 
     //Random Denial Books
@@ -196,50 +231,106 @@ var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simpl
         console.log(title);
       }); 
     }
+
+    // randomDenialBooks();
+    //Movies
+
+        //loop for denial movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<denialMovies.length; i++) {
+          movie = denialMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
+
   });
 
 //Anger
   $(document).on("click", "#choseAnger", function() {
+
+    $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#942827");  // Changes the color of the panel heading text to match the button color
+
     //Songs
-    var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(angerIFrame);
 
     //Books
 
     //Movies
+     //loop for anger movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<angerMovies.length; i++) {
+          movie = angerMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 //Misery
   $(document).on("click", "#choseMisery", function() {
+
+    $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#39727a");  // Changes the color of the panel heading text to match the button color
+
     //Songs
-    var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(miseryIFrame);
 
     //Books
 
     //Movies
+     //loop for misery movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<miseryMovies.length; i++) {
+          movie = miseryMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 //Affirmation
   $(document).on("click", "#choseAffirmation", function() {
+
+    $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#cab354");  // Changes the color of the panel heading text to match the button color
+
     //Songs
-    var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(affirmationIFrame);
 
     //Books
 
     //Movies
+     //loop for affirmation movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<affirmationMovies.length; i++) {
+          movie = affirmationMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 //Groove On
   $(document).on("click", "#choseGrooveOn", function() {
+
+    $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
+    $(".panel-heading").css("color", "#e0863f");  // Changes the color of the panel heading text to match the button color
+
     //Songs
-    var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(grooveIFrame);
 
     //Books
 
     //Movies
+     //loop for grooveOn movies
+        $("#stageDisplayMovies").empty();
+        for(var i=0; i<grooveOnMovies.length; i++) {
+          movie = grooveOnMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
+
+        };
   });
 
 ////////////////////////////////////////////////////////////
@@ -304,19 +395,19 @@ var grooveOnMovies = ["Princess Bride", "Michael Boltonâ€™s Big Sexy Valentineâ€
 //declaring movie var
 var Movie = "";
 
-  $("#choseDenial").on("click", function(event) {
+  // $("#choseDenial").on("click", function(event) {
 
-        // Preventing the submit button from trying to submit the form
-        event.preventDefault();
+  //       // Preventing the submit button from trying to submit the form
+  //       event.preventDefault();
 
-        //loop for denial movies
-        for(var i=0; i<denialMovies.length; i++) {
-          movie = denialMovies[i]; //setting movie to new array value
-          getMovies (movie); //call movie function
+  //       //loop for denial movies
+  //       for(var i=0; i<denialMovies.length; i++) {
+  //         movie = denialMovies[i]; //setting movie to new array value
+  //         getMovies (movie); //call movie function
 
-        };
+  //       };
      
-  });
+  // });
 
 
 

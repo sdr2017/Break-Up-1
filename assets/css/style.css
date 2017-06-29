@@ -3,6 +3,26 @@
 	margin: 0px;
 }
 
+.jumbotron {
+	padding: 10px;
+}
+
+#logo {
+	padding: 0px;
+	margin: auto;
+	display: block;
+}
+
+.row {
+	margin: 0px;
+	padding: 0px;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+}
+
 #logoDisplay {
 	border-radius: 0px;
 	height: 100px;
@@ -26,7 +46,7 @@
 
 .initialButtons {
 	width: 100%;
-	margin: 20px;
+	margin: 20px 0px 20px 0px;
 	border: none;
 	height: 60px;
 	border-radius: 0px;
@@ -54,11 +74,49 @@ label {
 
 #startMonth, #startDay, #startYear {
 	font-family: 'Montserrat:300', sans-serif;
-	width: 30%;
+	width: 32.7%;
 	height: 40px;
 	border-radius: 0px;
 	margin: 0px;
+	padding: 0px;
 }
+
+#submitDetails {
+	margin: auto;
+	display: block;
+	border: none;
+	height: 40px;
+	border-radius: 0px;
+	background: #c4c4c4;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	color: #333333;
+	text-shadow: none;
+}
+
+#submitDetails:hover{
+	background-color: #a7bd56;
+	color: #5a6751;
+}
+
+select {
+	border-radius: 0px;
+
+}
+
+.panel-default {
+	margin: 40px;
+}
+
+iframe {
+	width: 100%;
+}
+
+#stageDisplaySongs {
+	padding: 0px;
+}
+
 
 
 

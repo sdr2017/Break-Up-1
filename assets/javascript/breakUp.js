@@ -148,7 +148,7 @@ $(document).ready(function() {
 //Denial
   $(document).on("click", "#choseDenial", function() {
     //Songs
-    var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(denialIFrame);
 
     //Books
@@ -165,7 +165,7 @@ $(document).ready(function() {
 //Anger
   $(document).on("click", "#choseAnger", function() {
     //Songs
-    var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(angerIFrame);
 
     //Books
@@ -176,7 +176,7 @@ $(document).ready(function() {
 //Misery
   $(document).on("click", "#choseMisery", function() {
     //Songs
-    var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(miseryIFrame);
 
     //Books
@@ -187,7 +187,7 @@ $(document).ready(function() {
 //Affirmation
   $(document).on("click", "#choseAffirmation", function() {
     //Songs
-    var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(affirmationIFrame);
 
     //Books
@@ -198,7 +198,7 @@ $(document).ready(function() {
 //Groove On
   $(document).on("click", "#choseGrooveOn", function() {
     //Songs
-    var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>'
+    var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(grooveIFrame);
 
     //Books

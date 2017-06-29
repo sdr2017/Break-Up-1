@@ -395,22 +395,6 @@ var grooveOnMovies = ["Princess Bride", "Michael Boltonâ€™s Big Sexy Valentineâ€
 //declaring movie var
 var Movie = "";
 
-  // $("#choseDenial").on("click", function(event) {
-
-  //       // Preventing the submit button from trying to submit the form
-  //       event.preventDefault();
-
-  //       //loop for denial movies
-  //       for(var i=0; i<denialMovies.length; i++) {
-  //         movie = denialMovies[i]; //setting movie to new array value
-  //         getMovies (movie); //call movie function
-
-  //       };
-     
-  // });
-
-
-
   //function for movies
   function getMovies(movieStage){
    var movieURL = "http://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";

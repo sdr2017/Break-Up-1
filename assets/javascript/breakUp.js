@@ -250,7 +250,6 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/angerPattern.jpg');
 
     $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
-    $(".panel-heading").css("color", "#942827");  // Changes the color of the panel heading text to match the button color
 
     //Songs
     var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
@@ -274,8 +273,7 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/miseryPattern.jpg');
 
     $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
-    $(".panel-heading").css("color", "#39727a");  // Changes the color of the panel heading text to match the button color
-
+  
     //Songs
     var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(miseryIFrame);
@@ -298,7 +296,6 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/affirmationPattern.jpg');
 
     $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
-    $(".panel-heading").css("color", "#cab354");  // Changes the color of the panel heading text to match the button color
 
     //Songs
     var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
@@ -322,7 +319,6 @@ $(document).ready(function() {
       $("#body").attr('background', 'assets/images/groovePattern.jpg');
 
     $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
-    $(".panel-heading").css("color", "#e0863f");  // Changes the color of the panel heading text to match the button color
 
     //Songs
     var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'

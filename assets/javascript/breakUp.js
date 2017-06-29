@@ -2,7 +2,6 @@ var $select;
 
 $(document).ready(function() {
 
-// Forloops that populate the pulldown menues for age, day of the month, and year.
   $select = $(".1-100");
     for (i=1;i<=100;i++){
       $select.append($('<option></option>').val(i).html(i))
@@ -77,7 +76,38 @@ $(document).ready(function() {
           };
 
   ///////////////////////////////////////////
+  $("#submitDetails").on('click', function() {
+    // Get values from user input
+    var startMonth = $("#startMonth option:selected").text();
+    var startDay = $("#startDay option:selected").text();
+    var startYear = $("#startYear option:selected").text();
 
+    // Make user input into string of format "MM-DD-YYYY"
+    var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;
+
+
+    // Make into a moment.js object - specify format of date we're using
+    var dateEnteredObject = moment(
+      dateEnteredString,
+      "MMMM-DD-YYYY"
+      );
+
+    // Making a moment.js object that has a value of right now
+    var dateTodayObject = moment();
+
+    // Get the time since break up in years AS A NUMBER
+    var timeSinceBreakUpInYears = dateTodayObject.diff(
+      dateEnteredObject, "years"
+      );
+
+    // Get the time since break up in days AS A NUMBER
+    var timeSinceBreakUpInDays = dateTodayObject.diff(
+      dateEnteredObject, "days"
+      );
+    console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
+    console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
+    
+  });
 
 // Add the Firebase Database
  // Initialize Firebase
@@ -143,6 +173,8 @@ $(document).ready(function() {
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q=";
+
 
 //Denial
   $(document).on("click", "#choseDenial", function() {
@@ -154,7 +186,13 @@ $(document).ready(function() {
     songs.html(denialIFrame);
 
     //Books
-    randomDenialBooks();
+    var randomBooks = getRandomIndexes(denialBooks, 3);
+    for (var index = 0; index < 3; index++) {
+      $.ajax({
+        url: queryURL + randomBooks[index],
+        method: "GET"}).done(function(response){console.log(response);}); 
+    }
+    // randomDenialBooks();
     //Movies
   });
 
@@ -231,7 +269,7 @@ var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop",
 var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
 "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
 "I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
-var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
+var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
 "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
 "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
@@ -244,9 +282,9 @@ var grooveOnBooks = ["Men+Are+from+Mars, Women+Are+from+Venus", "The+100+Simple+
 // Randomly select 3 books - ALTERNATIVE
 // -- Make an array with 3 random numbers
 // -- [Math.random * array.length]
+// console.log(getRandomIndexes(grooveOnBooks, 5));
 
-console.log(getRandomIndexes(grooveOnBooks, 5));
-
+// Returns an array
 function getRandomIndexes(booksArray, numberOfIndexes) {
   if (numberOfIndexes > booksArray.length) {
     throw new Error(
@@ -256,7 +294,7 @@ function getRandomIndexes(booksArray, numberOfIndexes) {
   }
   var randomIndexes = [];
   for (var i = 0; i < numberOfIndexes; i += 1) {
-    randomIndexes.push(getRandomIndex(booksArray));
+    randomIndexes.push(booksArray[getRandomIndex(booksArray)]);
   }
 
   return randomIndexes;
@@ -283,7 +321,6 @@ var randomDenialBooks = function () {
     randomDenial = Math.floor((Math.random() * bookLimit) +1);
     $("#stageDisplayBooks").html(randomDenial+queryURL);
 };
-
 // Book Suggestion API
 
 //Movie Suggestions
@@ -293,11 +330,8 @@ var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
 var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
 var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
 
-//]
-
-//test movie input
+//declaring movie var
 var Movie = "";
-movie = denialMovies[0];
 
   $("#choseDenial").on("click", function(event) {
 
@@ -306,8 +340,8 @@ movie = denialMovies[0];
 
         //loop for denial movies
         for(var i=0; i<denialMovies.length; i++) {
-          movie = denialMovies[i];
-          getMovies (movie);
+          movie = denialMovies[i]; //setting movie to new array value
+          getMovies (movie); //call movie function
 
         };
      
@@ -319,8 +353,7 @@ movie = denialMovies[0];
   function getMovies(movieStage){
    var movieURL = "http://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
 
-
-      // CODE GOES HERE
+    // CODE GOES HERE
     $.ajax({
         url: movieURL,
         method: "GET"

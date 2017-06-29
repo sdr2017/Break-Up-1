@@ -95,6 +95,26 @@
 	background-color: #e0863f;
 }
 
+label {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	line-height: 40px;
+}
+
+#genderSelector, #ageSelector, #nameInput, #exInput {
+	font-family: 'Montserrat:300', sans-serif;
+	width: 100%;
+	height: 40px;
+	border-radius: 0px;
+}
+
+#startMonth, #startDay, #startYear {
+	font-family: 'Montserrat:300', sans-serif;
+	width: 30%;
+	height: 40px;
+	border-radius: 0px;
+	margin: 0px;
+}
 
 
 

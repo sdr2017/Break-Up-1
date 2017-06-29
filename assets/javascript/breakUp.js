@@ -141,25 +141,23 @@ $(document).ready(function() {
         
       });
 
-     // Book Arrays
-     var randomDenial = 0;
-
-// Book Suggestions
-var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
-"Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
-"Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
-var angerBooks = ["The+Long+Way+to+a+Small+Angry+Planet", "Brilliance", 
-"A+Darker+Shade+of+Magic", "Year+Zero", "The+Paradox+Trilogy", 
-"A+Knight+of+the+Seven+Kingdoms", "Persona", "Frostborn", "The+October+Daye", "Libriomancer"];
-var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop", 
-"The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
-"The Way I Used to Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
-var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
-"The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
-"I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
-var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
-"The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
-"I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
+     
+     // Book Suggestions
+      var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
+      "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
+      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
+      var angerBooks = ["The+Long+Way+to+a+Small+Angry+Planet", "Brilliance", 
+      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Paradox+Trilogy", 
+      "A+Knight+of+the+Seven+Kingdoms", "Persona", "Frostborn", "The+October+Daye", "Libriomancer"];
+      var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop", 
+      "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
+      "The Way I Used to Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
+      var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
+      "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
+      "I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
+      var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
+      "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
+      "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
 
 
@@ -195,6 +193,8 @@ var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simpl
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  
+  // GoodReads API Search
   var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q=";
 
 
@@ -208,7 +208,7 @@ var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simpl
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
     songs.html(denialIFrame);
 
-    //Random Denial Books
+    //Picks a random book from the Denial Books
     var randomBooks = getRandomIndexes(denialBooks, 3);
     for (var index = 0; index < 3; index++) {
       $.ajax({
@@ -216,19 +216,16 @@ var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simpl
         method: "GET"}).done(function(response){
         console.log(response);
         var bookInfoObject = xmlToJson(response);
-
+        // Locates the correct JSON information
         var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
-
+        // Locates the image and title for the books.
         var image = workArray[0].best_book.image_url["#text"];
         var title = workArray[0].best_book.title["#text"];
-
+        // Appends the title and image to the stage display books.
         $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
         var bookImage = $('<img id="bookImage">');
         bookImage.attr("src", image);
         $("#stageDisplayBooks").append(bookImage);
-
-        console.log(image);
-        console.log(title);
       }); 
     }
 
@@ -335,17 +332,6 @@ var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simpl
 
 ////////////////////////////////////////////////////////////
 
-// Randomly select 3 books
-// -- Get one random number within the range of array length
-// -- Get index immediately after and two indexes after
-// -- if (randomIndex > array.length - 1)
-// ---- randomIndex - arr.length
-
-// Randomly select 3 books - ALTERNATIVE
-// -- Make an array with 3 random numbers
-// -- [Math.random * array.length]
-// console.log(getRandomIndexes(grooveOnBooks, 5));
-
 // Returns an array
 function getRandomIndexes(booksArray, numberOfIndexes) {
   if (numberOfIndexes > booksArray.length) {
@@ -369,12 +355,6 @@ function getRandomIndexes(booksArray, numberOfIndexes) {
     return randomArrayIndex;
   }
 }
-
-// Randomly select 3 books
-// For each book
-// -- build the query url
-// -- pull from url
-// -- update ui with stuff
 
 var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
 

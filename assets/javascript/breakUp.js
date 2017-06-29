@@ -383,7 +383,7 @@ var Movie = "";
 
   //function for movies
   function getMovies(movieStage){
-   var movieURL = "http://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
+   var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
 
     // CODE GOES HERE
     $.ajax({

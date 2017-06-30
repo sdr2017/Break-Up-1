@@ -1,23 +1,100 @@
-var $select;
+
 
 $(document).ready(function() {
+  // Add the Firebase Database
+ // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBOzSjqz7LpVFYpVO5McXdXVq4O7T1Q1No",
+    authDomain: "gogopowerrangers-2632a.firebaseapp.com",
+    databaseURL: "https://gogopowerrangers-2632a.firebaseio.com",
+    projectId: "gogopowerrangers-2632a",
+    storageBucket: "",
+    messagingSenderId: "317199683141"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+
+
+
 //homepage Background
   $("#body").attr('background', 'assets/images/homePattern.jpg');
 
-  $select = $(".1-100");
-    for (i=1;i<=100;i++){
-      $select.append($('<option></option>').val(i).html(i))
-    }
+  // Pulldown menu selecters/////////////////////////////////////////
+  function breakUpDateSelecter() {
+  
+  //Pulls the current date and seperates it by day, month, and year
+    var thisYear = moment().year();
+    var thisMonth = moment().month();
+    var thisDay = moment().date();
+    var months = [ "Janaury", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var $select;
 
-  $select = $(".1-31");
-    for (i=1;i<=31;i++){
-      $select.append($('<option></option>').val(i).html(i))
-    }
+    //Age pulldown selecter
+    $select = $(".1-100");
+      for (i = 1; i <= 100; i++) {
+        $select.append($('<option></option>').val(i).html(i))
+      }
 
-  $select = $(".2000-2020");
-    for (i=2015;i<=2018;i++){
-      $select.append($('<option></option>').val(i).html(i))
+    //Year selecter
+    $select = $(".2000-2020");
+      for (i = 2010; i <= thisYear; i++) {
+        $select.append($('<option></option>').val(i).html(i))
+    }
+  
+    $(".1-31").hide();
+    $(".currentMonth").hide();
+    $(".monthPastYear").hide();
+    $(".1-31PastMonth").hide();
+
+    $(".2000-2020").on("change",function() {
+      var userYear =this.value;
+
+      if (userYear == 2017) {
+        $(".currentMonth").show();
+        
+        $select = $(".currentMonth");
+          for (i = 0; i <= thisMonth; i++) {
+          }
+          for (j = 0; j <= months[i].length +1; j++) {
+            $select.append($('<option></option>').val(months[j]).html(months[j]))
+          }
+
+      } else {
+        
+        $(".monthPastYear").show();
+
+         $select = $(".monthPastYear");
+            for (i = 0; i <= months.length; i++) {
+              $select.append($('<option></option>').val(months[i]).html(months[i]))
+            }
+      }
+
+      $(".currentMonth").on("change", function() {
+        var userThisMonth =this.value;
+
+        if (userThisMonth == months[i - 1]) {
+      
+          $(".1-31").show();
+      
+          // //Day of the month selecter
+          $select = $(".1-31");
+           for (i = 1; i <= thisDay; i++) {
+            $select.append($('<option></option>').val(i).html(i))
+           }
+        } else {
+          
+          $(".1-31PastMonth").show();
+
+          $select = $(".1-31PastMonth");
+            for (i = 1; i <= 31; i++) {
+             $select.append($('<option></option>').val(i).html(i))
+            }
+        }
+      })
+    })
   }
+
+    breakUpDateSelecter();
 
   //HIDE & SHOW FUNCTIONS///////////////////////////////////////////
 
@@ -78,7 +155,9 @@ $(document).ready(function() {
           };
 
   ///////////////////////////////////////////
-  $("#submitDetails").on('click', function() {
+  $("#submitDetails").on('click', function(event) {
+    event.preventDefault();
+
     // Get values from user input
     var startMonth = $("#startMonth option:selected").text();
     var startDay = $("#startDay option:selected").text();
@@ -96,7 +175,6 @@ $(document).ready(function() {
 
     // Making a moment.js object that has a value of right now
     var dateTodayObject = moment();
-
     // Get the time since break up in years AS A NUMBER
     var timeSinceBreakUpInYears = dateTodayObject.diff(
       dateEnteredObject, "years"
@@ -133,39 +211,27 @@ $(document).ready(function() {
       $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
     }
 
-  });
+    //collecting infor from inputs
+    var name = $("#nameInput").val().trim();
+    var gender = $("#genderSelector option:selected").text();
+    var age = $("#ageSelector").val().trim();
+    var ex = $("#exInput").val().trim();
 
-// Add the Firebase Database
- // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBOzSjqz7LpVFYpVO5McXdXVq4O7T1Q1No",
-    authDomain: "gogopowerrangers-2632a.firebaseapp.com",
-    databaseURL: "https://gogopowerrangers-2632a.firebaseio.com",
-    projectId: "gogopowerrangers-2632a",
-    storageBucket: "",
-    messagingSenderId: "317199683141"
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
-
-  	var name = "";
-    var gender = "";
-    var age = 0;
-    var mood = "";
-    var zipcode = 0;
-    var breakupdate = 0;
-    var currentmood = "";
-
-     database.ref().push({
+    //making an object out of the information
+    var newUser = {
         name: name,
         gender: gender,
         age: age,
-        mood: mood,
-        zipcode: zipcode,
-        breakupdate: breakupdate,
-        currentmood: currentmood
-        
-      });
+        breakupdate: dateEnteredString,
+    };
+        console.log(newUser);
+
+
+    //pushing the new user info to firebase
+    database.ref().push(newUser);
+
+  });
+
 
      
      // Book Suggestions

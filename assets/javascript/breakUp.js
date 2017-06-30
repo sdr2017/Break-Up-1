@@ -1,6 +1,21 @@
 
 
 $(document).ready(function() {
+  // Add the Firebase Database
+ // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBOzSjqz7LpVFYpVO5McXdXVq4O7T1Q1No",
+    authDomain: "gogopowerrangers-2632a.firebaseapp.com",
+    databaseURL: "https://gogopowerrangers-2632a.firebaseio.com",
+    projectId: "gogopowerrangers-2632a",
+    storageBucket: "",
+    messagingSenderId: "317199683141"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+
+
+
 //homepage Background
   $("#body").attr('background', 'assets/images/homePattern.jpg');
 
@@ -98,7 +113,9 @@ $(document).ready(function() {
           };
 
   ///////////////////////////////////////////
-  $("#submitDetails").on('click', function() {
+  $("#submitDetails").on('click', function(event) {
+    event.preventDefault();
+
     // Get values from user input
     var startMonth = $("#startMonth option:selected").text();
     var startDay = $("#startDay option:selected").text();
@@ -152,39 +169,27 @@ $(document).ready(function() {
       $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
     }
 
-  });
+    //collecting infor from inputs
+    var name = $("#nameInput").val().trim();
+    var gender = $("#genderSelector option:selected").text();
+    var age = $("#ageSelector").val().trim();
+    var ex = $("#exInput").val().trim();
 
-// Add the Firebase Database
- // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBOzSjqz7LpVFYpVO5McXdXVq4O7T1Q1No",
-    authDomain: "gogopowerrangers-2632a.firebaseapp.com",
-    databaseURL: "https://gogopowerrangers-2632a.firebaseio.com",
-    projectId: "gogopowerrangers-2632a",
-    storageBucket: "",
-    messagingSenderId: "317199683141"
-  };
-  firebase.initializeApp(config);
-  var database = firebase.database();
-
-  	var name = "";
-    var gender = "";
-    var age = 0;
-    var mood = "";
-    var zipcode = 0;
-    var breakupdate = 0;
-    var currentmood = "";
-
-     database.ref().push({
+    //making an object out of the information
+    var newUser = {
         name: name,
         gender: gender,
         age: age,
-        mood: mood,
-        zipcode: zipcode,
-        breakupdate: breakupdate,
-        currentmood: currentmood
-        
-      });
+        breakupdate: dateEnteredString,
+    };
+        console.log(newUser);
+
+
+    //pushing the new user info to firebase
+    database.ref().push(newUser);
+
+  });
+
 
      
      // Book Suggestions

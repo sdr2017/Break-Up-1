@@ -30,7 +30,7 @@ $(document).ready(function() {
     }
 
   $select = $(".2000-2020");
-    for (i=2000;i<=2020;i++){
+    for (i=2015;i<=2018;i++){
       $select.append($('<option></option>').val(i).html(i))
   }
 
@@ -177,15 +177,15 @@ $(document).ready(function() {
       var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
       "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
       "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
-      var angerBooks = ["The+Long+Way+to+a+Small+Angry+Planet", "Brilliance", 
-      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Paradox+Trilogy", 
-      "A+Knight+of+the+Seven+Kingdoms", "Persona", "Frostborn", "The+October+Daye", "Libriomancer"];
-      var miseryBooks = ["Hyperbole+and+a+Half", "Mr.+Penumbra’s+24-Hour+Bookshop", 
+      var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
+      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
+      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
+      var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
       "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
-      "The Way I Used to Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
+      "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
       var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
-      "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "I'll+Give+You+the+Sun", "Milk+and+Honey",
-      "I+Am+the+Messenger", "Attitude+Reconstruction:+A+Blueprint+for+Building+a+Better+Life", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
+      "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "The+Light+We+Lost", "Milk+and+Honey",
+      "I+Am+the+Messenger", "Attitude+Reconstruction", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
       var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
       "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
       "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
@@ -290,24 +290,24 @@ $(document).ready(function() {
 
     // Books
     //Picks a random book from the Anger Books
-    var randomBooks = getRandomIndexes(angerBooks, 3);
+    var randomAngerBooks = getRandomIndexes(angerBooks, 3);
     $("#stageDisplayBooks").empty();
     for (var j = 0; j < 3; j++) {
       $.ajax({
-        url: queryURL + randomBooks[j],
+        url: queryURL + randomAngerBooks[j],
         method: "GET"}).done(function(response){
         console.log(response);
-        var bookInfoObject = xmlToJson(response);
+        var bookInfoAngerObject = xmlToJson(response);
         // Locates the correct JSON information
-        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        var workAngerArray = bookInfoAngerObject.GoodreadsResponse.search.results.work;
         // Locates the image and title for the books.
-        var image = workArray[1].best_book.image_url["#text"];
-        var title = workArray[1].best_book.title["#text"];
+        var angerImage = workAngerArray[0].best_book.image_url["#text"];
+        var angerTitle = workAngerArray[0].best_book.title["#text"];
         // Appends the title and image to the stage display books.
-        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
-        var bookImage = $('<img id="bookImage">');
-        bookImage.attr("src", image);
-        $("#stageDisplayBooks").append(bookImage);
+        $("#stageDisplayBooks").append('<br><br><strong>' + angerTitle + '</strong><br><br>');
+        var bookAngerImage = $('<img id="bookImage">');
+        bookAngerImage.attr("src", angerImage);
+        $("#stageDisplayBooks").append(bookAngerImage);
       }); 
     }
 
@@ -334,24 +334,24 @@ $(document).ready(function() {
 
     // Books
     //Picks a random book from the Misery Books
-    var randomBooks = getRandomIndexes(miseryBooks, 3);
+    var randomMiseryBooks = getRandomIndexes(miseryBooks, 3);
     $("#stageDisplayBooks").empty();
     for (var k = 0; k < 3; k++) {
       $.ajax({
-        url: queryURL + randomBooks[k],
+        url: queryURL + randomMiseryBooks[k],
         method: "GET"}).done(function(response){
         console.log(response);
-        var bookInfoObject = xmlToJson(response);
+        var bookInfoMiseryObject = xmlToJson(response);
         // Locates the correct JSON information
-        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        var workMiseryArray = bookInfoMiseryObject.GoodreadsResponse.search.results.work;
         // Locates the image and title for the books.
-        var image = workArray[2].best_book.image_url["#text"];
-        var title = workArray[2].best_book.title["#text"];
+        var miseryImage = workMiseryArray[0].best_book.image_url["#text"];
+        var miseryTitle = workMiseryArray[0].best_book.title["#text"];
         // Appends the title and image to the stage display books.
-        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
-        var bookImage = $('<img id="bookImage">');
-        bookImage.attr("src", image);
-        $("#stageDisplayBooks").append(bookImage);
+        $("#stageDisplayBooks").append('<br><br><strong>' + miseryTitle + '</strong><br><br>');
+        var bookMiseryImage = $('<img id="bookImage">');
+        bookMiseryImage.attr("src", miseryImage);
+        $("#stageDisplayBooks").append(bookMiseryImage);
       }); 
     }
 
@@ -378,24 +378,24 @@ $(document).ready(function() {
 
       // Books
     //Picks a random book from the Affirmation Books
-    var randomBooks = getRandomIndexes(affirmationBooks, 3);
+    var randomAffirmationBooks = getRandomIndexes(affirmationBooks, 3);
     $("#stageDisplayBooks").empty();
     for (var l = 0; l < 3; l++) {
       $.ajax({
-        url: queryURL + randomBooks[l],
+        url: queryURL + randomAffirmationBooks[l],
         method: "GET"}).done(function(response){
         console.log(response);
-        var bookInfoObject = xmlToJson(response);
+        var bookInfoAffirmationObject = xmlToJson(response);
         // Locates the correct JSON information
-        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        var workAffirmationArray = bookInfoAffirmationObject.GoodreadsResponse.search.results.work;
         // Locates the image and title for the books.
-        var image = workArray[3].best_book.image_url["#text"];
-        var title = workArray[3].best_book.title["#text"];
+        var affirmationImage = workAffirmationArray[0].best_book.image_url["#text"];
+        var affirmationTitle = workAffirmationArray[0].best_book.title["#text"];
         // Appends the title and image to the stage display books.
-        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
-        var bookImage = $('<img id="bookImage">');
-        bookImage.attr("src", image);
-        $("#stageDisplayBooks").append(bookImage);
+        $("#stageDisplayBooks").append('<br><br><strong>' + affirmationTitle + '</strong><br><br>');
+        var bookAffirmationImage = $('<img id="bookImage">');
+        bookAffirmationImage.attr("src", affirmationImage);
+        $("#stageDisplayBooks").append(bookAffirmationImage);
       }); 
     }
 
@@ -422,24 +422,24 @@ $(document).ready(function() {
 
      // Books
     //Picks a random book from the Groove On Books
-    var randomBooks = getRandomIndexes(grooveOnBooks, 3);
+    var randomGrooveOnBooks = getRandomIndexes(grooveOnBooks, 3);
     $("#stageDisplayBooks").empty();
     for (var m = 0; m < 3; m++) {
       $.ajax({
-        url: queryURL + randomBooks[m],
+        url: queryURL + randomGrooveOnBooks[m],
         method: "GET"}).done(function(response){
         console.log(response);
-        var bookInfoObject = xmlToJson(response);
+        var bookInfoGrooveOnObject = xmlToJson(response);
         // Locates the correct JSON information
-        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        var workGrooveOnArray = bookInfoGrooveOnObject.GoodreadsResponse.search.results.work;
         // Locates the image and title for the books.
-        var image = workArray[4].best_book.image_url["#text"];
-        var title = workArray[4].best_book.title["#text"];
+        var grooveOnImage = workGrooveOnArray[0].best_book.image_url["#text"];
+        var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
         // Appends the title and image to the stage display books.
-        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
-        var bookImage = $('<img id="bookImage">');
-        bookImage.attr("src", image);
-        $("#stageDisplayBooks").append(bookImage);
+        $("#stageDisplayBooks").append('<br><br><strong>' + grooveOnTitle + '</strong><br><br>');
+        var bookGrooveOnImage = $('<img id="bookImage">');
+        bookGrooveOnImage.attr("src", grooveOnImage);
+        $("#stageDisplayBooks").append(bookGrooveOnImage);
       }); 
     }
 

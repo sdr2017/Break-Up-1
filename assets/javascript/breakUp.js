@@ -1,23 +1,43 @@
-var $select;
+
 
 $(document).ready(function() {
 //homepage Background
   $("#body").attr('background', 'assets/images/homePattern.jpg');
 
+  // Pulldown menu selecters/////////////////////////////////////////
+
+  //Pulls the current date and seperates it by day, month, and year
+  var thisYear = moment().year();
+  var thisMonth = moment().month();
+  var thisDay = moment().date();
+  var months = [ "Janaury", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+  var $select;
+
+  //Age pulldown selecter
   $select = $(".1-100");
-    for (i=1;i<=100;i++){
+    for (i = 1; i <= 100; i++) {
       $select.append($('<option></option>').val(i).html(i))
     }
-
+ 
+  //Day of the month selecter
   $select = $(".1-31");
-    for (i=1;i<=31;i++){
+    for (i = 1; i <= thisDay; i++) {
       $select.append($('<option></option>').val(i).html(i))
     }
-
+ 
+  //Year selecter
   $select = $(".2000-2020");
-    for (i=2015;i<=2018;i++){
+    for (i = 2010; i <= thisYear; i++) {
       $select.append($('<option></option>').val(i).html(i))
   }
+
+  //Month selecter
+    $select = $("#startMonth");
+      for (i = 0; i <= thisMonth; i++) {
+      }
+      for (j = 0; j <= months[i].length +1; j++) {
+        $select.append($('<option></option>').val(months[j]).html(months[j]))
+      }
 
   //HIDE & SHOW FUNCTIONS///////////////////////////////////////////
 
@@ -96,7 +116,6 @@ $(document).ready(function() {
 
     // Making a moment.js object that has a value of right now
     var dateTodayObject = moment();
-
     // Get the time since break up in years AS A NUMBER
     var timeSinceBreakUpInYears = dateTodayObject.diff(
       dateEnteredObject, "years"

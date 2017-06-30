@@ -20,39 +20,81 @@ $(document).ready(function() {
   $("#body").attr('background', 'assets/images/homePattern.jpg');
 
   // Pulldown menu selecters/////////////////////////////////////////
-
+  function breakUpDateSelecter() {
+  
   //Pulls the current date and seperates it by day, month, and year
-  var thisYear = moment().year();
-  var thisMonth = moment().month();
-  var thisDay = moment().date();
-  var months = [ "Janaury", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-  var $select;
+    var thisYear = moment().year();
+    var thisMonth = moment().month();
+    var thisDay = moment().date();
+    var months = [ "Janaury", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var $select;
 
-  //Age pulldown selecter
-  $select = $(".1-100");
-    for (i = 1; i <= 100; i++) {
-      $select.append($('<option></option>').val(i).html(i))
+    //Age pulldown selecter
+    $select = $(".1-100");
+      for (i = 1; i <= 100; i++) {
+        $select.append($('<option></option>').val(i).html(i))
+      }
+
+    //Year selecter
+    $select = $(".2000-2020");
+      for (i = 2010; i <= thisYear; i++) {
+        $select.append($('<option></option>').val(i).html(i))
     }
- 
-  //Day of the month selecter
-  $select = $(".1-31");
-    for (i = 1; i <= thisDay; i++) {
-      $select.append($('<option></option>').val(i).html(i))
-    }
- 
-  //Year selecter
-  $select = $(".2000-2020");
-    for (i = 2010; i <= thisYear; i++) {
-      $select.append($('<option></option>').val(i).html(i))
+  
+    $(".1-31").hide();
+    $(".currentMonth").hide();
+    $(".monthPastYear").hide();
+    $(".1-31PastMonth").hide();
+
+    $(".2000-2020").on("change",function() {
+      var userYear =this.value;
+
+      if (userYear == 2017) {
+        $(".currentMonth").show();
+        
+        $select = $(".currentMonth");
+          for (i = 0; i <= thisMonth; i++) {
+          }
+          for (j = 0; j <= months[i].length +1; j++) {
+            $select.append($('<option></option>').val(months[j]).html(months[j]))
+          }
+
+      } else {
+        
+        $(".monthPastYear").show();
+
+         $select = $(".monthPastYear");
+            for (i = 0; i <= months.length; i++) {
+              $select.append($('<option></option>').val(months[i]).html(months[i]))
+            }
+      }
+
+      $(".currentMonth").on("change", function() {
+        var userThisMonth =this.value;
+
+        if (userThisMonth == months[i - 1]) {
+      
+          $(".1-31").show();
+      
+          // //Day of the month selecter
+          $select = $(".1-31");
+           for (i = 1; i <= thisDay; i++) {
+            $select.append($('<option></option>').val(i).html(i))
+           }
+        } else {
+          
+          $(".1-31PastMonth").show();
+
+          $select = $(".1-31PastMonth");
+            for (i = 1; i <= 31; i++) {
+             $select.append($('<option></option>').val(i).html(i))
+            }
+        }
+      })
+    })
   }
 
-  //Month selecter
-    $select = $("#startMonth");
-      for (i = 0; i <= thisMonth; i++) {
-      }
-      for (j = 0; j <= months[i].length +1; j++) {
-        $select.append($('<option></option>').val(months[j]).html(months[j]))
-      }
+    breakUpDateSelecter();
 
   //HIDE & SHOW FUNCTIONS///////////////////////////////////////////
 

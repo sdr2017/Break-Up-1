@@ -178,12 +178,12 @@ $(document).ready(function() {
       var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
       "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
       "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
-      var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
-      "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "The+Light+We+Lost", "Milk+and+Honey",
-      "I+Am+the+Messenger", "Attitude+Reconstruction", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
-      var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
-      "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
-      "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
+      var affirmationBooks = ["When+Life+Happened", "A+Man+Called+Ove", "Adulthood+is+a+Myth",
+      "The+Trials+of+Apollo", "Just+the+Way+You+Are", "My+Life+as+a+Ninja", "Milk+and+Honey",
+      "I+Am+the+Messenger", "Safe+Haven", "Eleanor+and+Park"];
+      var grooveOnBooks = ["I+Kissed+Dating+Goodbye", "The+More+We+Get+Together", "Where+the+Sidewalk+Ends",
+      "A+Midsummers+Dream", "First+Comes+Love+Then+Comes+Money", "Art+and+Soul",
+      "November+9", "The+Dating+Detox", "Why+We+Broke+Up", "On+Second+Thought", "Modern+Romance"]; 
 
 
 
@@ -249,6 +249,7 @@ $(document).ready(function() {
         var bookInfoObject = xmlToJson(response);
         // Locates the correct JSON information
         var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        console.log(workArray);
         // Locates the image and title for the books.
         var image = workArray[0].best_book.image_url["#text"];
         var title = workArray[0].best_book.title["#text"];
@@ -446,6 +447,9 @@ $(document).ready(function() {
           getMovies (movie); //call movie function
 
         };
+
+        $("#stageDisplayBooks").append('<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >' + ("https:www.match.com") + "</div>");
+
   });
 
 ////////////////////////////////////////////////////////////
@@ -473,14 +477,6 @@ function getRandomIndexes(booksArray, numberOfIndexes) {
     return randomArrayIndex;
   }
 }
-
-var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
-
-var randomDenialBooks = function () {
-  var bookLimit =Object.keys(denialBooks.length);
-    randomDenial = Math.floor((Math.random() * bookLimit) +1);
-    $("#stageDisplayBooks").html(randomDenial+queryURL);
-};
 
 //Movie Suggestions
 var denialMovies = ["Brazil", "Eternal Sunshine of the Spotless Mind", "The Way We Were"];

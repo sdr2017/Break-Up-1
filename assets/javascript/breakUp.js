@@ -49,7 +49,7 @@ $(document).ready(function() {
           for (i = 0; i <= thisMonth; i++) {
           }
 
-          for (j = 0; j <= months[i].length +1; j++) {  //Pushes the new array length to the html
+          for (j = 0; j <= months[i].length; j++) {  //Pushes the new array length to the html
             $select.append($('<option></option>').val(months[j]).html(months[j]))
           }
 

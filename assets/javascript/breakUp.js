@@ -189,22 +189,27 @@ $(document).ready(function() {
 
     if (timeSinceBreakUpInDays < 7) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+      $("#choseDenial").click();
     }
 
     if (timeSinceBreakUpInDays > 7 && timeSinceBreakUpInDays < 14) {
       $("#stagePanel").append("You broke up over a week ago. We recommend moving on to the Anger stage.");
+      $("#choseAnger").click();
     }
 
       if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 21) {
       $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Misery stage.");
+      $("#choseMisery").click();
     }
 
     if (timeSinceBreakUpInDays >= 21 && timeSinceBreakUpInDays < 28) {
       $("#stagePanel").append("You broke up over three weeks ago. We recommend moving on to the Affirmation stage.");
+      $("#choseAffirmation").click();
     }
 
     if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 35) {
       $("#stagePanel").append("You broke up over a month ago. We think you're ready to GrOoVe On!");
+      $("#choseGrooveOn").click();
     }
 
     if (timeSinceBreakUpInDays >= 35) {

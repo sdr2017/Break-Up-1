@@ -1,9 +1,8 @@
-var $select;
+
 
 $(document).ready(function() {
-  // Add the Firebase Database
- // Initialize Firebase
-  var config = {
+
+  var config = {  // Add the Firebase Database
     apiKey: "AIzaSyBOzSjqz7LpVFYpVO5McXdXVq4O7T1Q1No",
     authDomain: "gogopowerrangers-2632a.firebaseapp.com",
     databaseURL: "https://gogopowerrangers-2632a.firebaseio.com",
@@ -11,92 +10,147 @@ $(document).ready(function() {
     storageBucket: "",
     messagingSenderId: "317199683141"
   };
-  firebase.initializeApp(config);
+  
+  firebase.initializeApp(config); // Initialize Firebase
   var database = firebase.database();
 
+  $("#body").attr('background', 'assets/images/homePattern.jpg'); //homepage Background
 
+// Pulldown menu selectors/////////////////////////////////////////
+  function breakUpDateSelecter() {
+  
+    var thisYear = moment().year(); //Pulls the current date and seperates it by day, month, and year
+    var thisMonth = moment().month();
+    var thisDay = moment().date();
+    var months = [ "Janaury", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var $select;
 
-//homepage Background
-  $("#body").attr('background', 'assets/images/homePattern.jpg');
+    $select = $(".1-100");  //Age pulldown selector
+      for (i = 1; i <= 100; i++) {
+        $select.append($('<option></option>').val(i).html(i))
+      }
 
-  $select = $(".1-100");
-    for (i=1;i<=100;i++){
-      $select.append($('<option></option>').val(i).html(i))
-    }
+    $select = $(".2000-2020");  //Year selector
+      for (i = 2010; i <= thisYear; i++) {
+        $select.append($('<option></option>').val(i).html(i))
+      }
+  
+    $(".1-31").hide();  //Hides the month and day selectors 
+    $(".currentMonth").hide();
+    $(".monthPastYear").hide();
+    $(".1-31PastMonth").hide();
 
-  $select = $(".1-31");
-    for (i=1;i<=31;i++){
-      $select.append($('<option></option>').val(i).html(i))
-    }
+    $(".2000-2020").on("change",function() {  //Registers the user selection and parses it into a variable
+      var userYear =this.value;
 
-  $select = $(".2000-2020");
-    for (i=2015;i<=2018;i++){
-      $select.append($('<option></option>').val(i).html(i))
+      if (userYear == 2017) { //Determines which forloop is run to fill the months selector
+        $(".currentMonth").show();  //Month selector by runing through the array only up to the current month 
+        $select = $(".currentMonth");
+          for (i = 0; i <= thisMonth; i++) {
+          }
+
+          for (j = 0; j <= months[i].length; j++) {  //Pushes the new array length to the html
+            $select.append($('<option></option>').val(months[j]).html(months[j]))
+          }
+
+      } else {
+  
+        $(".monthPastYear").show(); //All months selector grabs all of the months from the array and pushes to html 
+         $select = $(".monthPastYear");
+            for (i = 0; i <= months.length; i++) {
+              $select.append($('<option></option>').val(months[i]).html(months[i]))
+            }
+      }
+
+      $(".currentMonth").on("change", function() {
+        var userThisMonth =this.value;
+        if (userThisMonth == months[i - 1]) {     
+          $(".1-31").show();      
+          $select = $(".1-31"); // //Day of the month selecter
+            for (i = 1; i <= thisDay; i++) {
+            $select.append($('<option></option>').val(i).html(i))
+           }
+
+        } else {
+          
+          $(".1-31PastMonth").show();
+          $select = $(".1-31PastMonth");
+            for (i = 1; i <= 31; i++) {
+             $select.append($('<option></option>').val(i).html(i))
+            }
+        }
+      })
+    })
   }
 
-  //HIDE & SHOW FUNCTIONS///////////////////////////////////////////
+  breakUpDateSelecter();
 
-        function hideSignIn() { //for hiding the sign in buttons
-            $("#signIn").hide();
-          };
-        function showSignIn() {
-            $("#signIn").show();
-          };
+//HIDE & SHOW FUNCTIONS///////////////////////////////////////////
 
+  function hideSignIn() { //for hiding the sign in buttons
+    $("#signIn").hide();
+  };
+
+  function showSignIn() {
+    $("#signIn").show();
+  };
+
+  function hideInputs() { //for hiding the input fields
+    $("#inputFields").hide();
+  };
+  
+  hideInputs();
         
-        function hideInputs() { //for hiding the input fields
-            $("#inputFields").hide();
-          };
-          hideInputs();
-        
-        function showInputs() {
-            $("#inputFields").show();
-          };
+  function showInputs() {
+    $("#inputFields").show();
+  };
 
-        
-        function hideStageButtons() { //for hiding the stage buttons
-            $("#buttonStages").hide();
-          };
-          hideStageButtons();
+  function hideStageButtons() { //for hiding the stage buttons
+    $("#buttonStages").hide();
+  };
+          
+  hideStageButtons();
 
-        function showStageButtons() {
-            $("#buttonStages").show();
-          };
+  function showStageButtons() {
+    $("#buttonStages").show();
+  };
 
+  function hideSongs() { //for hiding the songs panel
+    $("#songs").hide();
+  };
 
-        function hideSongs() { //for hiding the songs panel
-            $("#songs").hide();
-          };
-          hideSongs();
+   hideSongs();
 
-        function showSongs() {
-            $("#songs").show();
-          };
+  function showSongs() {
+    $("#songs").show();
+  };
 
+  function hideBooks() { //for hiding the food panel
+    $("#books").hide();
+  };
+          
+  hideBooks();
 
-        function hideBooks() { //for hiding the food panel
-            $("#books").hide();
-          };
-          hideBooks();
+  function showBooks() {
+    $("#books").show();
+  };
 
-        function showBooks() {
-            $("#books").show();
-          };
+  function hideMovies() { //for hiding the movie panel
+    $("#movies").hide();
+  };
+          
+  hideMovies(); 
 
-        function hideMovies() { //for hiding the movie panel
-            $("#movies").hide();
-          };
-          hideMovies(); 
+  function showMovies() {
+    $("#movies").show();
+  };
 
-        function showMovies() {
-            $("#movies").show();
-          };
-
-  ///////////////////////////////////////////
+///////////////////////////////////////////
+  
   $("#submitDetails").on('click', function(event) {
     event.preventDefault();
 
-    // Get values from user input
+// Get values from user input
     var startMonth = $("#startMonth option:selected").text();
     var startDay = $("#startDay option:selected").text();
     var startYear = $("#startYear option:selected").text();
@@ -113,7 +167,6 @@ $(document).ready(function() {
 
     // Making a moment.js object that has a value of right now
     var dateTodayObject = moment();
-
     // Get the time since break up in years AS A NUMBER
     var timeSinceBreakUpInYears = dateTodayObject.diff(
       dateEnteredObject, "years"
@@ -128,22 +181,27 @@ $(document).ready(function() {
 
     if (timeSinceBreakUpInDays < 7) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+      $("#choseDenial").click();
     }
 
     if (timeSinceBreakUpInDays > 7 && timeSinceBreakUpInDays < 14) {
       $("#stagePanel").append("You broke up over a week ago. We recommend moving on to the Anger stage.");
+      $("#choseAnger").click();
     }
 
       if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 21) {
       $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Misery stage.");
+      $("#choseMisery").click();
     }
 
     if (timeSinceBreakUpInDays >= 21 && timeSinceBreakUpInDays < 28) {
       $("#stagePanel").append("You broke up over three weeks ago. We recommend moving on to the Affirmation stage.");
+      $("#choseAffirmation").click();
     }
 
     if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 35) {
       $("#stagePanel").append("You broke up over a month ago. We think you're ready to GrOoVe On!");
+      $("#choseGrooveOn").click();
     }
 
     if (timeSinceBreakUpInDays >= 35) {
@@ -170,9 +228,7 @@ $(document).ready(function() {
     database.ref().push(newUser);
 
   });
-
-
-     
+ 
      // Book Suggestions
       var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
       "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",

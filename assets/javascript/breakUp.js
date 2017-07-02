@@ -2,6 +2,8 @@
 
 $(document).ready(function() {
 
+// Connect with a Firebase Database///////////////////////////////////////////////////////////////////////////////////////////
+
   var config = {  // Add the Firebase Database
     apiKey: "AIzaSyBOzSjqz7LpVFYpVO5McXdXVq4O7T1Q1No",
     authDomain: "gogopowerrangers-2632a.firebaseapp.com",
@@ -16,7 +18,8 @@ $(document).ready(function() {
 
   $("#body").attr('background', 'assets/images/homePattern.jpg'); //homepage Background
 
-// Pulldown menu selectors/////////////////////////////////////////
+// Pulldown menu selectors/////////////////////////////////////////////////////////////////////////////////////////////////////
+  
   function breakUpDateSelecter() {
   
     var thisYear = moment().year(); //Pulls the current date and seperates it by day, month, and year
@@ -85,7 +88,7 @@ $(document).ready(function() {
 
   breakUpDateSelecter();
 
-//HIDE & SHOW FUNCTIONS///////////////////////////////////////////
+//HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   function hideSignIn() { //for hiding the sign in buttons
     $("#signIn").hide();
@@ -145,37 +148,20 @@ $(document).ready(function() {
     $("#movies").show();
   };
 
-///////////////////////////////////////////
+// Acts on user input data/////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $("#submitDetails").on('click', function(event) {
     event.preventDefault();
 
-// Get values from user input
-    var startMonth = $("#startMonth option:selected").text();
+    var startMonth = $("#startMonth option:selected").text(); // Get values from user input
     var startDay = $("#startDay option:selected").text();
     var startYear = $("#startYear option:selected").text();
-
-    // Make user input into string of format "MM-DD-YYYY"
-    var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;
-
-
-    // Make into a moment.js object - specify format of date we're using
-    var dateEnteredObject = moment(
-      dateEnteredString,
-      "MMMM-DD-YYYY"
-      );
-
-    // Making a moment.js object that has a value of right now
-    var dateTodayObject = moment();
-    // Get the time since break up in years AS A NUMBER
-    var timeSinceBreakUpInYears = dateTodayObject.diff(
-      dateEnteredObject, "years"
-      );
-
-    // Get the time since break up in days AS A NUMBER
-    var timeSinceBreakUpInDays = dateTodayObject.diff(
-      dateEnteredObject, "days"
-      );
+    var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;  // Make user input into string of format "MM-DD-YYYY"
+    var dateEnteredObject = moment(dateEnteredString, "MMMM-DD-YYYY");  // Make into a moment.js object - specify format of date we're using
+    var dateTodayObject = moment(); // Making a moment.js object that has a value of right now 
+    var timeSinceBreakUpInYears = dateTodayObject.diff(dateEnteredObject, "years");  // Get the time since break up in years AS A NUMBER
+    var timeSinceBreakUpInDays = dateTodayObject.diff(dateEnteredObject, "days"); // Get the time since break up in days AS A NUMBER
+    
     console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
     console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
 
@@ -208,28 +194,23 @@ $(document).ready(function() {
       $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
     }
 
-    //collecting infor from inputs
-    var name = $("#nameInput").val().trim();
+    var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
     var gender = $("#genderSelector option:selected").text();
     var age = $("#ageSelector").val().trim();
-    var ex = $("#exInput").val().trim();
-
-    //making an object out of the information
-    var newUser = {
+    var ex = $("#exInput").val().trim(); 
+    var newUser = { //making an object out of the information
         name: name,
         gender: gender,
         age: age,
         breakupdate: dateEnteredString,
     };
-        console.log(newUser);
-
-
-    //pushing the new user info to firebase
-    database.ref().push(newUser);
+    console.log(newUser);
+    database.ref().push(newUser); //pushing the new user info to firebase
 
   });
  
-     // Book Suggestions
+// Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
       var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
       "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
       "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
@@ -247,15 +228,14 @@ $(document).ready(function() {
       "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
 
 
+//Handling the on the button selector on click event by pushing relevent functions///////////////////////////////////////////// 
 
-//taking user to the input fields if clicking "I Just Broke Up!"
-  $(document).on("click", "#justBrokeUp", function() {
+  $(document).on("click", "#justBrokeUp", function() {  //taking user to the input fields if clicking "I Just Broke Up!"
     hideSignIn();
     showInputs();
   });
 
-//taking user to the stages if clicking "I'm recovering"
-  $(document).on("click", "#recovering", function() {
+  $(document).on("click", "#recovering", function() { //taking user to the stages if clicking "I'm recovering"
     hideSignIn();
     showStageButtons();
     showSongs();
@@ -263,8 +243,7 @@ $(document).ready(function() {
     showMovies();
   });
 
-//taking user to the stages after clicking "submit" in input fields
-  $(document).on("click", "#submitDetails", function(event) {
+  $(document).on("click", "#submitDetails", function(event) { //taking user to the stages after clicking "submit" in input fields
     console.log("what's up?");
     event.preventDefault();
     hideSignIn();
@@ -276,60 +255,47 @@ $(document).ready(function() {
 
   });
 
-//Stages on click functions//////////////////////////////////
+//Stages on click functions////////////////////////////////////////////////////////////////////////////////////////////////////
+  
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
+
+//Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
-  // GoodReads API Search
-  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q=";
-
-
-//Denial
   $(document).on("click", "#choseDenial", function() {
-    
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
-    //background
-      $("#body").attr('background', 'assets/images/denialPattern.jpg');
+      $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
       $(".panel-heading").css("color", "#8aa583");  // Changes the color of the panel heading text to match the button color
    
-    //Songs
-    var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'
+    var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(denialIFrame);
 
-
-    // Books
-    //Picks a random book from the Denial Books
-    var randomBooks = getRandomIndexes(denialBooks, 3);
+    var randomBooks = getRandomIndexes(denialBooks, 3); // Books
     $("#stageDisplayBooks").empty();
-    for (var index = 0; index < 3; index++) {
+    for (var index = 0; index < 3; index++) { //Picks a random book from the Denial Books
       $.ajax({
         url: queryURL + randomBooks[index],
         method: "GET"}).done(function(response){
         console.log(response);
         var bookInfoObject = xmlToJson(response);
-        // Locates the correct JSON information
-        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
-        // Locates the image and title for the books.
-        var image = workArray[0].best_book.image_url["#text"];
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
+        var image = workArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
         var title = workArray[0].best_book.title["#text"];
-        // Appends the title and image to the stage display books.
-        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>');
+        
+        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>'); // Appends the title and image to the stage display books.
         var bookImage = $('<img id="bookImage">');
         bookImage.attr("src", image);
         $("#stageDisplayBooks").append(bookImage);
       }); 
     }
 
-    //Movies
-
-        //loop for denial movies
-        $("#stageDisplayMovies").empty();
-        for(var i=0; i<denialMovies.length; i++) {
-          movie = denialMovies[i]; //setting movie to new array value
-          getMovies (movie); //call movie function
-
-        };
+    $("#stageDisplayMovies").empty(); //Movies
+    for(var i=0; i<denialMovies.length; i++) {  //loop for denial movies
+      movie = denialMovies[i]; //setting movie to new array value
+      getMovies (movie); //call movie function
+    };
 
   });
 

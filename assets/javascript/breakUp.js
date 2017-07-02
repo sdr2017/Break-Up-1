@@ -177,31 +177,47 @@ $(document).ready(function() {
 
     if (timeSinceBreakUpInDays < 7) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseDenial").click();
     }
 
     if (timeSinceBreakUpInDays > 7 && timeSinceBreakUpInDays < 14) {
       $("#stagePanel").append("You broke up over a week ago. We recommend moving on to the Anger stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseAnger").click();
     }
 
       if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 21) {
       $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Misery stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseMisery").click();
     }
 
     if (timeSinceBreakUpInDays >= 21 && timeSinceBreakUpInDays < 28) {
       $("#stagePanel").append("You broke up over three weeks ago. We recommend moving on to the Affirmation stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseAffirmation").click();
     }
 
     if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 35) {
       $("#stagePanel").append("You broke up over a month ago. We think you're ready to GrOoVe On!");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseGrooveOn").click();
     }
 
     if (timeSinceBreakUpInDays >= 35) {
       $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+      showMoveOn();
     }
 
     var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
@@ -259,8 +275,6 @@ $(document).ready(function() {
     hideSignIn();
     hideInputs();
     showStageButtons();
-    showMoveOn();
-
   });
 
   //Stages on click functions////////////////////////////////////////////////////////////////////////////////////////////////////

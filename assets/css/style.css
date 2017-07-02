@@ -86,6 +86,20 @@ h1 {
 	text-shadow: none;
 }
 
+#stagePanel {
+	height: 150px;
+	background-color: #eeeeee;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	color: #333333;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+#buttonHolder {
+	padding: 20px;
+}
+
 #choseDenial, #choseAnger, #choseMisery, #choseAffirmation, #choseGrooveOn {
 	width: 100%;
 	border: none;

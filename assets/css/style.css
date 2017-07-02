@@ -182,7 +182,7 @@ label {
 
 #submitDetails:hover{
 	background-color: #a7bd56;
-	color: #5a6751;
+	color: #333333;
 	margin: auto;
 	display: block;
 }
@@ -201,6 +201,24 @@ iframe {
 
 #stageDisplaySongs {
 	background-color: #000000;
+}
+
+#quote {
+	color: #58595b;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 50px;
+	line-height: 100px;
+}
+
+#stageDisplayMoveOn {
+	padding: 40px;
+	height: 300px;
+}
+
+#poop {
+	display: block;
+	margin: auto;
 }
 
 

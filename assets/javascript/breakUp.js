@@ -148,6 +148,16 @@ $(document).ready(function() {
     $("#movies").show();
   };
 
+  function hideMoveOn() { //for hiding the move on panel
+    $("#stageDisplayMoveOn").hide();
+  };
+
+  hideMoveOn();
+
+  function showMoveOn() {
+    $("#stageDisplayMoveOn").show()
+  };
+
   // Acts on user input data/////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $("#submitDetails").on('click', function(event) {
@@ -249,9 +259,7 @@ $(document).ready(function() {
     hideSignIn();
     hideInputs();
     showStageButtons();
-    showSongs();
-    showBooks();
-    showMovies();
+    showMoveOn();
 
   });
 

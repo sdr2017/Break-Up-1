@@ -327,8 +327,10 @@ $(document).ready(function() {
       }); 
     }
 
-   //$("#stageDisplayMovies").empty(); //Movies
-    for(var i=0; i<denialMovies.length; i++) {  //loop for denial movies
+   $("#movie1").empty(); //Movies
+   $("#movie2").empty(); //Movies
+   $("#movie3").empty(); //Movies
+  for(var i=0; i<denialMovies.length; i++) {  //loop for denial movies
       movie = denialMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
       if(i==1)getMovies2(movie);
@@ -366,7 +368,9 @@ $(document).ready(function() {
       }); 
     }
  
-//$("#stageDisplayMovies").empty(); //Movies
+    $("#movie1").empty(); //Movies
+    $("#movie2").empty(); //Movies
+    $("#movie3").empty(); //Movies //Movies
     for(var i=0; i<angerMovies.length; i++) { //loop for anger movies
       movie = angerMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
@@ -405,7 +409,9 @@ $(document).ready(function() {
       }); 
     }
     
-   //$("#stageDisplayMovies").empty();  //Movies
+      $("#movie1").empty(); //Movies
+      $("#movie2").empty(); //Movies
+      $("#movie3").empty(); //Movies
       for(var i=0; i<miseryMovies.length; i++) {  //loop for misery movies
         movie = miseryMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
@@ -445,6 +451,9 @@ $(document).ready(function() {
     }
      
   //$("#stageDisplayMovies").empty(); //Movies, empty container
+    $("#movie1").empty(); //Movies
+    $("#movie2").empty(); //Movies
+    $("#movie3").empty(); //Movies
     for(var i=0; i<affirmationMovies.length; i++) { //loop for affirmation movies
       movie = affirmationMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
@@ -484,6 +493,9 @@ $(document).ready(function() {
     }
 
   // $("#stageDisplayMovies").empty(); //Movies empty container
+      $("#movie1").empty(); //Movies
+      $("#movie2").empty(); //Movies
+      $("#movie3").empty(); //Movies
       for(var i=0; i<grooveOnMovies.length; i++) {  //loop for grooveOn movies
         movie = grooveOnMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}

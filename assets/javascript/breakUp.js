@@ -88,7 +88,7 @@ $(document).ready(function() {
 
   breakUpDateSelecter();
 
-  //HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   function hideSignIn() { //for hiding the sign in buttons
     $("#signIn").hide();
@@ -235,10 +235,13 @@ $(document).ready(function() {
 
   });
 
+//taking user to the input fields if clicking "I Just Broke Up!"
+  $(document).on("click", "#justBrokeUp", function() {
 
-
-     
-     // Book Suggestions
+ 
+  // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
+       // Book Suggestions
       var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
       "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
       "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
@@ -254,31 +257,6 @@ $(document).ready(function() {
       var grooveOnBooks = ["I+Kissed+Dating+Goodbye", "The+More+We+Get+Together", "Where+the+Sidewalk+Ends",
       "A+Midsummers+Dream", "First+Comes+Love+Then+Comes+Money", "Art+and+Soul",
       "November+9", "The+Dating+Detox", "Why+We+Broke+Up", "On+Second+Thought", "Modern+Romance"]; 
-
-
-
-//taking user to the input fields if clicking "I Just Broke Up!"
-  $(document).on("click", "#justBrokeUp", function() {
-
- 
-  // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
-    "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
-    "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
-  var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
-    "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
-     "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
-  var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
-    "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
-    "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
-  var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
-    "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "The+Light+We+Lost", "Milk+and+Honey",
-    "I+Am+the+Messenger", "Attitude+Reconstruction", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
-  var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
-    "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
-    "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
-
 
   //Handling the on the button selector on click event by pushing relevent functions///////////////////////////////////////////// 
 
@@ -310,7 +288,7 @@ $(document).ready(function() {
   var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
   var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
 
-  //Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $(document).on("click", "#choseDenial", function() {
 
@@ -356,7 +334,7 @@ $(document).ready(function() {
 
   });
 
-  //Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAnger", function() {
     
@@ -392,7 +370,7 @@ $(document).ready(function() {
     };
   });
 
-  //Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseMisery", function() {
     
@@ -429,7 +407,7 @@ $(document).ready(function() {
        };
   });
 
-  //Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
+  // Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAffirmation", function() {
     
@@ -466,7 +444,7 @@ $(document).ready(function() {
     };
   });
 
-  //Groove On button pressed/////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Groove On button pressed/////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseGrooveOn", function() {
    
@@ -501,12 +479,9 @@ $(document).ready(function() {
         movie = grooveOnMovies[i]; //setting movie to new array value
         getMovies (movie); //call movie function
         };
-
-        $("#stageDisplayBooks").append('<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >' + ("https:www.match.com") + "</div>");
-
   });
 
-  //Book select functions////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Book select functions////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   function getRandomIndexes(booksArray, numberOfIndexes) {  // Returns an array
     if (numberOfIndexes > booksArray.length) {
@@ -531,25 +506,6 @@ $(document).ready(function() {
     }
   }
 
-
-//Movie Suggestions
-var denialMovies = ["Brazil", "Eternal Sunshine of the Spotless Mind", "The Way We Were"];
-var angerMovies = ["John Tucker Must Die", "Wreck it Ralph", "Mad Max: Fury Road"];
-var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
-var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
-var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
-
-//declaring movie var
-var Movie = "";
-
-  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
-
-  var randomDenialBooks = function () {
-    var bookLimit =Object.keys(denialBooks.length);
-      randomDenial = Math.floor((Math.random() * bookLimit) +1);
-      $("#stageDisplayBooks").html(randomDenial+queryURL);
-  };
-
   var denialMovies = ["Brazil", "Eternal Sunshine of the Spotless Mind", "The Way We Were"];  //Movie Suggestions
   var angerMovies = ["John Tucker Must Die", "Wreck it Ralph", "Mad Max: Fury Road"];
   var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
@@ -559,18 +515,18 @@ var Movie = "";
 
   function getMovies(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
-    $.ajax({
-        url: movieURL,
-        method: "GET"
-    })
-    .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+      $.ajax({
+          url: movieURL,
+          method: "GET"
+      })
+        .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+          $("#stageDisplayMovies").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+          $("#stageDisplayMovies").append(response.Plot + '<br>');
+          var movieImage = $('<img id="movieimage">');
+          movieImage.attr("src", response.Poster);
+          $("#stageDisplayMovies").append(movieImage);
+      }); 
+    }
   
-      $("#stageDisplayMovies").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
-      $("#stageDisplayMovies").append(response.Plot + '<br>');
-      var movieImage = $('<img id="movieimage">');
-      movieImage.attr("src", response.Poster);
-      $("#stageDisplayMovies").append(movieImage); 
-    });
-  }
+  }); 
 });
-

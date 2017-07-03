@@ -48,10 +48,28 @@ h1 {
 	padding: 0px;
 }
 
-.panel-heading {
+.panel-default {
+	border-radius: 0px;
+	border: none;
+	margin: 20px 50px 20px 50px;
+}
+
+.panel-default>.panel-heading {
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
+	border: none;
+	background-image: none;
+	background-color: #dddddd;
+}
+
+.panel-heading {
+	border: none;
+	background-image: none;
+}
+
+.panel-body {
+	background-color: #eeeeee;
 }
 
 .initialButtons {
@@ -68,6 +86,20 @@ h1 {
 	text-shadow: none;
 }
 
+#stagePanel {
+	height: 150px;
+	background-color: #eeeeee;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	color: #333333;
+	font-size: 16px;
+	line-height: 24px;
+}
+
+#buttonHolder {
+	padding: 20px;
+}
+
 #choseDenial, #choseAnger, #choseMisery, #choseAffirmation, #choseGrooveOn {
 	width: 100%;
 	border: none;
@@ -82,6 +114,7 @@ h1 {
 }
 
 #choseDenial:focus {
+	outline: none;
 	background-color: #8aa583;
 }
 
@@ -90,6 +123,7 @@ h1 {
 }
 
 #choseAnger:focus {
+	outline: none;
 	background-color: #a95959;
 }
 
@@ -98,6 +132,7 @@ h1 {
 }
 
 #choseMisery:focus {
+	outline: none;
 	background-color: #9fbec4;
 }
 
@@ -106,6 +141,7 @@ h1 {
 }
 
 #choseAffirmation:focus {
+	outline: none;
 	background-color: #dfca94;
 }
 
@@ -114,6 +150,7 @@ h1 {
 }
 
 #choseGrooveOn:focus {
+	outline: none;
 	background-color: #f7b45f;
 }
 
@@ -159,18 +196,13 @@ label {
 
 #submitDetails:hover{
 	background-color: #a7bd56;
-	color: #5a6751;
+	color: #333333;
 	margin: auto;
 	display: block;
 }
 
 select {
 	border-radius: 0px;
-
-}
-
-.panel-default {
-	margin: 40px;
 }
 
 iframe {
@@ -181,8 +213,26 @@ iframe {
 	padding: 0px;
 }
 
-#songsPanel {
+#stageDisplaySongs {
 	background-color: #000000;
+}
+
+#quote {
+	color: #58595b;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 50px;
+	line-height: 100px;
+}
+
+#stageDisplayMoveOn {
+	padding: 40px;
+	height: 300px;
+}
+
+#poop {
+	display: block;
+	margin: auto;
 }
 
 

@@ -236,28 +236,6 @@ $(document).ready(function() {
   });
 
 //taking user to the input fields if clicking "I Just Broke Up!"
-  $(document).on("click", "#justBrokeUp", function() {
-
- 
-  // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
-       // Book Suggestions
-      var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
-      "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
-      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
-      var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
-      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
-      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
-      var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
-      "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
-      "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
-      var affirmationBooks = ["When+Life+Happened", "A+Man+Called+Ove", "Adulthood+is+a+Myth",
-      "The+Trials+of+Apollo", "Just+the+Way+You+Are", "My+Life+as+a+Ninja", "Milk+and+Honey",
-      "I+Am+the+Messenger", "Safe+Haven", "Eleanor+and+Park"];
-      var grooveOnBooks = ["I+Kissed+Dating+Goodbye", "The+More+We+Get+Together", "Where+the+Sidewalk+Ends",
-      "A+Midsummers+Dream", "First+Comes+Love+Then+Comes+Money", "Art+and+Soul",
-      "November+9", "The+Dating+Detox", "Why+We+Broke+Up", "On+Second+Thought", "Modern+Romance"]; 
-
   //Handling the on the button selector on click event by pushing relevent functions///////////////////////////////////////////// 
 
   $(document).on("click", "#justBrokeUp", function() {  //taking user to the input fields if clicking "I Just Broke Up!"
@@ -283,6 +261,26 @@ $(document).ready(function() {
 
   //Stages on click functions////////////////////////////////////////////////////////////////////////////////////////////////////
   
+  // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
+      "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
+      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
+    var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
+      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
+      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
+    var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
+      "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
+      "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
+    var affirmationBooks = ["When+Life+Happened", "A+Man+Called+Ove", "Adulthood+is+a+Myth",
+      "The+Trials+of+Apollo", "Just+the+Way+You+Are", "My+Life+as+a+Ninja", "Milk+and+Honey",
+      "I+Am+the+Messenger", "Safe+Haven", "Eleanor+and+Park"];
+    var grooveOnBooks = ["I+Kissed+Dating+Goodbye", "The+More+We+Get+Together", "Where+the+Sidewalk+Ends",
+      "A+Midsummers+Dream", "First+Comes+Love+Then+Comes+Money", "Art+and+Soul",
+      "November+9", "The+Dating+Detox", "Why+We+Broke+Up", "On+Second+Thought", "Modern+Romance"]; 
+
+
+
+
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
@@ -527,6 +525,4 @@ $(document).ready(function() {
           $("#stageDisplayMovies").append(movieImage);
       }); 
     }
-  
   }); 
-});

@@ -285,7 +285,8 @@ $(document).ready(function() {
   
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
-  var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  //var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  var movies = $("#movie1");
   var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
 
   // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -326,10 +327,12 @@ $(document).ready(function() {
       }); 
     }
 
-    $("#stageDisplayMovies").empty(); //Movies
+   //$("#stageDisplayMovies").empty(); //Movies
     for(var i=0; i<denialMovies.length; i++) {  //loop for denial movies
       movie = denialMovies[i]; //setting movie to new array value
-      getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
     };
 
   });
@@ -363,10 +366,12 @@ $(document).ready(function() {
       }); 
     }
  
-    $("#stageDisplayMovies").empty(); //Movies
+//$("#stageDisplayMovies").empty(); //Movies
     for(var i=0; i<angerMovies.length; i++) { //loop for anger movies
       movie = angerMovies[i]; //setting movie to new array value
-      getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
     };
   });
 
@@ -400,10 +405,12 @@ $(document).ready(function() {
       }); 
     }
     
-    $("#stageDisplayMovies").empty();  //Movies
+   //$("#stageDisplayMovies").empty();  //Movies
       for(var i=0; i<miseryMovies.length; i++) {  //loop for misery movies
         movie = miseryMovies[i]; //setting movie to new array value
-        getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
        };
   });
 
@@ -437,10 +444,12 @@ $(document).ready(function() {
       }); 
     }
      
-    $("#stageDisplayMovies").empty(); //Movies, empty container
+  //$("#stageDisplayMovies").empty(); //Movies, empty container
     for(var i=0; i<affirmationMovies.length; i++) { //loop for affirmation movies
       movie = affirmationMovies[i]; //setting movie to new array value
-      getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
     };
   });
 
@@ -474,10 +483,12 @@ $(document).ready(function() {
       }); 
     }
 
-    $("#stageDisplayMovies").empty(); //Movies empty container
+  // $("#stageDisplayMovies").empty(); //Movies empty container
       for(var i=0; i<grooveOnMovies.length; i++) {  //loop for grooveOn movies
         movie = grooveOnMovies[i]; //setting movie to new array value
-        getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
         };
   });
 
@@ -511,9 +522,10 @@ $(document).ready(function() {
   var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
   var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
   var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
+  var numMovie = ["#movie1","#movie2","#movie3"];
   var Movie = ""; //declaring movie var
 
-  function getMovies(movieStage){ //function for movies
+  function getMovies1(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
       $.ajax({
           url: movieURL,
@@ -527,6 +539,50 @@ $(document).ready(function() {
           $("#stageDisplayMovies").append(movieImage);
       }); 
     }
+  
+
+     
+      var movieImage = $('<img id="movieimage">');
+      movieImage.attr("src", response.Poster);
+      $("#movie1").append(movieImage); 
+      $("#movie1").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie1").append(response.Plot + '<br>');
+    });
+  }
+
+    function getMovies2(movieStage){ //function for movies
+    var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+    })
+    .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+  
+      
+      var movieImage = $('<img id="movieimage">');
+      movieImage.attr("src", response.Poster);
+      $("#movie2").append(movieImage); 
+      $("#movie2").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie2").append(response.Plot + '<br>');
+    });
+  }
+
+    function getMovies3(movieStage){ //function for movies
+    var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+    })
+    .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+  
+     
+      var movieImage = $('<img id="movieimage">');
+      movieImage.attr("src", response.Poster);
+      $("#movie3").append(movieImage); 
+      $("#movie3").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie3").append(response.Plot + '<br>');
+    });
+  }
   
   }); 
 });

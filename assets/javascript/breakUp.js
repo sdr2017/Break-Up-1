@@ -20,6 +20,7 @@ $(document).ready(function() {
 
   // Pulldown menu selectors/////////////////////////////////////////////////////////////////////////////////////////////////////
   
+
   function breakUpDateSelecter() {
   
     var thisYear = moment().year(); //Pulls the current date and seperates it by day, month, and year
@@ -100,7 +101,21 @@ $(document).ready(function() {
     })
   }
 
-  breakUpDateSelecter();  
+  $("#submitEmail").on("click", function(event) {
+  event.preventDefault();
+  console.log("blarg");
+
+    var recoveryEmail = $("#recoveryEmail").val().trim();
+    console.log(recoveryEmail);
+    database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
+    console.log(snapshot.val());
+    snapshot.forEach(function(data) {
+        console.log(data.key);
+    });
+    });
+  });
+  
+  breakUpDateSelecter();
 
   function DisplayUserDate() {  //Once the user picks the date it displays
     var startMonth = $("#startMonth option:selected").text(); // Get values from user input
@@ -353,8 +368,8 @@ $(document).ready(function() {
 
         var title = workArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>'); // Appends the title and image to the stage display books.
-        var bookImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="denialBooks">' + title + '</div>'); // Appends the title and image to the stage display books.
+        var bookImage = $('<img class="bookImage">');
         bookImage.attr("src", image);
         $("#stageDisplayBooks").append(bookImage);
       }); 
@@ -394,8 +409,8 @@ $(document).ready(function() {
         var angerImage = workAngerArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
         var angerTitle = workAngerArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + angerTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
-        var bookAngerImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="angerBooks">' + angerTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
+        var bookAngerImage = $('<img class="bookImage">');
         bookAngerImage.attr("src", angerImage);
         $("#stageDisplayBooks").append(bookAngerImage);
       }); 
@@ -435,8 +450,8 @@ $(document).ready(function() {
         var miseryImage = workMiseryArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var miseryTitle = workMiseryArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + miseryTitle + '</strong><br><br>'); // Appends the title and image to the stage display books.
-        var bookMiseryImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="miseryBooks">' + miseryTitle + '</div>'); // Appends the title and image to the stage display books.
+        var bookMiseryImage = $('<img class="bookImage">');
         bookMiseryImage.attr("src", miseryImage);
         $("#stageDisplayBooks").append(bookMiseryImage);
       }); 
@@ -476,8 +491,8 @@ $(document).ready(function() {
         var affirmationImage = workAffirmationArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var affirmationTitle = workAffirmationArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + affirmationTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
-        var bookAffirmationImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="affirmationBooks">' + affirmationTitle + '</div>');  // Appends the title and image to the stage display books.
+        var bookAffirmationImage = $('<img class="bookImage">');
         bookAffirmationImage.attr("src", affirmationImage);
         $("#stageDisplayBooks").append(bookAffirmationImage);
       }); 
@@ -620,4 +635,5 @@ $(document).ready(function() {
       $("#movie3").append(response.Plot + '<br>');
     });
   }
-});
+}); 
+

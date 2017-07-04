@@ -368,8 +368,8 @@ $(document).ready(function() {
 
         var title = workArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>'); // Appends the title and image to the stage display books.
-        var bookImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="denialBooks">' + title + '</div>'); // Appends the title and image to the stage display books.
+        var bookImage = $('<img class="bookImage">');
         bookImage.attr("src", image);
         $("#stageDisplayBooks").append(bookImage);
       }); 
@@ -409,8 +409,8 @@ $(document).ready(function() {
         var angerImage = workAngerArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
         var angerTitle = workAngerArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + angerTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
-        var bookAngerImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="angerBooks">' + angerTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
+        var bookAngerImage = $('<img class="bookImage">');
         bookAngerImage.attr("src", angerImage);
         $("#stageDisplayBooks").append(bookAngerImage);
       }); 
@@ -450,8 +450,8 @@ $(document).ready(function() {
         var miseryImage = workMiseryArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var miseryTitle = workMiseryArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + miseryTitle + '</strong><br><br>'); // Appends the title and image to the stage display books.
-        var bookMiseryImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="miseryBooks">' + miseryTitle + '</div>'); // Appends the title and image to the stage display books.
+        var bookMiseryImage = $('<img class="bookImage">');
         bookMiseryImage.attr("src", miseryImage);
         $("#stageDisplayBooks").append(bookMiseryImage);
       }); 
@@ -491,8 +491,8 @@ $(document).ready(function() {
         var affirmationImage = workAffirmationArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var affirmationTitle = workAffirmationArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + affirmationTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
-        var bookAffirmationImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="affirmationBooks">' + affirmationTitle + '</div>');  // Appends the title and image to the stage display books.
+        var bookAffirmationImage = $('<img class="bookImage">');
         bookAffirmationImage.attr("src", affirmationImage);
         $("#stageDisplayBooks").append(bookAffirmationImage);
       }); 
@@ -635,4 +635,5 @@ $(document).ready(function() {
       $("#movie3").append(response.Plot + '<br>');
     });
   }
-});
+}); 
+

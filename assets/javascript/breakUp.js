@@ -598,3 +598,5 @@ $(document).ready(function() {
       $("#movie3").append(response.Plot + '<br>');
     });
   }
+
+});

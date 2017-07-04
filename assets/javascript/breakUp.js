@@ -86,6 +86,19 @@ $(document).ready(function() {
     })
   }
 
+      $("#submitEmail").on("click", function(event) {
+        event.preventDefault();
+
+        var recoveryEmail = $("#recoveryEmail").val().trim();
+        console.log("email" + recoveryEmail);
+        database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
+        console.log(snapshot.val());
+        snapshot.forEach(function(data) {
+            console.log("data key" + data.key);
+        });
+        });
+      });
+
   breakUpDateSelecter();
 
   // HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -167,6 +180,7 @@ $(document).ready(function() {
   function showRecoverySignIn() {
     $("#recoverySignIn").show();
   };
+
 
   // Acts on user input data/////////////////////////////////////////////////////////////////////////////////////////////////////
   
@@ -303,6 +317,9 @@ $(document).ready(function() {
   // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $(document).on("click", "#choseDenial", function() {
+      showSongs();
+      showBooks();
+      showMovies();
 
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
@@ -353,6 +370,9 @@ $(document).ready(function() {
   // Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAnger", function() {
+      showSongs();
+      showBooks();
+      showMovies();
     
     $("#body").attr('background', 'assets/images/angerPattern.jpg');  //background
     $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
@@ -393,6 +413,9 @@ $(document).ready(function() {
   // Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseMisery", function() {
+      showSongs();
+      showBooks();
+      showMovies();
     
     $("#body").attr('background', 'assets/images/miseryPattern.jpg'); //background
     $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
@@ -434,6 +457,9 @@ $(document).ready(function() {
   // Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAffirmation", function() {
+      showSongs();
+      showBooks();
+      showMovies();
     
     $("#body").attr('background', 'assets/images/affirmationPattern.jpg');  //background
     $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
@@ -598,4 +624,7 @@ $(document).ready(function() {
       $("#movie3").append(response.Plot + '<br>');
     });
   }
+
 });
+
+

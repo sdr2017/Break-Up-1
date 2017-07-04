@@ -30,12 +30,12 @@ $(document).ready(function() {
     var $select;
 
     $select = $(".1-100");  //Age pulldown selector
-      for (i = 1; i <= 100; i++) {
+      for (i = 16; i <= 100; i++) {
         $select.append($('<option></option>').val(i).html(i))
       }
 
     $select = $(".2000-2020");  //Year selector
-      for (i = 2010; i <= thisYear; i++) {
+      for (i = 2015; i <= thisYear; i++) {
         $select.append($('<option></option>').val(i).html(i))
       }
   
@@ -48,8 +48,9 @@ $(document).ready(function() {
       var userYear =this.value;
 
       if (userYear == 2017) { //Determines which forloop is run to fill the months selector
+        $(".2000-2020").hide();
         $(".currentMonth").show();  //Month selector by runing through the array only up to the current month 
-        $select = $(".currentMonth");
+        $select = $(".currentMonth");  
           for (i = 0; i <= thisMonth; i++) {
           }
 
@@ -58,7 +59,7 @@ $(document).ready(function() {
           }
 
       } else {
-  
+        $(".2000-2020").hide();
         $(".monthPastYear").show(); //All months selector grabs all of the months from the array and pushes to html 
          $select = $(".monthPastYear");
             for (i = 0; i <= months.length; i++) {
@@ -67,8 +68,12 @@ $(document).ready(function() {
       }
 
       $(".currentMonth").on("change", function() {
+        
+        $(".currentMonth").hide();
+        $(".monthPastYear").hide();
         var userThisMonth =this.value;
-        if (userThisMonth == months[i - 1]) {     
+        
+        if (userThisMonth == months[i - 1]) { 
           $(".1-31").show();      
           $select = $(".1-31"); // //Day of the month selector
             for (i = 1; i <= thisDay; i++) {
@@ -76,13 +81,22 @@ $(document).ready(function() {
            }
 
         } else {
-          
+         
           $(".1-31PastMonth").show();
           $select = $(".1-31PastMonth");
             for (i = 1; i <= 31; i++) { //All day selector
              $select.append($('<option></option>').val(i).html(i))
             }
         }
+      })
+      $(".1-31").on("change", function() {
+        $(".1-31").hide(); 
+      })
+
+      $(".1-31PastMonth").on("change", function() {
+        $(".1-31PastMonth").hide();
+
+              DisplayUserDate(); 
       })
     })
   }
@@ -102,6 +116,14 @@ $(document).ready(function() {
   });
   
   breakUpDateSelecter();
+
+  function DisplayUserDate() {  //Once the user picks the date it displays
+    var startMonth = $("#startMonth option:selected").text(); // Get values from user input
+    var startDay = $("#startDay option:selected").text();
+    var startYear = $("#startYear option:selected").text();
+    var dateEnteredString = startMonth + "-" + startDay + "-" + startYear;  // Make user input into string of format "MM-DD-YYYY"
+    $("#userDate").text(dateEnteredString); //Pushes to the display
+  }
 
   // HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -511,8 +533,8 @@ $(document).ready(function() {
         var grooveOnImage = workGrooveOnArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + grooveOnTitle + '</strong><br><br>'); // Appends the title and image to the stage display books.
-        var bookGrooveOnImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="grooveBooks">' + grooveOnTitle + '</div>'); // Appends the title and image to the stage display books.
+        var bookGrooveOnImage = $('<img class="bookImage">');
         bookGrooveOnImage.attr("src", grooveOnImage);
         $("#stageDisplayBooks").append(bookGrooveOnImage);
       }); 
@@ -530,7 +552,7 @@ $(document).ready(function() {
         };
   });
 
-  // Book select functions////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //Book and movie select functions////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   function getRandomIndexes(booksArray, numberOfIndexes) {  // Returns an array
     if (numberOfIndexes > booksArray.length) {

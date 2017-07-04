@@ -158,6 +158,16 @@ $(document).ready(function() {
     $("#stageDisplayMoveOn").show()
   };
 
+  function hideRecoverySignIn() { //for hiding the recovery sign in panel
+    $("#recoverySignIn").hide()
+  };
+
+  hideRecoverySignIn();
+
+  function showRecoverySignIn() {
+    $("#recoverySignIn").show();
+  };
+
   // Acts on user input data/////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $("#submitDetails").on('click', function(event) {
@@ -175,7 +185,7 @@ $(document).ready(function() {
     console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
     console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
 
-    if (timeSinceBreakUpInDays < 7) {
+    if (timeSinceBreakUpInDays < 14) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
       showSongs();
       showBooks();
@@ -183,49 +193,51 @@ $(document).ready(function() {
       $("#choseDenial").click();
     }
 
-    if (timeSinceBreakUpInDays > 7 && timeSinceBreakUpInDays < 14) {
-      $("#stagePanel").append("You broke up over a week ago. We recommend moving on to the Anger stage.");
+    if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28) {
+      $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
       showSongs();
       showBooks();
       showMovies();
       $("#choseAnger").click();
     }
 
-      if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 21) {
-      $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Misery stage.");
+      if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42) {
+      $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
       showSongs();
       showBooks();
       showMovies();
       $("#choseMisery").click();
     }
 
-    if (timeSinceBreakUpInDays >= 21 && timeSinceBreakUpInDays < 28) {
-      $("#stagePanel").append("You broke up over three weeks ago. We recommend moving on to the Affirmation stage.");
+    if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56) {
+      $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
       showSongs();
       showBooks();
       showMovies();
       $("#choseAffirmation").click();
     }
 
-    if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 35) {
-      $("#stagePanel").append("You broke up over a month ago. We think you're ready to GrOoVe On!");
+    if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70) {
+      $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
       showSongs();
       showBooks();
       showMovies();
       $("#choseGrooveOn").click();
     }
 
-    if (timeSinceBreakUpInDays >= 35) {
+    if (timeSinceBreakUpInDays >= 70) {
       $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
       showMoveOn();
     }
 
     var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
+    var email = $("#recoveryEmail").val().trim();
     var gender = $("#genderSelector option:selected").text();
     var age = $("#ageSelector").val().trim();
     var ex = $("#exInput").val().trim(); 
     var newUser = { //making an object out of the information
         name: name,
+        email: email,
         gender: gender,
         age: age,
         breakupdate: dateEnteredString,
@@ -245,10 +257,11 @@ $(document).ready(function() {
 
   $(document).on("click", "#recovering", function() { //taking user to the stages if clicking "I'm recovering"
     hideSignIn();
-    showStageButtons();
-    showSongs();
-    showBooks();
-    showMovies();
+    showRecoverySignIn();
+    //showStageButtons();
+    // showSongs();
+    // showBooks();
+    // showMovies();
   });
 
   $(document).on("click", "#submitDetails", function(event) { //taking user to the stages after clicking "submit" in input fields
@@ -293,7 +306,7 @@ $(document).ready(function() {
 
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
-    $(".panel-heading").css("color", "#8aa583");  // Changes the color of the panel heading text to match the button color
+    $(".panel-heading").css("color", "#333333");  // Leaves the panel heading color to black.
    
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(denialIFrame);
@@ -535,27 +548,22 @@ $(document).ready(function() {
   var numMovie = ["#movie1","#movie2","#movie3"];
   var Movie = ""; //declaring movie var
 
-  function getMovies1(movieStage){ //function for movies
+    function getMovies1(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
-      $.ajax({
-          url: movieURL,
-          method: "GET"
-      })
-        .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
-          $("#stageDisplayMovies").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
-          $("#stageDisplayMovies").append(response.Plot + '<br>');
-          var movieImage = $('<img id="movieimage">');
-          movieImage.attr("src", response.Poster);
-          $("#stageDisplayMovies").append(movieImage);
-      }); 
-    }
- 
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+    })
+    .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+  
+     
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie1").append(movieImage); 
       $("#movie1").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
       $("#movie1").append(response.Plot + '<br>');
     });
+  }
 
     function getMovies2(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
@@ -590,5 +598,3 @@ $(document).ready(function() {
       $("#movie3").append(response.Plot + '<br>');
     });
   }
-
-

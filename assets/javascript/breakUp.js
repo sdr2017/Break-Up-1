@@ -483,8 +483,8 @@ $(document).ready(function() {
         var grooveOnImage = workGrooveOnArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + grooveOnTitle + '</strong><br><br>'); // Appends the title and image to the stage display books.
-        var bookGrooveOnImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="grooveBooks">' + grooveOnTitle + '</div>'); // Appends the title and image to the stage display books.
+        var bookGrooveOnImage = $('<img class="bookImage">');
         bookGrooveOnImage.attr("src", grooveOnImage);
         $("#stageDisplayBooks").append(bookGrooveOnImage);
       }); 
@@ -590,4 +590,5 @@ $(document).ready(function() {
       $("#movie3").append(response.Plot + '<br>');
     });
   }
+
 

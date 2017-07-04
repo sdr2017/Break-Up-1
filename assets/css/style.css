@@ -235,6 +235,18 @@ iframe {
 	margin: auto;
 }
 
+.bookImage {
+	float: left;
+	height: 300px;
+	width: 150px;
+	margin: 0 auto;
+}
 
-
+.grooveBooks {
+	float: left;
+	margin-bottom: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: #df8f5d;
+}
 

@@ -25,7 +25,7 @@ $(document).ready(function() {
     var thisYear = moment().year(); //Pulls the current date and seperates it by day, month, and year
     var thisMonth = moment().month();
     var thisDay = moment().date();
-    var months = [ "Janaury", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
     var $select;
 
     $select = $(".1-100");  //Age pulldown selector

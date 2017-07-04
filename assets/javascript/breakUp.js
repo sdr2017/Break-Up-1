@@ -110,7 +110,7 @@ $(document).ready(function() {
     $("#userDate").text(dateEnteredString); //Pushes to the display
   }
 
-  //HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   function hideSignIn() { //for hiding the sign in buttons
     $("#signIn").hide();
@@ -170,6 +170,26 @@ $(document).ready(function() {
     $("#movies").show();
   };
 
+  function hideMoveOn() { //for hiding the move on panel
+    $("#stageDisplayMoveOn").hide();
+  };
+
+  hideMoveOn();
+
+  function showMoveOn() {
+    $("#stageDisplayMoveOn").show()
+  };
+
+  function hideRecoverySignIn() { //for hiding the recovery sign in panel
+    $("#recoverySignIn").hide()
+  };
+
+  hideRecoverySignIn();
+
+  function showRecoverySignIn() {
+    $("#recoverySignIn").show();
+  };
+
   // Acts on user input data/////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $("#submitDetails").on('click', function(event) {
@@ -187,41 +207,59 @@ $(document).ready(function() {
     console.log("It has been " + timeSinceBreakUpInYears + " years since your break-up!");
     console.log("It has been " + timeSinceBreakUpInDays + " days since your break-up!");
 
-    if (timeSinceBreakUpInDays < 7) {
+    if (timeSinceBreakUpInDays < 14) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseDenial").click();
     }
 
-    if (timeSinceBreakUpInDays > 7 && timeSinceBreakUpInDays < 14) {
-      $("#stagePanel").append("You broke up over a week ago. We recommend moving on to the Anger stage.");
+    if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28) {
+      $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseAnger").click();
     }
 
-      if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 21) {
-      $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Misery stage.");
+      if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42) {
+      $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseMisery").click();
     }
 
-    if (timeSinceBreakUpInDays >= 21 && timeSinceBreakUpInDays < 28) {
-      $("#stagePanel").append("You broke up over three weeks ago. We recommend moving on to the Affirmation stage.");
+    if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56) {
+      $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseAffirmation").click();
     }
 
-    if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 35) {
-      $("#stagePanel").append("You broke up over a month ago. We think you're ready to GrOoVe On!");
+    if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70) {
+      $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
+      showSongs();
+      showBooks();
+      showMovies();
       $("#choseGrooveOn").click();
     }
 
-    if (timeSinceBreakUpInDays >= 35) {
+    if (timeSinceBreakUpInDays >= 70) {
       $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+      showMoveOn();
     }
 
     var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
+    var email = $("#recoveryEmail").val().trim();
     var gender = $("#genderSelector option:selected").text();
     var age = $("#ageSelector").val().trim();
     var ex = $("#exInput").val().trim(); 
     var newUser = { //making an object out of the information
         name: name,
+        email: email,
         gender: gender,
         age: age,
         breakupdate: dateEnteredString,
@@ -230,26 +268,8 @@ $(document).ready(function() {
     database.ref().push(newUser); //pushing the new user info to firebase
 
   });
- 
-  // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
-    "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
-    "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
-  var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
-    "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
-     "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
-  var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
-    "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
-    "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
-  var affirmationBooks = ["The+Happy+Book", "A+Man+Called+Ove", "And+the+Mountains+Echoed",
-    "The+Last+Days+of+Rabbit+Hayes", "Odd+Thomas", "The+Light+We+Lost", "Milk+and+Honey",
-    "I+Am+the+Messenger", "Attitude+Reconstruction", "Hand+Drawn+Jokes+for+Smart+Attractive+People"];
-  var grooveOnBooks = ["Men+Are+from+Mars", "Women+Are+from+Venus", "The+100+Simple+Secrets+of+Great+Relationships",
-    "The+5+Love+Languages", "First+Comes+Love,+Then+Comes+Money", "The+Soulmate+Experience:+A+Practical+Guide+to+Creating+Extraordinary+Relationships",
-    "I+Kissed+Dating+Goodbye", "Boundaries+in+Dating", "Why+We+Broke+Up", "The+Five+Love+Languages+for+Singles", "Modern+Romance"]; 
-
-
+//taking user to the input fields if clicking "I Just Broke Up!"
   //Handling the on the button selector on click event by pushing relevent functions///////////////////////////////////////////// 
 
   $(document).on("click", "#justBrokeUp", function() {  //taking user to the input fields if clicking "I Just Broke Up!"
@@ -259,10 +279,11 @@ $(document).ready(function() {
 
   $(document).on("click", "#recovering", function() { //taking user to the stages if clicking "I'm recovering"
     hideSignIn();
-    showStageButtons();
-    showSongs();
-    showBooks();
-    showMovies();
+    showRecoverySignIn();
+    //showStageButtons();
+    // showSongs();
+    // showBooks();
+    // showMovies();
   });
 
   $(document).on("click", "#submitDetails", function(event) { //taking user to the stages after clicking "submit" in input fields
@@ -271,26 +292,43 @@ $(document).ready(function() {
     hideSignIn();
     hideInputs();
     showStageButtons();
-    showSongs();
-    showBooks();
-    showMovies();
-
   });
 
   //Stages on click functions////////////////////////////////////////////////////////////////////////////////////////////////////
   
+  // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
+      "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
+      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
+    var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
+      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
+      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
+    var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
+      "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
+      "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
+    var affirmationBooks = ["When+Life+Happened", "A+Man+Called+Ove", "Adulthood+is+a+Myth",
+      "The+Trials+of+Apollo", "Just+the+Way+You+Are", "My+Life+as+a+Ninja", "Milk+and+Honey",
+      "I+Am+the+Messenger", "Safe+Haven", "Eleanor+and+Park"];
+    var grooveOnBooks = ["I+Kissed+Dating+Goodbye", "The+More+We+Get+Together", "Where+the+Sidewalk+Ends",
+      "A+Midsummers+Dream", "First+Comes+Love+Then+Comes+Money", "Art+and+Soul",
+      "November+9", "The+Dating+Detox", "Why+We+Broke+Up", "On+Second+Thought", "Modern+Romance"]; 
+
+
+
+
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
-  var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  //var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
+  var movies = $("#movie1");
   var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
 
-  //Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $(document).on("click", "#choseDenial", function() {
 
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
-    $(".panel-heading").css("color", "#8aa583");  // Changes the color of the panel heading text to match the button color
+    $(".panel-heading").css("color", "#333333");  // Leaves the panel heading color to black.
    
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(denialIFrame);
@@ -304,8 +342,15 @@ $(document).ready(function() {
         console.log(response);
 
         var bookInfoObject = xmlToJson(response);
+        // Locates the correct JSON information
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        console.log(workArray);
+        // Locates the image and title for the books.
+        var image = workArray[0].best_book.image_url["#text"];
+
         var workArray = bookInfoObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
         var image = workArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
+
         var title = workArray[0].best_book.title["#text"];
         
         $("#stageDisplayBooks").append('<br><br><strong>' + title + '</strong><br><br>'); // Appends the title and image to the stage display books.
@@ -315,15 +360,19 @@ $(document).ready(function() {
       }); 
     }
 
-    $("#stageDisplayMovies").empty(); //Movies
-    for(var i=0; i<denialMovies.length; i++) {  //loop for denial movies
+   $("#movie1").empty(); //Movies
+   $("#movie2").empty(); //Movies
+   $("#movie3").empty(); //Movies
+  for(var i=0; i<denialMovies.length; i++) {  //loop for denial movies
       movie = denialMovies[i]; //setting movie to new array value
-      getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
     };
 
   });
 
-  //Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAnger", function() {
     
@@ -352,14 +401,18 @@ $(document).ready(function() {
       }); 
     }
  
-    $("#stageDisplayMovies").empty(); //Movies
+    $("#movie1").empty(); //Movies
+    $("#movie2").empty(); //Movies
+    $("#movie3").empty(); //Movies //Movies
     for(var i=0; i<angerMovies.length; i++) { //loop for anger movies
       movie = angerMovies[i]; //setting movie to new array value
-      getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
     };
   });
 
-  //Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseMisery", function() {
     
@@ -389,14 +442,18 @@ $(document).ready(function() {
       }); 
     }
     
-    $("#stageDisplayMovies").empty();  //Movies
+      $("#movie1").empty(); //Movies
+      $("#movie2").empty(); //Movies
+      $("#movie3").empty(); //Movies
       for(var i=0; i<miseryMovies.length; i++) {  //loop for misery movies
         movie = miseryMovies[i]; //setting movie to new array value
-        getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
        };
   });
 
-  //Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
+  // Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAffirmation", function() {
     
@@ -426,14 +483,19 @@ $(document).ready(function() {
       }); 
     }
      
-    $("#stageDisplayMovies").empty(); //Movies, empty container
+  //$("#stageDisplayMovies").empty(); //Movies, empty container
+    $("#movie1").empty(); //Movies
+    $("#movie2").empty(); //Movies
+    $("#movie3").empty(); //Movies
     for(var i=0; i<affirmationMovies.length; i++) { //loop for affirmation movies
       movie = affirmationMovies[i]; //setting movie to new array value
-      getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
     };
   });
 
-  //Groove On button pressed/////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Groove On button pressed/////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseGrooveOn", function() {
    
@@ -456,17 +518,22 @@ $(document).ready(function() {
         var grooveOnImage = workGrooveOnArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<br><br><strong>' + grooveOnTitle + '</strong><br><br>'); // Appends the title and image to the stage display books.
-        var bookGrooveOnImage = $('<img id="bookImage">');
+        $("#stageDisplayBooks").append('<div class="grooveBooks">' + grooveOnTitle + '</div>'); // Appends the title and image to the stage display books.
+        var bookGrooveOnImage = $('<img class="bookImage">');
         bookGrooveOnImage.attr("src", grooveOnImage);
         $("#stageDisplayBooks").append(bookGrooveOnImage);
       }); 
     }
 
-    $("#stageDisplayMovies").empty(); //Movies empty container
+  // $("#stageDisplayMovies").empty(); //Movies empty container
+      $("#movie1").empty(); //Movies
+      $("#movie2").empty(); //Movies
+      $("#movie3").empty(); //Movies
       for(var i=0; i<grooveOnMovies.length; i++) {  //loop for grooveOn movies
         movie = grooveOnMovies[i]; //setting movie to new array value
-        getMovies (movie); //call movie function
+      if(i==0){getMovies1(movie);}
+      if(i==1)getMovies2(movie);
+      if(i==2)getMovies3(movie); //call movie function
         };
   });
 
@@ -495,22 +562,15 @@ $(document).ready(function() {
     }
   }
 
-  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; 
-
-  var randomDenialBooks = function () {
-    var bookLimit =Object.keys(denialBooks.length);
-      randomDenial = Math.floor((Math.random() * bookLimit) +1);
-      $("#stageDisplayBooks").html(randomDenial+queryURL);
-  };
-
   var denialMovies = ["Brazil", "Eternal Sunshine of the Spotless Mind", "The Way We Were"];  //Movie Suggestions
   var angerMovies = ["John Tucker Must Die", "Wreck it Ralph", "Mad Max: Fury Road"];
   var miseryMovies = ["Before Sunrise", "Wall-e", "The Breakup"];
   var affirmationMovies = ["Heathers", "Sliding Doors", "Annie Hall"];
   var grooveOnMovies = ["Princess Bride", "Michael Bolton’s Big Sexy Valentine’s Day Special", "The Emperor’s New Groove"];
+  var numMovie = ["#movie1","#movie2","#movie3"];
   var Movie = ""; //declaring movie var
 
-  function getMovies(movieStage){ //function for movies
+    function getMovies1(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
     $.ajax({
         url: movieURL,
@@ -518,12 +578,46 @@ $(document).ready(function() {
     })
     .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
   
-      $("#stageDisplayMovies").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
-      $("#stageDisplayMovies").append(response.Plot + '<br>');
+     
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
-      $("#stageDisplayMovies").append(movieImage); 
+      $("#movie1").append(movieImage); 
+      $("#movie1").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie1").append(response.Plot + '<br>');
+    });
+  }
+
+    function getMovies2(movieStage){ //function for movies
+    var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+    })
+    .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+  
+      
+      var movieImage = $('<img id="movieimage">');
+      movieImage.attr("src", response.Poster);
+      $("#movie2").append(movieImage); 
+      $("#movie2").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie2").append(response.Plot + '<br>');
+    });
+  }
+
+    function getMovies3(movieStage){ //function for movies
+    var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+    })
+    .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+  
+     
+      var movieImage = $('<img id="movieimage">');
+      movieImage.attr("src", response.Poster);
+      $("#movie3").append(movieImage); 
+      $("#movie3").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie3").append(response.Plot + '<br>');
     });
   }
 });
-

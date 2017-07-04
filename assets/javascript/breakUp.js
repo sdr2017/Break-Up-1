@@ -20,6 +20,7 @@ $(document).ready(function() {
 
   // Pulldown menu selectors/////////////////////////////////////////////////////////////////////////////////////////////////////
   
+
   function breakUpDateSelecter() {
   
     var thisYear = moment().year(); //Pulls the current date and seperates it by day, month, and year
@@ -86,6 +87,20 @@ $(document).ready(function() {
     })
   }
 
+  $("#submitEmail").on("click", function(event) {
+  event.preventDefault();
+  console.log("blarg");
+
+    var recoveryEmail = $("#recoveryEmail").val().trim();
+    console.log(recoveryEmail);
+    database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
+    console.log(snapshot.val());
+    snapshot.forEach(function(data) {
+        console.log(data.key);
+    });
+    });
+  });
+  
   breakUpDateSelecter();
 
   // HIDE & SHOW FUNCTIONS////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -535,27 +535,22 @@ $(document).ready(function() {
   var numMovie = ["#movie1","#movie2","#movie3"];
   var Movie = ""; //declaring movie var
 
-  function getMovies1(movieStage){ //function for movies
+    function getMovies1(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
-      $.ajax({
-          url: movieURL,
-          method: "GET"
-      })
-        .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
-          $("#stageDisplayMovies").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
-          $("#stageDisplayMovies").append(response.Plot + '<br>');
-          var movieImage = $('<img id="movieimage">');
-          movieImage.attr("src", response.Poster);
-          $("#stageDisplayMovies").append(movieImage);
-      }); 
-    }
- 
+    $.ajax({
+        url: movieURL,
+        method: "GET"
+    })
+    .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
+  
+     
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie1").append(movieImage); 
       $("#movie1").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
       $("#movie1").append(response.Plot + '<br>');
     });
+  }
 
     function getMovies2(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";

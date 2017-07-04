@@ -158,6 +158,16 @@ $(document).ready(function() {
     $("#stageDisplayMoveOn").show()
   };
 
+  function hideRecoverySignIn() { //for hiding the recovery sign in panel
+    $("#recoverySignIn").hide()
+  };
+
+  hideRecoverySignIn();
+
+  function showRecoverySignIn() {
+    $("#recoverySignIn").show();
+  };
+
   // Acts on user input data/////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $("#submitDetails").on('click', function(event) {
@@ -221,11 +231,13 @@ $(document).ready(function() {
     }
 
     var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
+    var email = $("#recoveryEmail").val().trim();
     var gender = $("#genderSelector option:selected").text();
     var age = $("#ageSelector").val().trim();
     var ex = $("#exInput").val().trim(); 
     var newUser = { //making an object out of the information
         name: name,
+        email: email,
         gender: gender,
         age: age,
         breakupdate: dateEnteredString,
@@ -245,10 +257,11 @@ $(document).ready(function() {
 
   $(document).on("click", "#recovering", function() { //taking user to the stages if clicking "I'm recovering"
     hideSignIn();
-    showStageButtons();
-    showSongs();
-    showBooks();
-    showMovies();
+    showRecoverySignIn();
+    //showStageButtons();
+    // showSongs();
+    // showBooks();
+    // showMovies();
   });
 
   $(document).on("click", "#submitDetails", function(event) { //taking user to the stages after clicking "submit" in input fields

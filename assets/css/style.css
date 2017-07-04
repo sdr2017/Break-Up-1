@@ -243,11 +243,48 @@ iframe {
 	margin: 0 auto;
 }
 
+.denialBooks {
+	float: left;
+	margin-bottom: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: #5a6751;
+}
+
+.angerBooks {
+	float: left;
+	margin-bottom: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: #942827;
+}
+
+.miseryBooks {
+	float: left;
+	margin-bottom: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: #39727a;
+}
+
+.affirmationBooks {
+	float: left;
+	margin-bottom: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	color: #cab354;
+}
+
 .grooveBooks {
 	float: left;
 	margin-bottom: 20px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	color: #df8f5d;
+}
+
+#stageDisplayMovies {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
 }
 

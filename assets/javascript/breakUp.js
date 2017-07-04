@@ -293,7 +293,7 @@ $(document).ready(function() {
 
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
-    $(".panel-heading").css("color", "#8aa583");  // Changes the color of the panel heading text to match the button color
+    $(".panel-heading").css("color", "#333333");  // Leaves the panel heading color to black.
    
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(denialIFrame);

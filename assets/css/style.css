@@ -245,7 +245,7 @@ iframe {
 
 .denialBooks {
 	float: left;
-	margin-bottom: 20px;
+	margin: 20px 20px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	color: #5a6751;
@@ -253,7 +253,7 @@ iframe {
 
 .angerBooks {
 	float: left;
-	margin-bottom: 20px;
+	margin: 20px 20px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	color: #942827;
@@ -261,7 +261,7 @@ iframe {
 
 .miseryBooks {
 	float: left;
-	margin-bottom: 20px;
+	margin: 20px 20px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	color: #39727a;
@@ -269,7 +269,7 @@ iframe {
 
 .affirmationBooks {
 	float: left;
-	margin-bottom: 20px;
+	margin: 20px 20px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	color: #cab354;
@@ -277,7 +277,7 @@ iframe {
 
 .grooveBooks {
 	float: left;
-	margin-bottom: 20px;
+	margin: 20px 20px;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	color: #df8f5d;

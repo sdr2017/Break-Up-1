@@ -26,7 +26,7 @@ $(document).ready(function() {
     var thisYear = moment().year(); //Pulls the current date and seperates it by day, month, and year
     var thisMonth = moment().month();
     var thisDay = moment().date();
-    var months = [ "Janaury", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
     var $select;
 
     $select = $(".1-100");  //Age pulldown selector
@@ -100,6 +100,7 @@ $(document).ready(function() {
       })
     })
   }
+
 
   $("#submitEmail").on("click", function(event) {
     event.preventDefault();
@@ -203,9 +204,20 @@ $(document).ready(function() {
 
   hideRecoverySignIn();
 
+  function hideGrooveSuggestions() {
+    $("#suggestions").hide(); 
+  };
+
+  hideGrooveSuggestions();
+
+  function showGrooveSuggestions() {
+    $("#suggestions").show(); 
+  };
+
   function showRecoverySignIn() {
     $("#recoverySignIn").show();
   };
+
 
   // Acts on user input data/////////////////////////////////////////////////////////////////////////////////////////////////////
   
@@ -342,6 +354,9 @@ $(document).ready(function() {
   // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $(document).on("click", "#choseDenial", function() {
+      showSongs();
+      showBooks();
+      showMovies();
 
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
@@ -392,6 +407,9 @@ $(document).ready(function() {
   // Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAnger", function() {
+      showSongs();
+      showBooks();
+      showMovies();
     
     $("#body").attr('background', 'assets/images/angerPattern.jpg');  //background
     $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
@@ -432,6 +450,9 @@ $(document).ready(function() {
   // Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseMisery", function() {
+      showSongs();
+      showBooks();
+      showMovies();
     
     $("#body").attr('background', 'assets/images/miseryPattern.jpg'); //background
     $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
@@ -473,6 +494,9 @@ $(document).ready(function() {
   // Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAffirmation", function() {
+      showSongs();
+      showBooks();
+      showMovies();
     
     $("#body").attr('background', 'assets/images/affirmationPattern.jpg');  //background
     $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
@@ -516,6 +540,8 @@ $(document).ready(function() {
 
   $(document).on("click", "#choseGrooveOn", function() {
    
+    showGrooveSuggestions(); 
+
     $("#body").attr('background', 'assets/images/groovePattern.jpg'); //background
     $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
 
@@ -637,5 +663,6 @@ $(document).ready(function() {
       $("#movie3").append(response.Plot + '<br>');
     });
   }
-}); 
+
+});
 

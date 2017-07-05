@@ -102,17 +102,19 @@ $(document).ready(function() {
   }
 
   $("#submitEmail").on("click", function(event) {
-  event.preventDefault();
-  console.log("blarg");
-
+    event.preventDefault();
     var recoveryEmail = $("#recoveryEmail").val().trim();
     console.log(recoveryEmail);
-    database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
-    console.log(snapshot.val());
-    snapshot.forEach(function(data) {
-        console.log(data.key);
-    });
-    });
+    database.ref().on("value", function(snapshot) {
+      if (snapshot.child("email").exists()) {
+        console.log("Email exists!");
+      }
+    })
+    // database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
+    // console.log(snapshot.val());
+    // snapshot.forEach(function(data) {
+    //     console.log(data.key);
+    // });
   });
   
   breakUpDateSelecter();

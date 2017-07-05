@@ -201,6 +201,16 @@ $(document).ready(function() {
 
   hideRecoverySignIn();
 
+  function hideGrooveSuggestions() {
+    $("#suggestions").hide(); 
+  };
+
+  hideGrooveSuggestions();
+
+  function showGrooveSuggestions() {
+    $("#suggestions").show(); 
+  };
+
   function showRecoverySignIn() {
     $("#recoverySignIn").show();
   };
@@ -514,6 +524,8 @@ $(document).ready(function() {
 
   $(document).on("click", "#choseGrooveOn", function() {
    
+    showGrooveSuggestions(); 
+
     $("#body").attr('background', 'assets/images/groovePattern.jpg'); //background
     $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
 

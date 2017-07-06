@@ -372,13 +372,9 @@ $(document).ready(function() {
     }
 
     if (isFilledOut == false) {
-      $("#signingInForm").append("Please fill out all sections to proceed");
+      $("#addWarning").append("Please fill out all sections to proceed.");
     }
-    else {
-      isFilledOut = true;
-    }
-
-
+  
 
     if (timeSinceBreakUpInDays < 14 && isFilledOut == true) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");

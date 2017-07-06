@@ -103,17 +103,20 @@ $(document).ready(function() {
 
 
   $("#submitEmail").on("click", function(event) {
-  event.preventDefault();
-  console.log("blarg");
-
+    event.preventDefault();
     var recoveryEmail = $("#recoveryEmail").val().trim();
     console.log(recoveryEmail);
-    database.ref().orderByChild('email').equalTo('recoveryEmail').on("value", function(snapshot) {
-    console.log(snapshot.val());
-    snapshot.forEach(function(data) {
-        console.log(data.key);
-    });
-    });
+
+    database.ref().on("value", function(snapshot) {
+      if (snapshot.child("email").exists()) {
+        console.log("Email exists!");
+      }
+    })
+    // database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
+    // console.log(snapshot.val());
+    // snapshot.forEach(function(data) {
+    //     console.log(data.key);
+    // });
   });
   
   breakUpDateSelecter();
@@ -201,6 +204,16 @@ $(document).ready(function() {
   };
 
   hideRecoverySignIn();
+
+  function hideGrooveSuggestions() {
+    $("#suggestions").hide(); 
+  };
+
+  hideGrooveSuggestions();
+
+  function showGrooveSuggestions() {
+    $("#suggestions").show(); 
+  };
 
   function showRecoverySignIn() {
     $("#recoverySignIn").show();
@@ -528,6 +541,8 @@ $(document).ready(function() {
 
   $(document).on("click", "#choseGrooveOn", function() {
    
+    showGrooveSuggestions(); 
+
     $("#body").attr('background', 'assets/images/groovePattern.jpg'); //background
     $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
 

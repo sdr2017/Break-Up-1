@@ -488,7 +488,8 @@ $(document).ready(function() {
       "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
     var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
       "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
-      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
+      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer", 
+      "the+Marsh+Kings+Daughter", "the+Last+Place+You+Look"];
     var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
       "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
       "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
@@ -511,6 +512,7 @@ $(document).ready(function() {
   // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $(document).on("click", "#choseDenial", function() {
+      hideGrooveSuggestions();
       showSongs();
       showBooks();
       showMovies();
@@ -542,7 +544,7 @@ $(document).ready(function() {
         var denialTitle = workArray[0].best_book.title["#text"];
         
         var container = $('<div class="col-sm-4" id="allDenialBooks">');
-        var allDenialBookTitles = $('<p class="bookTitles">' + denialTitle + '</p>');
+        var allDenialBookTitles = $('<p class="denialBookTitles">' + denialTitle + '</p>');
         var denialBookCovers = $('<img class="bookImages">');
         denialBookCovers.attr("src", denialImage);
         container.append(denialBookCovers, allDenialBookTitles);
@@ -553,11 +555,12 @@ $(document).ready(function() {
    $("#movie1").empty(); //Movies
    $("#movie2").empty(); //Movies
    $("#movie3").empty(); //Movies
+
   for(var i=0; i<denialMovies.length; i++) {  //loop for denial movies
       movie = denialMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
       if(i==1)getMovies2(movie);
-      if(i==2)getMovies3(movie); //call movie function
+      if(i==2)getMovies3(movie, "#5a6751"); //call movie function
     };
 
   });
@@ -565,6 +568,7 @@ $(document).ready(function() {
   // Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAnger", function() {
+      hideGrooveSuggestions();
       showSongs();
       showBooks();
       showMovies();
@@ -588,7 +592,7 @@ $(document).ready(function() {
         var angerTitle = workAngerArray[0].best_book.title["#text"];
         
         var container = $('<div class="col-sm-4" id="allAngerBooks">');
-        var allAngerBookTitles = $('<p class="bookTitles">' + angerTitle + '</p>');
+        var allAngerBookTitles = $('<p class="angerBookTitles">' + angerTitle + '</p>');
         var angerBookCovers = $('<img class="bookImages">');
         angerBookCovers.attr("src", angerImage);
         container.append(angerBookCovers, allAngerBookTitles);
@@ -604,13 +608,14 @@ $(document).ready(function() {
       movie = angerMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
       if(i==1)getMovies2(movie);
-      if(i==2)getMovies3(movie); //call movie function
+      if(i==2)getMovies3(movie, "#942827"); //call movie function
     };
   });
 
   // Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseMisery", function() {
+      hideGrooveSuggestions();
       showSongs();
       showBooks();
       showMovies();
@@ -635,7 +640,7 @@ $(document).ready(function() {
         var miseryTitle = workMiseryArray[0].best_book.title["#text"];
         
         var container = $('<div class="col-sm-4" id="allMiseryBooks">');
-        var allMiseryBookTitles = $('<p class="bookTitles">' + miseryTitle + '</p>');
+        var allMiseryBookTitles = $('<p class="miseryBookTitles">' + miseryTitle + '</p>');
         var miseryBookCovers = $('<img class="bookImages">');
         miseryBookCovers.attr("src", miseryImage);
         container.append(miseryBookCovers, allMiseryBookTitles);
@@ -650,13 +655,14 @@ $(document).ready(function() {
         movie = miseryMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
       if(i==1)getMovies2(movie);
-      if(i==2)getMovies3(movie); //call movie function
+      if(i==2)getMovies3(movie, "#39727a"); //call movie function
        };
   });
 
   // Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAffirmation", function() {
+      hideGrooveSuggestions();
       showSongs();
       showBooks();
       showMovies();
@@ -682,7 +688,7 @@ $(document).ready(function() {
         
 
         var container = $('<div class="col-sm-4" id="allAngerBooks">');
-        var allAffirmationBookTitles = $('<p class="bookTitles">' + affirmationTitle + '</p>');
+        var allAffirmationBookTitles = $('<p class="affirmationBookTitles">' + affirmationTitle + '</p>');
         var affirmationBookCovers = $('<img class="bookImages">');
         affirmationBookCovers.attr("src", affirmationImage);
         container.append(affirmationBookCovers, allAffirmationBookTitles);
@@ -698,7 +704,7 @@ $(document).ready(function() {
       movie = affirmationMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
       if(i==1)getMovies2(movie);
-      if(i==2)getMovies3(movie); //call movie function
+      if(i==2)getMovies3(movie, "#cab354"); //call movie function
     };
   });
 
@@ -728,7 +734,7 @@ $(document).ready(function() {
         var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
         
         var container = $('<div class="col-sm-4" id="allGrooveBooks">');
-        var allGrooveBookTitles = $('<p class="bookTitles">' + grooveOnTitle + '</p>');
+        var allGrooveBookTitles = $('<p class="grooveBookTitles">' + grooveOnTitle + '</p>');
         var grooveBookCovers = $('<img class="bookImages">');
         grooveBookCovers.attr("src", grooveOnImage);
         container.append(grooveBookCovers, allGrooveBookTitles);
@@ -744,7 +750,7 @@ $(document).ready(function() {
         movie = grooveOnMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
       if(i==1)getMovies2(movie);
-      if(i==2)getMovies3(movie); //call movie function
+      if(i==2)getMovies3(movie, "#df8f5d"); //call movie function
         };
   });
 
@@ -815,7 +821,7 @@ $(document).ready(function() {
     });
   }
 
-    function getMovies3(movieStage){ //function for movies
+    function getMovies3(movieStage, color){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
     $.ajax({
         url: movieURL,
@@ -828,9 +834,9 @@ $(document).ready(function() {
       movieImage.attr("src", response.Poster);
       $("#movie3").append(movieImage); 
       $("#movie3").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
+      $(".movieTitles").css("color", color);
       $("#movie3").append(response.Plot + '<br>');
     });
   }
-
 });
 

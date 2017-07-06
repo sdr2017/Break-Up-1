@@ -304,11 +304,17 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#startMonth").addClass('warning');
     }
+    else {
+      isFilledOut = true;
+    }
 
     if ($("#startDay option:selected").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#startDay").addClass('warning');
+    }
+    else {
+      isFilledOut = true;
     }
 
     if ($("#startYear option:selected").val()=="") {
@@ -316,17 +322,26 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#startYear").addClass('warning');
     }
+    else {
+      isFilledOut = true;
+    }
 
     if ($("#nameInput").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#nameInput").addClass('warning');
     }
+    else {
+      isFilledOut = true;
+    }
 
     if ($("#emailInput").val()=="") {
       showInputs();
       isFilledOut = false;
-      $("#recoveryEmail").addClass('warning');
+      $("#emailInput").addClass('warning');
+    }
+    else {
+      isFilledOut = true;
     }
 
     if ($("#genderSelector option:selected").val()=="") {
@@ -334,11 +349,17 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#genderSelector").addClass('warning');
     }
+    else {
+      isFilledOut = true;
+    }
 
     if ($("#ageSelector").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#ageSelector").addClass('warning');
+    }
+    else {
+      isFilledOut = true;
     }
 
     if ($("#exInput").val()=="") {
@@ -346,15 +367,23 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#exInput").addClass('warning');
     }
+    else {
+      isFilledOut = true;
+    }
 
     if (isFilledOut == false) {
       $("#signingInForm").append("Please fill out all sections to proceed");
+    }
+    else {
+      isFilledOut = true;
     }
 
 
 
     if (timeSinceBreakUpInDays < 14 && isFilledOut == true) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+      showStageButtons();
+      hideInputs();
       showSongs();
       showBooks();
       showMovies();
@@ -363,6 +392,8 @@ $(document).ready(function() {
 
     if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28 && isFilledOut == true) {
       $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
+      showStageButtons();
+      hideInputs();
       showSongs();
       showBooks();
       showMovies();
@@ -371,6 +402,8 @@ $(document).ready(function() {
 
       if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42 && isFilledOut == true) {
       $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
+      showStageButtons();
+      hideInputs();
       showSongs();
       showBooks();
       showMovies();
@@ -379,6 +412,8 @@ $(document).ready(function() {
 
     if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56 && isFilledOut == true) {
       $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
+      showStageButtons();
+      hideInputs();
       showSongs();
       showBooks();
       showMovies();
@@ -387,6 +422,8 @@ $(document).ready(function() {
 
     if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70 && isFilledOut == true) {
       $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
+      showStageButtons();
+      hideInputs();
       showSongs();
       showBooks();
       showMovies();
@@ -395,6 +432,8 @@ $(document).ready(function() {
 
     if (timeSinceBreakUpInDays >= 70 && isFilledOut == true) {
       $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+      showStageButtons();
+      hideInputs();
       showMoveOn();
     }
 

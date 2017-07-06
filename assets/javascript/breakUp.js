@@ -299,49 +299,49 @@ $(document).ready(function() {
 
     var isFilledOut = true; 
 
-    if ($("#startMonth option:selected").text()=="") {
+    if ($("#startMonth option:selected").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#startMonth").addClass('warning');
     }
 
-    if ($("#startDay option:selected").text()=="") {
+    if ($("#startDay option:selected").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#startDay").addClass('warning');
     }
 
-    if ($("#startYear option:selected").text()=="") {
+    if ($("#startYear option:selected").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#startYear").addClass('warning');
     }
 
-    if ($("#nameInput").text()=="") {
+    if ($("#nameInput").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#nameInput").addClass('warning');
     }
 
-    if ($("#recoveryEmail").text()=="") {
+    if ($("#emailInput").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#recoveryEmail").addClass('warning');
     }
 
-    if ($("#genderSelector option:selected").text()=="") {
+    if ($("#genderSelector option:selected").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#genderSelector").addClass('warning');
     }
 
-    if ($("#ageSelector").text()=="") {
+    if ($("#ageSelector").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#ageSelector").addClass('warning');
     }
 
-    if ($("#exInput").text()=="") {
+    if ($("#exInput").val()=="") {
       showInputs();
       isFilledOut = false;
       $("#exInput").addClass('warning');

@@ -315,7 +315,7 @@ $(document).ready(function() {
     var isFilledOut = true; 
 
     //checking if the input fields are empty
-    if ($("#startMonth option:selected").val()=="") {
+    if ($("#startMonth option:selected").text()=="") {
       showInputs();
       isFilledOut = false;
       $("#startMonth").addClass('warning');
@@ -324,7 +324,7 @@ $(document).ready(function() {
       isFilledOut = true;
     }
 
-    if ($("#startDay option:selected").val()=="") {
+    if ($("#startDay option:selected").text()=="") {
       showInputs();
       isFilledOut = false;
       $("#startDay").addClass('warning');
@@ -333,7 +333,7 @@ $(document).ready(function() {
       isFilledOut = true;
     }
 
-    if ($("#startYear option:selected").val()=="") {
+    if ($("#startYear option:selected").text()=="") {
       showInputs();
       isFilledOut = false;
       $("#startYear").addClass('warning');

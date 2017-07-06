@@ -132,6 +132,7 @@ $(document).ready(function() {
                 showBooks();
                 showMovies();
                 $("#choseDenial").click();
+                $("#choseDenial").focus();
               }
 
               if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28) {
@@ -140,6 +141,7 @@ $(document).ready(function() {
                 showBooks();
                 showMovies();
                 $("#choseAnger").click();
+                $("#choseAnger").focus();
               }
 
                 if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42) {
@@ -148,6 +150,7 @@ $(document).ready(function() {
                 showBooks();
                 showMovies();
                 $("#choseMisery").click();
+                $("#choseMisery").focus();
               }
 
               if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56) {
@@ -156,6 +159,7 @@ $(document).ready(function() {
                 showBooks();
                 showMovies();
                 $("#choseAffirmation").click();
+                $("#choseAffirmation").focus();
               }
 
               if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70) {
@@ -164,6 +168,7 @@ $(document).ready(function() {
                 showBooks();
                 showMovies();
                 $("#choseGrooveOn").click();
+                $("#choseGrooveOn").focus();
               }
 
               if (timeSinceBreakUpInDays >= 70) {
@@ -388,6 +393,7 @@ $(document).ready(function() {
       showBooks();
       showMovies();
       $("#choseDenial").click();
+      $("#choseDenial").focus();
     }
 
     if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28 && isFilledOut == true) {
@@ -398,6 +404,7 @@ $(document).ready(function() {
       showBooks();
       showMovies();
       $("#choseAnger").click();
+      $("#choseAnger").focus();
     }
 
       if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42 && isFilledOut == true) {
@@ -408,6 +415,7 @@ $(document).ready(function() {
       showBooks();
       showMovies();
       $("#choseMisery").click();
+      $("#choseMisery").focus();
     }
 
     if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56 && isFilledOut == true) {
@@ -418,6 +426,7 @@ $(document).ready(function() {
       showBooks();
       showMovies();
       $("#choseAffirmation").click();
+      $("#choseAffirmation").focus();
     }
 
     if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70 && isFilledOut == true) {
@@ -428,6 +437,7 @@ $(document).ready(function() {
       showBooks();
       showMovies();
       $("#choseGrooveOn").click();
+      $("#choseGrooveOn").focus();
     }
 
     if (timeSinceBreakUpInDays >= 70 && isFilledOut == true) {
@@ -518,7 +528,6 @@ $(document).ready(function() {
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
     $(".panel-heading").css("color", "#333333");  // Leaves the panel heading color to black.
-   
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(denialIFrame);
     var randomBooks = getRandomIndexes(denialBooks, 3); // Books
@@ -571,7 +580,7 @@ $(document).ready(function() {
     
     $("#body").attr('background', 'assets/images/angerPattern.jpg');  //background
     $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
-    var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
+    var angerIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(angerIFrame);
     var randomAngerBooks = getRandomIndexes(angerBooks, 3); // Books
     $("#stageDisplayBooks").empty();
@@ -617,8 +626,7 @@ $(document).ready(function() {
     
     $("#body").attr('background', 'assets/images/miseryPattern.jpg'); //background
     $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
-  
-    var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>' //Songs
+    var miseryIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/7eGiguVw0T63dv3QERdJMx" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>' //Songs
     songs.html(miseryIFrame);
   
     var randomMiseryBooks = getRandomIndexes(miseryBooks, 3); // Books
@@ -711,7 +719,7 @@ $(document).ready(function() {
     $("#body").attr('background', 'assets/images/groovePattern.jpg'); //background
     $(".breakUpStage").empty().append("Groove On");  // appends emotion slection to titles
 
-    var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/47jFq4WEnYApeu9Tb2YASw" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>' //Songs
+    var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>' //Songs
     songs.html(grooveIFrame);
 
     var randomGrooveOnBooks = getRandomIndexes(grooveOnBooks, 3); // Books

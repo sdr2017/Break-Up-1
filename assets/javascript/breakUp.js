@@ -488,7 +488,8 @@ $(document).ready(function() {
       "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
     var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
       "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
-      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer"];
+      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer", 
+      "the+Marsh+Kings+Daughter", "the+Last+Place+You+Look"];
     var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
       "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
       "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];

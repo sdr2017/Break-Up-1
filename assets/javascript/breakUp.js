@@ -108,7 +108,7 @@ $(document).ready(function() {
 
     var recoveryEmail = $("#recoveryEmail").val().trim();
     console.log(recoveryEmail);
-    database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
+    database.ref().orderByChild('email').equalTo('recoveryEmail').on("value", function(snapshot) {
     console.log(snapshot.val());
     snapshot.forEach(function(data) {
         console.log(data.key);

@@ -122,6 +122,10 @@ $(document).ready(function() {
               var timeSinceBreakUpInDays = dateTodayObject.diff(firebaseBreakUpDate, "days"); // Get the time since break up in days AS A NUMBER
               console.log(firebaseBreakUpDate);
               console.log(timeSinceBreakUpInDays);
+
+              hideRecoverySignIn();
+              showStageButtons();
+
               if (timeSinceBreakUpInDays < 14) {
                 $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
                 showSongs();

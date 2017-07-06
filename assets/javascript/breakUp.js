@@ -405,7 +405,7 @@ $(document).ready(function() {
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   //var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
   var movies = $("#movie1");
-  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
 
   // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
@@ -437,14 +437,15 @@ $(document).ready(function() {
         var image = workArray[0].best_book.image_url["#text"];
 
         var workArray = bookInfoObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
-        var image = workArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
-
-        var title = workArray[0].best_book.title["#text"];
+        var denialImage = workArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
+        var denialTitle = workArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="denialBooks">' + title + '</div>'); // Appends the title and image to the stage display books.
-        var bookImage = $('<img class="bookImage">');
-        bookImage.attr("src", image);
-        $("#stageDisplayBooks").append(bookImage);
+        var container = $('<div class="col-sm-4" id="allDenialBooks">');
+        var allDenialBookTitles = $('<p class="bookTitles">' + denialTitle + '</p>');
+        var denialBookCovers = $('<img class="bookImages">');
+        denialBookCovers.attr("src", denialImage);
+        container.append(denialBookCovers, allDenialBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
 
@@ -485,10 +486,13 @@ $(document).ready(function() {
         var angerImage = workAngerArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
         var angerTitle = workAngerArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="angerBooks">' + angerTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
-        var bookAngerImage = $('<img class="bookImage">');
-        bookAngerImage.attr("src", angerImage);
-        $("#stageDisplayBooks").append(bookAngerImage);
+        var container = $('<div class="col-sm-4" id="allAngerBooks">');
+        var allAngerBookTitles = $('<p class="bookTitles">' + angerTitle + '</p>');
+        var angerBookCovers = $('<img class="bookImages">');
+        angerBookCovers.attr("src", angerImage);
+        container.append(angerBookCovers, allAngerBookTitles);
+        $("#stageDisplayBooks").append(container);
+
       }); 
     }
  
@@ -529,10 +533,12 @@ $(document).ready(function() {
         var miseryImage = workMiseryArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var miseryTitle = workMiseryArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="miseryBooks">' + miseryTitle + '</div>'); // Appends the title and image to the stage display books.
-        var bookMiseryImage = $('<img class="bookImage">');
-        bookMiseryImage.attr("src", miseryImage);
-        $("#stageDisplayBooks").append(bookMiseryImage);
+        var container = $('<div class="col-sm-4" id="allMiseryBooks">');
+        var allMiseryBookTitles = $('<p class="bookTitles">' + miseryTitle + '</p>');
+        var miseryBookCovers = $('<img class="bookImages">');
+        miseryBookCovers.attr("src", miseryImage);
+        container.append(miseryBookCovers, allMiseryBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
     
@@ -573,10 +579,13 @@ $(document).ready(function() {
         var affirmationImage = workAffirmationArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var affirmationTitle = workAffirmationArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="affirmationBooks">' + affirmationTitle + '</div>');  // Appends the title and image to the stage display books.
-        var bookAffirmationImage = $('<img class="bookImage">');
-        bookAffirmationImage.attr("src", affirmationImage);
-        $("#stageDisplayBooks").append(bookAffirmationImage);
+
+        var container = $('<div class="col-sm-4" id="allAngerBooks">');
+        var allAffirmationBookTitles = $('<p class="bookTitles">' + affirmationTitle + '</p>');
+        var affirmationBookCovers = $('<img class="bookImages">');
+        affirmationBookCovers.attr("src", affirmationImage);
+        container.append(affirmationBookCovers, allAffirmationBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
      
@@ -617,10 +626,12 @@ $(document).ready(function() {
         var grooveOnImage = workGrooveOnArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="grooveBooks">' + grooveOnTitle + '</div>'); // Appends the title and image to the stage display books.
-        var bookGrooveOnImage = $('<img class="bookImage">');
-        bookGrooveOnImage.attr("src", grooveOnImage);
-        $("#stageDisplayBooks").append(bookGrooveOnImage);
+        var container = $('<div class="col-sm-4" id="allGrooveBooks">');
+        var allGrooveBookTitles = $('<p class="bookTitles">' + grooveOnTitle + '</p>');
+        var grooveBookCovers = $('<img class="bookImages">');
+        grooveBookCovers.attr("src", grooveOnImage);
+        container.append(grooveBookCovers, allGrooveBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
 
@@ -681,7 +692,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie1").append(movieImage); 
-      $("#movie1").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie1").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie1").append(response.Plot + '<br>');
     });
   }
@@ -698,7 +709,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie2").append(movieImage); 
-      $("#movie2").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie2").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie2").append(response.Plot + '<br>');
     });
   }
@@ -715,7 +726,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie3").append(movieImage); 
-      $("#movie3").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie3").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie3").append(response.Plot + '<br>');
     });
   }

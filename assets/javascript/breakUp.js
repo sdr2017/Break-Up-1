@@ -106,18 +106,73 @@ $(document).ready(function() {
     event.preventDefault();
     var recoveryEmail = $("#recoveryEmail").val().trim();
     console.log(recoveryEmail);
+    database.ref().once("value", function(snapshot) {
+        var users = snapshot.val();
+        var firebaseKeys = Object.keys(users);
+        for (var i = 0; i < firebaseKeys.length; i += 1) {
+          var currentKey = firebaseKeys[i];
+          var firebaseObject = users[currentKey];
+          var firebaseEmails = firebaseObject['email'];
+          console.log(firebaseEmails);
+            if (recoveryEmail == firebaseEmails) {
+              console.log(firebaseObject['breakupdate']);
+              var firebaseBreakUpDate = firebaseObject['breakupdate'];
+              var dateTodayObject = moment(); // Making a moment.js object that has a value of right now 
+              var timeSinceBreakUpInYears = dateTodayObject.diff(firebaseBreakUpDate, "years");  // Get the time since break up in years AS A NUMBER
+              var timeSinceBreakUpInDays = dateTodayObject.diff(firebaseBreakUpDate, "days"); // Get the time since break up in days AS A NUMBER
+              console.log(firebaseBreakUpDate);
+              console.log(timeSinceBreakUpInDays);
+              if (timeSinceBreakUpInDays < 14) {
+                $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseDenial").click();
+              }
 
-    database.ref().on("value", function(snapshot) {
-      if (snapshot.child("email").exists()) {
-        console.log("Email exists!");
-      }
-    })
-    // database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
-    // console.log(snapshot.val());
-    // snapshot.forEach(function(data) {
-    //     console.log(data.key);
-    // });
-  });
+              if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28) {
+                $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseAnger").click();
+              }
+
+                if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42) {
+                $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseMisery").click();
+              }
+
+              if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56) {
+                $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseAffirmation").click();
+              }
+
+              if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70) {
+                $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseGrooveOn").click();
+              }
+
+              if (timeSinceBreakUpInDays >= 70) {
+                $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+                showMoveOn();
+              }
+              return;
+            } else {
+              console.log("No");
+            }
+        }
+      });
+    });
   
   breakUpDateSelecter();
 
@@ -341,7 +396,7 @@ $(document).ready(function() {
 
     if (isFilledOut == true) {
     var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
-    var email = $("emailInput").val().trim();
+    var email = $("#emailInput").val().trim();
     var gender = $("#genderSelector option:selected").text();
     var age = $("#ageSelector").val().trim();
     var ex = $("#exInput").val().trim(); 
@@ -408,7 +463,7 @@ $(document).ready(function() {
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
   //var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
   var movies = $("#movie1");
-  var queryURL = "https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
+  var queryURL = "https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
 
   // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
@@ -440,14 +495,15 @@ $(document).ready(function() {
         var image = workArray[0].best_book.image_url["#text"];
 
         var workArray = bookInfoObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
-        var image = workArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
-
-        var title = workArray[0].best_book.title["#text"];
+        var denialImage = workArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
+        var denialTitle = workArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="denialBooks">' + title + '</div>'); // Appends the title and image to the stage display books.
-        var bookImage = $('<img class="bookImage">');
-        bookImage.attr("src", image);
-        $("#stageDisplayBooks").append(bookImage);
+        var container = $('<div class="col-sm-4" id="allDenialBooks">');
+        var allDenialBookTitles = $('<p class="bookTitles">' + denialTitle + '</p>');
+        var denialBookCovers = $('<img class="bookImages">');
+        denialBookCovers.attr("src", denialImage);
+        container.append(denialBookCovers, allDenialBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
 
@@ -488,10 +544,13 @@ $(document).ready(function() {
         var angerImage = workAngerArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
         var angerTitle = workAngerArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="angerBooks">' + angerTitle + '</strong><br><br>');  // Appends the title and image to the stage display books.
-        var bookAngerImage = $('<img class="bookImage">');
-        bookAngerImage.attr("src", angerImage);
-        $("#stageDisplayBooks").append(bookAngerImage);
+        var container = $('<div class="col-sm-4" id="allAngerBooks">');
+        var allAngerBookTitles = $('<p class="bookTitles">' + angerTitle + '</p>');
+        var angerBookCovers = $('<img class="bookImages">');
+        angerBookCovers.attr("src", angerImage);
+        container.append(angerBookCovers, allAngerBookTitles);
+        $("#stageDisplayBooks").append(container);
+
       }); 
     }
  
@@ -532,10 +591,12 @@ $(document).ready(function() {
         var miseryImage = workMiseryArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var miseryTitle = workMiseryArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="miseryBooks">' + miseryTitle + '</div>'); // Appends the title and image to the stage display books.
-        var bookMiseryImage = $('<img class="bookImage">');
-        bookMiseryImage.attr("src", miseryImage);
-        $("#stageDisplayBooks").append(bookMiseryImage);
+        var container = $('<div class="col-sm-4" id="allMiseryBooks">');
+        var allMiseryBookTitles = $('<p class="bookTitles">' + miseryTitle + '</p>');
+        var miseryBookCovers = $('<img class="bookImages">');
+        miseryBookCovers.attr("src", miseryImage);
+        container.append(miseryBookCovers, allMiseryBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
     
@@ -576,10 +637,13 @@ $(document).ready(function() {
         var affirmationImage = workAffirmationArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var affirmationTitle = workAffirmationArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="affirmationBooks">' + affirmationTitle + '</div>');  // Appends the title and image to the stage display books.
-        var bookAffirmationImage = $('<img class="bookImage">');
-        bookAffirmationImage.attr("src", affirmationImage);
-        $("#stageDisplayBooks").append(bookAffirmationImage);
+
+        var container = $('<div class="col-sm-4" id="allAngerBooks">');
+        var allAffirmationBookTitles = $('<p class="bookTitles">' + affirmationTitle + '</p>');
+        var affirmationBookCovers = $('<img class="bookImages">');
+        affirmationBookCovers.attr("src", affirmationImage);
+        container.append(affirmationBookCovers, allAffirmationBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
      
@@ -620,10 +684,12 @@ $(document).ready(function() {
         var grooveOnImage = workGrooveOnArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
         
-        $("#stageDisplayBooks").append('<div class="grooveBooks">' + grooveOnTitle + '</div>'); // Appends the title and image to the stage display books.
-        var bookGrooveOnImage = $('<img class="bookImage">');
-        bookGrooveOnImage.attr("src", grooveOnImage);
-        $("#stageDisplayBooks").append(bookGrooveOnImage);
+        var container = $('<div class="col-sm-4" id="allGrooveBooks">');
+        var allGrooveBookTitles = $('<p class="bookTitles">' + grooveOnTitle + '</p>');
+        var grooveBookCovers = $('<img class="bookImages">');
+        grooveBookCovers.attr("src", grooveOnImage);
+        container.append(grooveBookCovers, allGrooveBookTitles);
+        $("#stageDisplayBooks").append(container);
       }); 
     }
 
@@ -684,7 +750,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie1").append(movieImage); 
-      $("#movie1").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie1").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie1").append(response.Plot + '<br>');
     });
   }
@@ -701,7 +767,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie2").append(movieImage); 
-      $("#movie2").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie2").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie2").append(response.Plot + '<br>');
     });
   }
@@ -718,7 +784,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie3").append(movieImage); 
-      $("#movie3").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie3").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie3").append(response.Plot + '<br>');
     });
   }

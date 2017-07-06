@@ -45,7 +45,7 @@ h1 {
 }
 
 .warning {
-	border: solid red 1px;
+	border: solid red 1px !important;
 }
 
 #singInColumn {

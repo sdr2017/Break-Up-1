@@ -263,50 +263,53 @@ iframe {
 	margin: 0 auto;
 }
 
-.denialBooks {
-	float: left;
-	margin: 20px 20px;
+.denialBookTitles {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	color: #5a6751;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-align: center;
 }
 
-.angerBooks {
-	float: left;
-	margin: 20px 20px;
+.angerBookTitles {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	color: #942827;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-align: center;
 }
 
-.miseryBooks {
-	float: left;
-	margin: 20px 20px;
+.miseryBookTitles {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	color: #39727a;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-align: center;
 }
 
-.affirmationBooks {
-	float: left;
-	margin: 20px 20px;
+.affirmationBookTitles {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	color: #cab354;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-align: center;
 }
 
-.grooveBooks {
-	float: left;
-	margin: 20px 20px;
+.grooveBookTitles {
 	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	color: #df8f5d;
-	line-height: 140px;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	text-align: center;
 }
 
 #stageDisplayMovies {
 	font-family: 'Montserrat', sans-serif;
-	margin-top: 10px;
 	font-size: 15px;
 	line-height: 140%;
 }
@@ -315,6 +318,7 @@ iframe {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	line-height: 140%;
+	text-align: center;
 }
 
 .suggestionTitles {
@@ -323,21 +327,29 @@ iframe {
 	color: #df8f5d;
 	margin-bottom: 10px;
 	margin-top: 10px;
+	margin-bottom: 20px;
+	text-align: center;
 }
 
 #spaEnvy {
 	width: 300px;
 	height: 200px;
+	margin: auto;
+	display: block;
 }
 
 #gymGold {
 	width: 200px;
 	height: 200px;
+	margin: auto;
+	display: block;
 }
 
 #matchGroove {
 	width: 300px;
 	height: 200px;
+	margin: auto;
+	display: block;
 }
 
 .movieTitles {
@@ -346,6 +358,24 @@ iframe {
 	color: #df8f5d;
 	margin-bottom: 10px;
 	margin-top: 20px;
+	text-align: center;
+}
+
+#movieimage {
+	margin: auto;
+	display: block;
+}
+
+#movie1 {
+	text-align: center;
+}
+
+#movie2 {
+	text-align: center;
+}
+
+#movie3 {
+	text-align: center;
 }
 
 .bookTitles {
@@ -354,11 +384,14 @@ iframe {
 	color: #df8f5d;
 	margin-bottom: 10px;
 	margin-top: 20px;
+	text-align: center;
 }
 
 .bookImages {
 	width: 200px;
 	height: 300px;
+	margin: auto;
+	display: block;
 }
 
 #submitEmail {

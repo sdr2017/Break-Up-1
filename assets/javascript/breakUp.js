@@ -485,11 +485,12 @@ $(document).ready(function() {
   // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
     var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
       "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
-      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please"];
+      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please", "Dune", "Neverwhere", 
+      "the+Girl+who+Drank+the+Moon", "the+Ghost+Bride"];
     var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
       "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
       "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer", 
-      "the+Marsh+Kings+Daughter", "the+Last+Place+You+Look"];
+      "the+Marsh+Kings+Daughter", "the+Last+Place+You+Look", "Here+and+Gone", "the+Weight+of+Lies"];
     var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
       "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
       "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];

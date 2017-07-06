@@ -517,6 +517,7 @@ $(document).ready(function() {
         var affirmationImage = workAffirmationArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var affirmationTitle = workAffirmationArray[0].best_book.title["#text"];
         
+
         $("#stageDisplayBooks").append('<div class="affirmationBooks">' + affirmationTitle + '</div>');  // Appends the title and image to the stage display books.
         var bookAffirmationImage = $('<img class="bookImage">');
         bookAffirmationImage.attr("src", affirmationImage);
@@ -625,7 +626,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie1").append(movieImage); 
-      $("#movie1").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie1").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie1").append(response.Plot + '<br>');
     });
   }
@@ -642,7 +643,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie2").append(movieImage); 
-      $("#movie2").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie2").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie2").append(response.Plot + '<br>');
     });
   }
@@ -659,7 +660,7 @@ $(document).ready(function() {
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie3").append(movieImage); 
-      $("#movie3").append('<br><br><strong>' + response.Title + '</strong><br><br>'); // Transfer content to HTML
+      $("#movie3").append('<div class="movieTitles">' + response.Title + '</div>'); // Transfer content to HTML
       $("#movie3").append(response.Plot + '<br>');
     });
   }

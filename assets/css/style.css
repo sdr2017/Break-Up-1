@@ -281,10 +281,47 @@ iframe {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
 	color: #df8f5d;
+	line-height: 140px;
 }
 
 #stageDisplayMovies {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 15px;
+	line-height: 140%;
 }
+
+.suggestionTitles {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	color: #df8f5d;
+	margin-bottom: 10px;
+}
+
+
+.textInfo {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	line-height: 140%;
+}
+
+#spa {
+	width: 300px;
+	height: 200px;
+}
+
+#gym {
+	width: 200px;
+	height: 200px;
+}
+
+.movieTitles {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	color: #df8f5d;
+	margin-bottom: 10px;
+}
+
+
+
+
 

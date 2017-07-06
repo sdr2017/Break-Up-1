@@ -106,17 +106,73 @@ $(document).ready(function() {
     event.preventDefault();
     var recoveryEmail = $("#recoveryEmail").val().trim();
     console.log(recoveryEmail);
-    database.ref().on("value", function(snapshot) {
-      if (snapshot.child("email").exists()) {
-        console.log("Email exists!");
-      }
-    })
-    // database.ref().orderByChild('email').equalTo('email').on("value", function(snapshot) {
-    // console.log(snapshot.val());
-    // snapshot.forEach(function(data) {
-    //     console.log(data.key);
-    // });
-  });
+    database.ref().once("value", function(snapshot) {
+        var users = snapshot.val();
+        var firebaseKeys = Object.keys(users);
+        for (var i = 0; i < firebaseKeys.length; i += 1) {
+          var currentKey = firebaseKeys[i];
+          var firebaseObject = users[currentKey];
+          var firebaseEmails = firebaseObject['email'];
+          console.log(firebaseEmails);
+            if (recoveryEmail == firebaseEmails) {
+              console.log(firebaseObject['breakupdate']);
+              var firebaseBreakUpDate = firebaseObject['breakupdate'];
+              var dateTodayObject = moment(); // Making a moment.js object that has a value of right now 
+              var timeSinceBreakUpInYears = dateTodayObject.diff(firebaseBreakUpDate, "years");  // Get the time since break up in years AS A NUMBER
+              var timeSinceBreakUpInDays = dateTodayObject.diff(firebaseBreakUpDate, "days"); // Get the time since break up in days AS A NUMBER
+              console.log(firebaseBreakUpDate);
+              console.log(timeSinceBreakUpInDays);
+              if (timeSinceBreakUpInDays < 14) {
+                $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseDenial").click();
+              }
+
+              if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28) {
+                $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseAnger").click();
+              }
+
+                if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42) {
+                $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseMisery").click();
+              }
+
+              if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56) {
+                $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseAffirmation").click();
+              }
+
+              if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70) {
+                $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
+                showSongs();
+                showBooks();
+                showMovies();
+                $("#choseGrooveOn").click();
+              }
+
+              if (timeSinceBreakUpInDays >= 70) {
+                $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+                showMoveOn();
+              }
+              return;
+            } else {
+              console.log("No");
+            }
+        }
+      });
+    });
   
   breakUpDateSelecter();
 
@@ -282,7 +338,7 @@ $(document).ready(function() {
     }
 
     var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
-    var email = $("#recoveryEmail").val().trim();
+    var email = $("#emailInput").val().trim();
     var gender = $("#genderSelector option:selected").text();
     var age = $("#ageSelector").val().trim();
     var ex = $("#exInput").val().trim(); 

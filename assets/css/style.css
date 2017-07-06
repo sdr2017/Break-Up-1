@@ -306,32 +306,37 @@ iframe {
 
 #stageDisplayMovies {
 	font-family: 'Montserrat', sans-serif;
+	margin-top: 10px;
 	font-size: 15px;
 	line-height: 140%;
 }
 
-<<<<<<< HEAD
+#suggestions {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	line-height: 140%;
+}
+
 .suggestionTitles {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
 	color: #df8f5d;
 	margin-bottom: 10px;
+	margin-top: 10px;
 }
 
-
-.textInfo {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
-	line-height: 140%;
-}
-
-#spa {
+#spaEnvy {
 	width: 300px;
 	height: 200px;
 }
 
-#gym {
+#gymGold {
 	width: 200px;
+	height: 200px;
+}
+
+#matchGroove {
+	width: 300px;
 	height: 200px;
 }
 

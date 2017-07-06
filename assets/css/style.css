@@ -99,7 +99,7 @@ h1 {
 }
 
 #stagePanel {
-	height: 150px;
+	min-height: 150px;
 	background-color: #eeeeee;
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;

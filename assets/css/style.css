@@ -345,6 +345,20 @@ iframe {
 	font-size: 20px;
 	color: #df8f5d;
 	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.bookTitles {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	color: #df8f5d;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.bookImages {
+	width: 200px;
+	height: 300px;
 }
 
 #submitEmail {

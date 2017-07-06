@@ -389,7 +389,7 @@ $(document).ready(function() {
         var allDenialBookTitles = $('<p class="bookTitles">' + denialTitle + '</p>');
         var denialBookCovers = $('<img class="bookImages">');
         denialBookCovers.attr("src", denialImage);
-        container.append(allDenialBookTitles, denialBookCovers);
+        container.append(denialBookCovers, allDenialBookTitles);
         $("#stageDisplayBooks").append(container);
       }); 
     }
@@ -435,7 +435,7 @@ $(document).ready(function() {
         var allAngerBookTitles = $('<p class="bookTitles">' + angerTitle + '</p>');
         var angerBookCovers = $('<img class="bookImages">');
         angerBookCovers.attr("src", angerImage);
-        container.append(allAngerBookTitles, angerBookCovers);
+        container.append(angerBookCovers, allAngerBookTitles);
         $("#stageDisplayBooks").append(container);
 
       }); 
@@ -482,7 +482,7 @@ $(document).ready(function() {
         var allMiseryBookTitles = $('<p class="bookTitles">' + miseryTitle + '</p>');
         var miseryBookCovers = $('<img class="bookImages">');
         miseryBookCovers.attr("src", miseryImage);
-        container.append(allMiseryBookTitles, miseryBookCovers);
+        container.append(miseryBookCovers, allMiseryBookTitles);
         $("#stageDisplayBooks").append(container);
       }); 
     }
@@ -529,7 +529,7 @@ $(document).ready(function() {
         var allAffirmationBookTitles = $('<p class="bookTitles">' + affirmationTitle + '</p>');
         var affirmationBookCovers = $('<img class="bookImages">');
         affirmationBookCovers.attr("src", affirmationImage);
-        container.append(allAffirmationBookTitles, affirmationBookCovers);
+        container.append(affirmationBookCovers, allAffirmationBookTitles);
         $("#stageDisplayBooks").append(container);
       }); 
     }
@@ -575,7 +575,7 @@ $(document).ready(function() {
         var allGrooveBookTitles = $('<p class="bookTitles">' + grooveOnTitle + '</p>');
         var grooveBookCovers = $('<img class="bookImages">');
         grooveBookCovers.attr("src", grooveOnImage);
-        container.append(allGrooveBookTitles, grooveBookCovers);
+        container.append(grooveBookCovers, allGrooveBookTitles);
         $("#stageDisplayBooks").append(container);
       }); 
     }

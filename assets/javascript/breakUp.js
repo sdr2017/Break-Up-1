@@ -106,6 +106,7 @@ $(document).ready(function() {
     event.preventDefault();
     var recoveryEmail = $("#recoveryEmail").val().trim();
     console.log(recoveryEmail);
+
     database.ref().on("value", function(snapshot) {
       if (snapshot.child("email").exists()) {
         console.log("Email exists!");

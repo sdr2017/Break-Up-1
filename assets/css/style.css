@@ -17,6 +17,14 @@
 	display: block;
 }
 
+#logoSmall {
+	display: none;
+}
+
+#logoXSmall {
+	display: none;
+}
+
 .row {
 	margin: 0px;
 	padding: 0px;
@@ -417,4 +425,47 @@ iframe {
 	color: #333333;
 	margin: auto;
 	display: block;
+}
+
+/*media query for tablet*/
+
+@media screen and (max-width: 700px) and (min-width: 476px) {
+
+	#logo {
+		display: none;
+	}
+
+	#logoXSmall {
+		display: none;
+	}
+
+	#logoSmall {
+		padding: 0px;
+		/*margin: 15px 0px 20px 50px;*/
+		margin-right: auto;
+		margin-left: auto;
+		margin-top: 13px;
+		margin-bottom: 13px;
+		display: block;
+	}
+}
+
+/*media query for phone*/
+
+@media screen and (max-width: 475px) and (min-width: 0px) {
+
+	#logo {
+		display: none;
+	}
+
+	#logoSmall {
+		display: none;
+	}
+
+	#logoXSmall {
+		padding: 0px;
+		margin: auto;
+		/*margin: 15px 0px 20px 0px;*/
+		display: block;
+	}
 }

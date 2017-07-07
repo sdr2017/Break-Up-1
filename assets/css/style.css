@@ -56,13 +56,6 @@ h1 {
 	border: solid red 1px !important;
 }
 
-#addWarning, #noEmail {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 15px;
-	text-align: center;
-	color: red;
-}
-
 #singInColumn {
 	padding: 0px;
 }
@@ -184,7 +177,7 @@ label {
 }
 
 
-#recoveryEmail, #genderSelector, #ageSelector, #nameInput, #exInput, #emailInput {
+#genderSelector, #ageSelector, #nameInput, #exInput, #emailInput {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	border: 1px #c4c4c4 solid;
@@ -436,7 +429,16 @@ iframe {
 
 /*media query for tablet*/
 
-@media screen and (max-width: 700px) and (min-width: 476px) {
+@media screen and (max-width: 1110px) and (min-width: 731px) {
+
+	#movieimage {
+		margin: auto;
+		display: block;
+		width: 200px;
+	}
+}
+
+@media screen and (max-width: 730px) and (min-width: 476px) {
 
 	#logo {
 		display: none;
@@ -454,6 +456,13 @@ iframe {
 		margin-bottom: 13px;
 		display: block;
 	}
+
+	#movieimage {
+		margin: auto;
+		display: block;
+		width: 200px;
+	}
+}
 
 /*media query for phone*/
 
@@ -477,7 +486,6 @@ iframe {
 	#movieimage {
 		margin: auto;
 		display: block;
-		width: 2010px;
+		width: 200px;
 	}
-}
 }

@@ -56,6 +56,13 @@ h1 {
 	border: solid red 1px !important;
 }
 
+#addWarning, #noEmail {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	text-align: center;
+	color: red;
+}
+
 #singInColumn {
 	padding: 0px;
 }
@@ -177,7 +184,7 @@ label {
 }
 
 
-#genderSelector, #ageSelector, #nameInput, #exInput, #emailInput {
+#recoveryEmail, #genderSelector, #ageSelector, #nameInput, #exInput, #emailInput {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	border: 1px #c4c4c4 solid;

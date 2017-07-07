@@ -123,6 +123,9 @@ $(document).ready(function() {
           var firebaseObject = users[currentKey];
           var firebaseEmails = firebaseObject['email'];
           console.log(firebaseEmails);
+            
+          var isEmailInDatabase = true;
+
             if (recoveryEmail == firebaseEmails) {
               console.log(firebaseObject['breakupdate']);
               var firebaseBreakUpDate = firebaseObject['breakupdate'];
@@ -131,11 +134,20 @@ $(document).ready(function() {
               var timeSinceBreakUpInDays = dateTodayObject.diff(firebaseBreakUpDate, "days"); // Get the time since break up in days AS A NUMBER
               console.log(firebaseBreakUpDate);
               console.log(timeSinceBreakUpInDays);
+              isEmailInDatabase = true
 
               hideRecoverySignIn();
               showStageButtons();
+              }
+              else {
+              isEmailInDatabase = false;
+              hideRecoverySignIn();
+              showInputs();
+              $("#noEmail").append("Email not found. Please sign up.")
+              console.log("No");
+            }
 
-              if (timeSinceBreakUpInDays < 14) {
+              if (timeSinceBreakUpInDays < 14 && isEmailInDatabase == true) {
                 $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
                 showSongs();
                 showBooks();
@@ -144,7 +156,7 @@ $(document).ready(function() {
                 $("#choseDenial").focus();
               }
 
-              if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28) {
+              if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
                 showSongs();
                 showBooks();
@@ -153,7 +165,7 @@ $(document).ready(function() {
                 $("#choseAnger").focus();
               }
 
-                if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42) {
+                if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
                 showSongs();
                 showBooks();
@@ -162,7 +174,7 @@ $(document).ready(function() {
                 $("#choseMisery").focus();
               }
 
-              if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56) {
+              if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
                 showSongs();
                 showBooks();
@@ -171,7 +183,7 @@ $(document).ready(function() {
                 $("#choseAffirmation").focus();
               }
 
-              if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70) {
+              if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
                 showSongs();
                 showBooks();
@@ -180,14 +192,12 @@ $(document).ready(function() {
                 $("#choseGrooveOn").focus();
               }
 
-              if (timeSinceBreakUpInDays >= 70) {
+              if (timeSinceBreakUpInDays >= 70 && isEmailInDatabase == true) {
                 $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
                 showMoveOn();
               }
               return;
-            } else {
-              console.log("No");
-            }
+             
         }
       });
     });
@@ -313,7 +323,8 @@ $(document).ready(function() {
 
     var isFilledOut = true; 
 
-    if ($("#startMonth option:selected").val()=="") {
+    //checking if the input fields are empty
+    if ($("#startMonth option:selected").text()=="") {
       showInputs();
       isFilledOut = false;
       $("#startMonth").addClass('warning');
@@ -322,7 +333,7 @@ $(document).ready(function() {
       isFilledOut = true;
     }
 
-    if ($("#startDay option:selected").val()=="") {
+    if ($("#startDay option:selected").text()=="") {
       showInputs();
       isFilledOut = false;
       $("#startDay").addClass('warning');
@@ -331,7 +342,7 @@ $(document).ready(function() {
       isFilledOut = true;
     }
 
-    if ($("#startYear option:selected").val()=="") {
+    if ($("#startYear option:selected").text()=="") {
       showInputs();
       isFilledOut = false;
       $("#startYear").addClass('warning');
@@ -386,12 +397,14 @@ $(document).ready(function() {
     }
 
     if (isFilledOut == false) {
-      $("#signingInForm").append("Please fill out all sections to proceed");
+      $("#addWarning").append("Please fill out all sections to proceed.");
     }
+
     else {
       isFilledOut = true;
     }
 
+  //determining which stage to place the user
     if (timeSinceBreakUpInDays < 14 && isFilledOut == true) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
       showStageButtons();

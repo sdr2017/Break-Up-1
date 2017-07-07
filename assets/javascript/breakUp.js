@@ -48,8 +48,10 @@ $(document).ready(function() {
       var userYear =this.value;
 
       if (userYear == 2017) { //Determines which forloop is run to fill the months selector
+       
         $(".2000-2020").hide();
         $(".currentMonth").show();  //Month selector by runing through the array only up to the current month 
+        
         $select = $(".currentMonth");  
           for (i = 0; i <= thisMonth; i++) {
           }
@@ -59,8 +61,10 @@ $(document).ready(function() {
           }
 
       } else {
+        
         $(".2000-2020").hide();
         $(".monthPastYear").show(); //All months selector grabs all of the months from the array and pushes to html 
+         
          $select = $(".monthPastYear");
             for (i = 0; i <= months.length; i++) {
               $select.append($('<option></option>').val(months[i]).html(months[i]))
@@ -71,10 +75,13 @@ $(document).ready(function() {
         
         $(".currentMonth").hide();
         $(".monthPastYear").hide();
+        
         var userThisMonth =this.value;
         
         if (userThisMonth == months[i - 1]) { 
+         
           $(".1-31").show();      
+         
           $select = $(".1-31"); // //Day of the month selector
             for (i = 1; i <= thisDay; i++) {
             $select.append($('<option></option>').val(i).html(i))
@@ -83,12 +90,14 @@ $(document).ready(function() {
         } else {
          
           $(".1-31PastMonth").show();
+         
           $select = $(".1-31PastMonth");
             for (i = 1; i <= 31; i++) { //All day selector
              $select.append($('<option></option>').val(i).html(i))
             }
         }
       })
+      
       $(".1-31").on("change", function() {
         $(".1-31").hide(); 
       })
@@ -96,7 +105,7 @@ $(document).ready(function() {
       $(".1-31PastMonth").on("change", function() {
         $(".1-31PastMonth").hide();
 
-              DisplayUserDate(); 
+      DisplayUserDate(); 
       })
     })
   }
@@ -383,8 +392,6 @@ $(document).ready(function() {
       isFilledOut = true;
     }
 
-
-
     if (timeSinceBreakUpInDays < 14 && isFilledOut == true) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
       showStageButtons();
@@ -466,7 +473,7 @@ $(document).ready(function() {
   });
 
 //taking user to the input fields if clicking "I Just Broke Up!"
-  //Handling the on the button selector on click event by pushing relevent functions///////////////////////////////////////////// 
+//Handling the on the button selector on click event by pushing relevent functions///////////////////////////////////////////// 
 
   $(document).on("click", "#justBrokeUp", function() {  //taking user to the input fields if clicking "I Just Broke Up!"
     hideSignIn();

@@ -441,14 +441,12 @@ iframe {
 
 	#logoSmall {
 		padding: 0px;
-		/*margin: 15px 0px 20px 50px;*/
 		margin-right: auto;
 		margin-left: auto;
 		margin-top: 13px;
 		margin-bottom: 13px;
 		display: block;
 	}
-}
 
 /*media query for phone*/
 
@@ -468,4 +466,11 @@ iframe {
 		/*margin: 15px 0px 20px 0px;*/
 		display: block;
 	}
+
+	#movieimage {
+		margin: auto;
+		display: block;
+		width: 2010px;
+	}
+}
 }

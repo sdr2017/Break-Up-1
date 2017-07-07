@@ -364,6 +364,11 @@ iframe {
 	display: block;
 }
 
+.spaSize {
+	max-height: 200px
+	max-width: 200px;
+}
+
 .movieTitles {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
@@ -479,7 +484,6 @@ iframe {
 	#logoXSmall {
 		padding: 0px;
 		margin: auto;
-		/*margin: 15px 0px 20px 0px;*/
 		display: block;
 	}
 
@@ -488,4 +492,13 @@ iframe {
 		display: block;
 		width: 200px;
 	}
+
+	#quote {
+		color: #58595b;
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 40px;
+		line-height: 100px;
+}
+
 }

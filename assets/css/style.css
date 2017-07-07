@@ -275,6 +275,39 @@ iframe {
 	margin: auto;
 }
 
+	
+@-webkit-keyframes wiggle
+{
+    0% {-webkit-transform: rotateZ(2deg);}
+    50% {-webkit-transform: rotateZ(-2deg);}
+    100% {-webkit-transform: rotateZ(2deg);}
+}
+@-moz-keyframes wiggle
+{
+    0% {-moz-transform: rotateZ(2deg);}
+    50% {-moz-transform: rotateZ(-2deg);}
+    100% {-moz-transform: rotateZ(2deg);}
+}
+@-o-keyframes wiggle
+{
+    0% {-o-transform: rotateZ(2deg);}
+    50% {-o-transform: rotateZ(-2deg);}
+    100% {-o-transform: rotateZ(2deg);}
+}
+@keyframes wiggle
+{
+    0% {transform: rotateZ(2deg);}
+    50% {transform: rotateZ(-2deg);}
+    100% {transform: rotateZ(2deg);}
+}
+
+.poopAnimate {
+    -webkit-animation: wiggle 0.5s ease infinite;
+    -moz-animation: wiggle 0.5s ease infinite;
+    -o-animation: wiggle 0.5s ease infinite;
+    animation: wiggle 0.5s ease infinite;
+}
+
 .bookImage {
 	float: left;
 	height: 300px;

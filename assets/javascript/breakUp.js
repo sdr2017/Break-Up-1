@@ -115,7 +115,7 @@ $(document).ready(function() {
           var firebaseEmails = firebaseObject['email'];
           console.log(firebaseEmails);
             
-          var isEmailInDatabase = true;
+          var isEmailInDatabase = false;
 
             if (recoveryEmail == firebaseEmails) {
               console.log(firebaseObject['breakupdate']);
@@ -129,17 +129,10 @@ $(document).ready(function() {
 
               hideRecoverySignIn();
               showStageButtons();
-              }
-              else {
-              isEmailInDatabase = false;
-              hideRecoverySignIn();
-              showInputs();
-              $("#noEmail").append("Email not found. Please sign up.")
-              console.log("No");
-            }
 
               if (timeSinceBreakUpInDays < 14 && isEmailInDatabase == true) {
                 $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+                hideInputs();
                 showSongs();
                 showBooks();
                 showMovies();
@@ -149,6 +142,7 @@ $(document).ready(function() {
 
               if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
+                hideInputs();
                 showSongs();
                 showBooks();
                 showMovies();
@@ -158,6 +152,7 @@ $(document).ready(function() {
 
                 if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
+                hideInputs();
                 showSongs();
                 showBooks();
                 showMovies();
@@ -167,6 +162,7 @@ $(document).ready(function() {
 
               if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
+                hideInputs();
                 showSongs();
                 showBooks();
                 showMovies();
@@ -176,6 +172,7 @@ $(document).ready(function() {
 
               if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70 && isEmailInDatabase == true) {
                 $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
+                hideInputs();
                 showSongs();
                 showBooks();
                 showMovies();
@@ -185,10 +182,17 @@ $(document).ready(function() {
 
               if (timeSinceBreakUpInDays >= 70 && isEmailInDatabase == true) {
                 $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+                hideInputs();
                 showMoveOn();
               }
               return;
-             
+            } else {
+              isEmailInDatabase = false;
+              hideRecoverySignIn();
+              showInputs();
+              $("#noEmail").html("Email not found. Please sign up.")
+              console.log("No");
+            }
         }
       });
     });

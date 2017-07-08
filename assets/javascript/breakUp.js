@@ -19,7 +19,6 @@ $(document).ready(function() {
   $("#body").attr('background', 'assets/images/homePattern.jpg'); //homepage Background
 
   // Pulldown menu selectors/////////////////////////////////////////////////////////////////////////////////////////////////////
-  
 
   function breakUpDateSelecter() {
   
@@ -109,7 +108,6 @@ $(document).ready(function() {
       })
     })
   }
-
 
   $("#submitEmail").on("click", function(event) {
     event.preventDefault();
@@ -495,7 +493,6 @@ $(document).ready(function() {
 
 //taking user to the input fields if clicking "I Just Broke Up!"
 //Handling the on the button selector on click event by pushing relevent functions///////////////////////////////////////////// 
-
   $(document).on("click", "#justBrokeUp", function() {  //taking user to the input fields if clicking "I Just Broke Up!"
     hideSignIn();
     showInputs();
@@ -517,6 +514,21 @@ $(document).ready(function() {
   //   hideInputs();
   //   showStageButtons();
   // });
+
+    function backToLogIn() {
+    $(document).on("click", "#logo", function() {
+      console.log("you clicked the logo!");
+      $("#body").attr('background', 'assets/images/homePattern.jpg'); //homepage Background
+      hideStageButtons();
+      hideSongs();
+      hideBooks();
+      hideMovies();
+      hideGrooveSuggestions();
+      showSignIn();
+    });
+  };
+
+    backToLogIn();
 
   //Stages on click functions////////////////////////////////////////////////////////////////////////////////////////////////////
   

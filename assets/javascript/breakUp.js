@@ -524,6 +524,9 @@ $(document).ready(function() {
       hideBooks();
       hideMovies();
       hideGrooveSuggestions();
+      hideMoveOn();
+      hideInputs();
+      hideRecoverySignIn();
       showSignIn();
     });
   };

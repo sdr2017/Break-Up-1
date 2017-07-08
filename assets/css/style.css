@@ -406,11 +406,6 @@ iframe {
 	display: block;
 }
 
-.spaSize {
-	max-height: 200px
-	max-width: 200px;
-}
-
 .movieTitles {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;

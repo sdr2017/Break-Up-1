@@ -53,8 +53,15 @@ h1 {
 }
 
 .warning {
-	border: solid red 1px;
+	border: solid red 1px !important;
 }
+
+#addWarning, #noEmail {
+ 	font-family: 'Montserrat', sans-serif;
+ 	font-size: 15px;
+ 	text-align: center;
+ 	color: red;
+ }
 
 #singInColumn {
 	padding: 0px;
@@ -99,7 +106,7 @@ h1 {
 }
 
 #stagePanel {
-	height: 150px;
+	min-height: 150px;
 	background-color: #eeeeee;
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
@@ -177,7 +184,7 @@ label {
 }
 
 
-#genderSelector, #ageSelector, #nameInput, #exInput, #emailInput {
+#recoveryEmail, #genderSelector, #ageSelector, #nameInput, #exInput, #emailInput {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	border: 1px #c4c4c4 solid;
@@ -266,6 +273,41 @@ iframe {
 #poop {
 	display: block;
 	margin: auto;
+	position: relative;
+	width: 156px;
+}
+
+	
+@-webkit-keyframes wiggle
+{
+    0% {-webkit-transform: rotateZ(2deg);}
+    50% {-webkit-transform: rotateZ(-2deg);}
+    100% {-webkit-transform: rotateZ(2deg);}
+}
+@-moz-keyframes wiggle
+{
+    0% {-moz-transform: rotateZ(2deg);}
+    50% {-moz-transform: rotateZ(-2deg);}
+    100% {-moz-transform: rotateZ(2deg);}
+}
+@-o-keyframes wiggle
+{
+    0% {-o-transform: rotateZ(2deg);}
+    50% {-o-transform: rotateZ(-2deg);}
+    100% {-o-transform: rotateZ(2deg);}
+}
+@keyframes wiggle
+{
+    0% {transform: rotateZ(2deg);}
+    50% {transform: rotateZ(-2deg);}
+    100% {transform: rotateZ(2deg);}
+}
+
+.poopAnimate {
+    -webkit-animation: wiggle 0.5s ease infinite;
+    -moz-animation: wiggle 0.5s ease infinite;
+    -o-animation: wiggle 0.5s ease infinite;
+    animation: wiggle 0.5s ease infinite;
 }
 
 .bookImage {
@@ -364,6 +406,11 @@ iframe {
 	display: block;
 }
 
+.spaSize {
+	max-height: 200px
+	max-width: 200px;
+}
+
 .movieTitles {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 20px;
@@ -429,7 +476,16 @@ iframe {
 
 /*media query for tablet*/
 
-@media screen and (max-width: 700px) and (min-width: 476px) {
+@media screen and (max-width: 1110px) and (min-width: 731px) {
+
+	#movieimage {
+		margin: auto;
+		display: block;
+		width: 200px;
+	}
+}
+
+@media screen and (max-width: 730px) and (min-width: 476px) {
 
 	#logo {
 		display: none;
@@ -441,12 +497,17 @@ iframe {
 
 	#logoSmall {
 		padding: 0px;
-		/*margin: 15px 0px 20px 50px;*/
 		margin-right: auto;
 		margin-left: auto;
 		margin-top: 13px;
 		margin-bottom: 13px;
 		display: block;
+	}
+
+	#movieimage {
+		margin: auto;
+		display: block;
+		width: 200px;
 	}
 }
 
@@ -465,7 +526,21 @@ iframe {
 	#logoXSmall {
 		padding: 0px;
 		margin: auto;
-		/*margin: 15px 0px 20px 0px;*/
 		display: block;
 	}
+
+	#movieimage {
+		margin: auto;
+		display: block;
+		width: 200px;
+	}
+
+	#quote {
+		color: #58595b;
+		text-align: center;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 40px;
+		line-height: 100px;
+}
+
 }

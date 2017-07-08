@@ -5,8 +5,6 @@
   			<meta charset="utf-8">
   			<title>Breakup App</title>
 
-  			<link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
-
   			<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
 
 <!-- Bootstrap Latest compiled and minified CSS -->
@@ -35,7 +33,8 @@
  		 	<div class="jumbotron" id="logoDisplay">
  		 		<div class="col-xs-0 col-sm-1 col-md-1 col-lg-1"></div>
  		 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
- 		 			<!-- Logo -->
+ 
+ <!-- Logo -->
  		 			<img id="logo" src="assets/images/logo.png">
  		 			<img id="logoSmall" src="assets/images/logoSmall.png">
  		 			<img id="logoXSmall" src="assets/images/logoXSmall.png">
@@ -105,8 +104,10 @@
 						</div>
 
 <!-- Name input field -->
-						<div class="panel-body" id=signingInForm>
+						<div class="panel-body">
 							<form>
+								<p id="noEmail"></p>
+								
 						  		<div class="form-group">
 						    		<label for="name">Name</label><br>
 						    		<input type="text" id="nameInput">
@@ -153,6 +154,8 @@
 									<label for="exName">Name of Ex:</label><br>
 									<input type="text" id="exInput">
 								</div>
+								<p id="addWarning">	
+								</p>
 
 <!-- Field for submit details and clear buttons -->
 						  			<button type="submit" class="btn btn-default" id="submitDetails">Submit Details
@@ -165,13 +168,12 @@
 				<div class="col-xs-0 col-sm-0 col-md-2 col-lg-3"></div>
 			</div>
 
-<!-- Panel for the stage of grief buttons (Not sure what we should name them so I left them as numbers) -->
+<!-- Panel for the stage of grief buttons -->
 			<div class="row" id="buttonStages">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<div class="panel panel-default" id="stagePanel">
 
-<!-- A spot for logo and maybe a place for the current stage -->
-						
+<!-- A spot for logo and maybe a place for the current stage -->						
 						<div class="panel-body" id="buttonHolder">
 							
 							<div class="col-lg-1"></div>
@@ -252,7 +254,21 @@
 				</div>
 			</div>
 
-			<!-- Panel for Groove On Suggestions -->
+			<div class="row" id="moveOn">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="panel panel-default">
+						
+						<div class="panel-body" id="stageDisplayMoveOn">
+							<img src="assets/images/poop.svg" id="poop">
+							<p id="quote">Let that shit go.</p>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+
+
+<!-- Panel for Groove On Suggestions -->
 			<div class="row" id="suggestions">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -263,37 +279,22 @@
 					
 						<div class="panel-body" id="grooveSuggestions">
 							<div class="col-sm-4" id="spa">
-								<a href="https://www.massageenvy.com/"><img src="assets/images/MELogo.png" id="spaEnvy"></a>
-								<p class="suggestionTitles">Massage Envy</p>
-								<p>Massage does more than just relax the body and calm the mind. 
+								<a href="https://www.massageenvy.com/"><img src="assets/images/MELogo.png" id="spa"></a>
+								<p id="spaTitle">Massage Envy</p>
+								<p class="spaInfo">Massage does more than just relax the body and calm the mind. 
 								It keeps your body where it needs to be to keep you doing more.</p>
 							</div>
     						 <div class="col-sm-4" id="gym">
-    						 	<a href="https://www.goldsgym.com/"><img src="assets/images/gymLogo.png" id="gymGold"></a>
-    						 	<p class="suggestionTitles">Gold's Gym</p>
-								<p>Get in the right mind set by getting into a refreshing workout. A good routine will leave you feeling revitalized
+    						 	<a href="http://www.goldsgym.com/"><img src="assets/images/gymLogo.png" id="gym"></a>
+    						 	<p id="gymTitle">Gold's Gym</p>
+								<p class="gymInfo">Get in the right mind set by getting into a refreshing workout. A good routine will leave you feeling revitalized
 								and ready for a new experience!</p>
     						 </div>
    	 						 <div class="col-sm-4" id="match">
-   	 						 	<a href="https://www.cupid.com/"><img src="assets/images/cupidLogo.png" id="matchGroove"></a>
-   	 						 	<p class="suggestionTitles">cupid.com</p>
-								<p>Find other singles ready to pursue new relationships! It's time to groove on!</p>
+   	 						 	<a href="http://www.match.com/cpx/en-us/match/IndexPage/"><img src="assets/images/datingLogo.png" id="match"></a>
+   	 						 	<p id="datingTitle">Match.com</p>
+								<p class="datingInfo">Find other singles ready to pursue new relationships! It's time to groove on!</p>
    	 						 </div>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-
-
-
-			<div class="row" id="moveOn">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<div class="panel panel-default">
-						
-						<div class="panel-body" id="stageDisplayMoveOn">
-							<img src="assets/images/poop.png" id="poop">
-							<p id="quote">Let that shit go.</p>
 						</div>
 						
 					</div>

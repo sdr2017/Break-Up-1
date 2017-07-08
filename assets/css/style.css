@@ -61,6 +61,7 @@ h1 {
  	font-size: 15px;
  	text-align: center;
  	color: red;
+ 	margin-bottom: 15px;
  }
 
 #singInColumn {
@@ -392,11 +393,19 @@ iframe {
 	display: block;
 }
 
+#spaEnvySmall {
+	display: none;
+}
+
 #gymGold {
-	width: 200px;
-	height: 200px;
+	width: 230px;
+	height: 230px;
 	margin: auto;
 	display: block;
+}
+
+#gymGoldSmall {
+	display: none;
 }
 
 #matchGroove {
@@ -404,6 +413,10 @@ iframe {
 	height: 200px;
 	margin: auto;
 	display: block;
+}
+
+#matchGrooveSmall {
+	display: none;
 }
 
 .movieTitles {
@@ -478,6 +491,33 @@ iframe {
 		display: block;
 		width: 200px;
 	}
+
+	#spaEnvy {
+		display: none;
+	}
+
+	#spaEnvySmall {
+		margin: auto;
+		display: block;
+	}
+	
+	#gymGold {
+		display: none;
+	}
+
+	#gymGoldSmall {
+		margin: auto;
+		display: block;
+	}
+
+	#matchGroove {
+		display: none;
+	}
+
+	#matchGrooveSmall {
+		margin: auto;
+		display: block;
+	}
 }
 
 @media screen and (max-width: 730px) and (min-width: 476px) {
@@ -503,6 +543,33 @@ iframe {
 		margin: auto;
 		display: block;
 		width: 200px;
+	}
+
+	#spaEnvy {
+		display: none;
+	}
+
+	#spaEnvySmall {
+		margin: auto;
+		display: block;
+	}
+
+	#gymGold {
+		display: none;
+	}
+	
+	#gymGoldSmall {
+		margin: auto;
+		display: block;
+	}
+
+	#matchGroove {
+		display: none;
+	}
+
+	#matchGrooveSmall {
+		margin: auto;
+		display: block;
 	}
 }
 
@@ -536,6 +603,32 @@ iframe {
 		font-family: 'Montserrat', sans-serif;
 		font-size: 40px;
 		line-height: 100px;
-}
+	}
 
+	#spaEnvy {
+		display: none;
+	}
+
+	#spaEnvySmall {
+		margin: auto;
+		display: block;
+	}
+
+	#gymGold {
+		display: none;
+	}
+	
+	#gymGoldSmall {
+		margin: auto;
+		display: block;
+	}
+
+	#matchGroove {
+		display: none;
+	}
+
+	#matchGrooveSmall {
+		margin: auto;
+		display: block;
+	}
 }

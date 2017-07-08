@@ -273,6 +273,8 @@ iframe {
 #poop {
 	display: block;
 	margin: auto;
+	position: relative;
+	width: 156px;
 }
 
 	

@@ -193,6 +193,8 @@ $(document).ready(function() {
                 $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
                 hideInputs();
                 showMoveOn();
+                flyingPoop();
+                ascendingPoop();
               }
               return;
             } else {
@@ -469,6 +471,8 @@ $(document).ready(function() {
       showStageButtons();
       hideInputs();
       showMoveOn();
+      flyingPoop();
+      ascendingPoop();
     }
 
     if (isFilledOut == true) {
@@ -870,6 +874,14 @@ $(document).ready(function() {
       $(".movieTitles").css("color", color);
       $("#movie3").append(response.Plot + '<br>');
     });
+  }
+
+  function flyingPoop() {
+    $("#poop").addClass("poopAnimate");
+  };
+
+  function ascendingPoop() {
+    $("#poop").delay(2000).animate({bottom: 10000 },10000);
   }
 });
 

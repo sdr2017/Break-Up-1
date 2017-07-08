@@ -30,37 +30,37 @@
 			<div class="container-fluid">
 
 <!-- A place to display the logo -->
- 		 	<div class="jumbotron" id="logoDisplay">
- 		 		<div class="col-xs-0 col-sm-1 col-md-1 col-lg-1"></div>
- 		 		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+ 		 		<div class="jumbotron" id="logoDisplay">
+ 		 			<div class="col-xs-0 col-sm-1 col-md-1 col-lg-1"></div>
+ 		 			<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
  
  <!-- Logo -->
- 		 			<img id="logo" src="assets/images/logo.png">
- 		 			<img id="logoSmall" src="assets/images/logoSmall.png">
- 		 			<img id="logoXSmall" src="assets/images/logoXSmall.png">
- 		 		<div class="col-xs-0 col-sm-1 col-md-1 col-lg-1"></div>
- 			</div>
+ 		 				<img id="logo" src="assets/images/logo.png" alt="Breakup Shakeup Logo">
+ 		 				<img id="logoSmall" src="assets/images/logoSmall.png" alt="Breakup Shakeup Logo small">
+ 		 				<img id="logoXSmall" src="assets/images/logoXSmall.png" alt="Breakup Shakeup Logo xsmall">
+ 		 			<div class="col-xs-0 col-sm-1 col-md-1 col-lg-1"></div>
+ 				</div>
 
 <!-- Sign up / sign in buttons? -->
- 			<div class="row" id="signIn">
- 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="singInColumn">
- 					<div class="row">
- 						<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
-		 					<div class="signingIn col-xs-10 col-sm-6 col-md-6 col-lg-6">
-		 					<button type="submit" class="initialButtons btn btn-default" id="justBrokeUp">I JUST BROKE UP!</button>
-		 					</div>
-	 					<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
- 					</div>
+ 				<div class="row" id="signIn">
+ 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="singInColumn">
+ 						<div class="row">
+ 							<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
+		 						<div class="signingIn col-xs-10 col-sm-6 col-md-6 col-lg-6">
+		 						<button type="submit" class="initialButtons btn btn-default" id="justBrokeUp">I JUST BROKE UP!</button>
+		 						</div>
+	 						<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
+ 						</div>
 
- 					<div class="row">
- 						<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
-	 						<div class="signingIn col-xs-10 col-sm-6 col-md-6 col-lg-6">
-							<button type="submit" class="initialButtons btn btn-default" id="recovering">I'M RECOVERING.</button>
-							</div>
+ 						<div class="row">
+ 							<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
+	 							<div class="signingIn col-xs-10 col-sm-6 col-md-6 col-lg-6">
+								<button type="submit" class="initialButtons btn btn-default" id="recovering">I'M RECOVERING.</button>
+								</div>
+						</div>
 					</div>
+				</div>
 			</div>
-			</div>
-
 <!-- Recovery Sign In -->
 			<div class="row" id="recoverySignIn"> 
 				<div class="col-xs-0 col-sm-2 col-md-2 col-lg-3"></div>
@@ -78,7 +78,7 @@
 						<div class="panel-body">
 							<form>
 						  		<div class="form-group">
-						    		<label for="name">Email</label><br>
+						    		<label>Email</label><br>
 						    		<input type="text" id="recoveryEmail">
 						  		</div>
 						  	
@@ -109,25 +109,25 @@
 								<p id="noEmail"></p>
 								
 						  		<div class="form-group">
-						    		<label for="name">Name</label><br>
+						    		<label>Name</label><br>
 						    		<input type="text" id="nameInput">
 						  		</div>
 
 <!-- Email input field -->
 						  		<div class="form-group">
-						    		<label for="email">Email</label><br>
+						    		<label>Email</label><br>
 						    		<input type="text" id="emailInput">
 						  		</div>
 	
 <!-- Age pull down menu -->
 								<div class="form-group">
-									<label for="age">Age:</label><br>
+									<label>Age:</label><br>
 									<select class="1-100" id="ageSelector"></select>		
 								</div>
 
 <!-- Gender selecter pull down menue -->
 								<div class="form-group">
-						   			<label for="gender">Gender:</label><br>
+						   			<label>Gender:</label><br>
 						    			<select id="genderSelector">
 	    									<option selected value='1'>Female</option>
 	    									<option value='2'>Male</option>
@@ -143,7 +143,7 @@
 
 <!-- Date of breakup input field -->
 								<div class="form-group">
-						   			<label for="breakupDate">Date of Breakup: <span id="userDate"></span></label><br>
+						   			<label>Date of Breakup: <span id="userDate"></span></label><br>
 						   				<select class="1-31 1-31PastMonth" id="startDay"><option selected value='1'>Select A Day</option></select>
 						    			<select class="currentMonth monthPastYear" id="startMonth"><option selected value='1'>Select A Month</option></select>
 										<select class="2000-2020" id="startYear"><option selected value='1'>Select A Year</option></select>	
@@ -151,11 +151,11 @@
 
 <!-- Name of ex input field -->
 								<div class="form-group">
-									<label for="exName">Name of Ex:</label><br>
+									<label>Name of Ex:</label><br>
 									<input type="text" id="exInput">
 								</div>
-								<p id="addWarning">	
-								</p>
+								<div>
+									<p id="addWarning"></p>
 
 <!-- Field for submit details and clear buttons -->
 						  			<button type="submit" class="btn btn-default" id="submitDetails">Submit Details
@@ -254,7 +254,6 @@
 				</div>
 			</div>
 
-
 <!-- Panel for Groove On Suggestions -->
 			<div class="row" id="suggestions">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -266,19 +265,19 @@
 					
 						<div class="panel-body" id="grooveSuggestions">
 							<div class="col-sm-4" id="spa">
-								<a href="https://www.massageenvy.com/" target="_blank"><img src="assets/images/MELogo.png" id="spaEnvy"></a>
+								<a href="https://www.massageenvy.com/" target="_blank"><img src="assets/images/MELogo.png" alt="ME Logo" id="spaEnvy"></a>
 								<p class="suggestionTitles">Massage Envy</p>
 								<p class="spaInfo">Massage does more than just relax the body and calm the mind. 
 								It keeps your body where it needs to be to keep you doing more.</p>
 							</div>
     						 <div class="col-sm-4" id="gym">
-    						 	<a href="http://www.goldsgym.com/" target="_blank"><img src="assets/images/gymLogo.png" id="gymGold"></a>
+    						 	<a href="http://www.goldsgym.com/" target="_blank"><img src="assets/images/gymLogo.png" alt="Golds Gym Logo" id="gymGold"></a>
     						 	<p class="suggestionTitles">Gold's Gym</p>
 								<p class="gymInfo">Get in the right mind set by getting into a refreshing workout. A good routine will leave you feeling revitalized
 								and ready for a new experience!</p>
     						 </div>
    	 						 <div class="col-sm-4" id="match">
-   	 						 	<a href="http://www.match.com/cpx/en-us/match/IndexPage/" target="_blank"><img src="assets/images/cupidLogo.png" id="matchGroove"></a>
+   	 						 	<a href="http://www.match.com/cpx/en-us/match/IndexPage/" target="_blank"><img src="assets/images/cupidLogo.png" alt="OK Cupid Logo" id="matchGroove"></a>
    	 						 	<p class="suggestionTitles">Cupid.com</p>
 								<p class="datingInfo">Find other singles ready to pursue new relationships! It's time to groove on!</p>
    	 						 </div>
@@ -294,7 +293,7 @@
 					<div class="panel panel-default">
 						
 						<div class="panel-body" id="stageDisplayMoveOn">
-							<img src="assets/images/poop.svg" id="poop">
+							<img src="assets/images/poop.svg" alt="Poop Logo" id="poop">
 							<p id="quote">Let that shit go.</p>
 						</div>
 						

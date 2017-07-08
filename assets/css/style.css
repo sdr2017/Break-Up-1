@@ -277,7 +277,6 @@ iframe {
 	position: relative;
 	width: 156px;
 }
-
 	
 @-webkit-keyframes wiggle
 {
@@ -285,18 +284,21 @@ iframe {
     50% {-webkit-transform: rotateZ(-2deg);}
     100% {-webkit-transform: rotateZ(2deg);}
 }
+
 @-moz-keyframes wiggle
 {
     0% {-moz-transform: rotateZ(2deg);}
     50% {-moz-transform: rotateZ(-2deg);}
     100% {-moz-transform: rotateZ(2deg);}
 }
+
 @-o-keyframes wiggle
 {
     0% {-o-transform: rotateZ(2deg);}
     50% {-o-transform: rotateZ(-2deg);}
     100% {-o-transform: rotateZ(2deg);}
 }
+
 @keyframes wiggle
 {
     0% {transform: rotateZ(2deg);}

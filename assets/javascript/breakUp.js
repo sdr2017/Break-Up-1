@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
 
   // Connect with a Firebase Database///////////////////////////////////////////////////////////////////////////////////////////
@@ -114,97 +112,101 @@ $(document).ready(function() {
     var recoveryEmail = $("#recoveryEmail").val().trim();
     console.log(recoveryEmail);
     database.ref().once("value", function(snapshot) {
-        var users = snapshot.val();
-        var firebaseKeys = Object.keys(users);
-        for (var i = 0; i < firebaseKeys.length; i += 1) {
-          var currentKey = firebaseKeys[i];
-          var firebaseObject = users[currentKey];
-          var firebaseEmails = firebaseObject['email'];
-          console.log(firebaseEmails);
-            
-          var isEmailInDatabase = false;
+      var users = snapshot.val();
+      var firebaseKeys = Object.keys(users);
+      for (var i = 0; i < firebaseKeys.length; i += 1) {
+        var currentKey = firebaseKeys[i];
+        var firebaseObject = users[currentKey];
+        var firebaseEmails = firebaseObject['email'];
+        console.log(firebaseEmails);
+          
+        var isEmailInDatabase = false;
 
-            if (recoveryEmail == firebaseEmails) {
-              console.log(firebaseObject['breakupdate']);
-              var firebaseBreakUpDate = firebaseObject['breakupdate'];
-              var dateTodayObject = moment(); // Making a moment.js object that has a value of right now 
-              var timeSinceBreakUpInYears = dateTodayObject.diff(firebaseBreakUpDate, "years");  // Get the time since break up in years AS A NUMBER
-              var timeSinceBreakUpInDays = dateTodayObject.diff(firebaseBreakUpDate, "days"); // Get the time since break up in days AS A NUMBER
-              console.log(firebaseBreakUpDate);
-              console.log(timeSinceBreakUpInDays);
-              isEmailInDatabase = true
+        if (recoveryEmail == firebaseEmails) {
+          console.log(firebaseObject['breakupdate']);
+          var firebaseBreakUpDate = firebaseObject['breakupdate'];
+          var dateTodayObject = moment(); // Making a moment.js object that has a value of right now 
+          var timeSinceBreakUpInYears = dateTodayObject.diff(firebaseBreakUpDate, "years");  // Get the time since break up in years AS A NUMBER
+          var timeSinceBreakUpInDays = dateTodayObject.diff(firebaseBreakUpDate, "days"); // Get the time since break up in days AS A NUMBER
+          console.log(firebaseBreakUpDate);
+          console.log(timeSinceBreakUpInDays);
+          isEmailInDatabase = true
 
-              hideRecoverySignIn();
-              showStageButtons();
+          hideRecoverySignIn();
+          showStageButtons();
 
-              if (timeSinceBreakUpInDays < 14 && isEmailInDatabase == true) {
-                $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
-                hideInputs();
-                showSongs();
-                showBooks();
-                showMovies();
-                $("#choseDenial").click();
-                $("#choseDenial").focus();
-              }
-
-              if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28 && isEmailInDatabase == true) {
-                $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
-                hideInputs();
-                showSongs();
-                showBooks();
-                showMovies();
-                $("#choseAnger").click();
-                $("#choseAnger").focus();
-              }
-
-                if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42 && isEmailInDatabase == true) {
-                $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
-                hideInputs();
-                showSongs();
-                showBooks();
-                showMovies();
-                $("#choseMisery").click();
-                $("#choseMisery").focus();
-              }
-
-              if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56 && isEmailInDatabase == true) {
-                $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
-                hideInputs();
-                showSongs();
-                showBooks();
-                showMovies();
-                $("#choseAffirmation").click();
-                $("#choseAffirmation").focus();
-              }
-
-              if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70 && isEmailInDatabase == true) {
-                $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
-                hideInputs();
-                showSongs();
-                showBooks();
-                showMovies();
-                $("#choseGrooveOn").click();
-                $("#choseGrooveOn").focus();
-              }
-
-              if (timeSinceBreakUpInDays >= 70 && isEmailInDatabase == true) {
-                $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
-                hideInputs();
-                showMoveOn();
-                flyingPoop();
-                ascendingPoop();
-              }
-              return;
-            } else {
-              isEmailInDatabase = false;
-              hideRecoverySignIn();
-              showInputs();
-              $("#noEmail").html("Email not found. Please sign up.")
-              console.log("No");
-            }
+        if (timeSinceBreakUpInDays < 14 && isEmailInDatabase == true) {
+          $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
+          hideInputs();
+          showSongs();
+          showBooks();
+          showMovies();
+          $("#choseDenial").click();
+          $("#choseDenial").focus();
         }
-      });
+
+        if (timeSinceBreakUpInDays >= 14 && timeSinceBreakUpInDays < 28 && isEmailInDatabase == true) {
+          $("#stagePanel").append("You broke up over two weeks ago. We recommend moving on to the Anger stage.");
+          hideInputs();
+          showSongs();
+          showBooks();
+          showMovies();
+          $("#choseAnger").click();
+          $("#choseAnger").focus();
+        }
+
+        if (timeSinceBreakUpInDays >= 28 && timeSinceBreakUpInDays < 42 && isEmailInDatabase == true) {
+        $("#stagePanel").append("You broke up around a month ago. We recommend moving on to the Misery stage.");
+        hideInputs();
+        showSongs();
+        showBooks();
+        showMovies();
+        $("#choseMisery").click();
+        $("#choseMisery").focus();
+        }
+
+        if (timeSinceBreakUpInDays >= 42 && timeSinceBreakUpInDays < 56 && isEmailInDatabase == true) {
+          $("#stagePanel").append("You broke up a little over a month and a half ago. We recommend moving on to the Affirmation stage.");
+          hideInputs();
+          showSongs();
+          showBooks();
+          showMovies();
+          $("#choseAffirmation").click();
+          $("#choseAffirmation").focus();
+        }
+
+        if (timeSinceBreakUpInDays >= 56 && timeSinceBreakUpInDays < 70 && isEmailInDatabase == true) {
+          $("#stagePanel").append("You broke up around two months ago. We think you're ready to GrOoVe On!");
+          hideInputs();
+          showSongs();
+          showBooks();
+          showMovies();
+          $("#choseGrooveOn").click();
+          $("#choseGrooveOn").focus();
+        }
+
+        if (timeSinceBreakUpInDays >= 70 && isEmailInDatabase == true) {
+          $("#stagePanel").append("Your break-up occurred some time ago. You should seek professional help.");
+          hideInputs();
+          showMoveOn();
+          flyingPoop();
+          ascendingPoop();
+        }
+        return;
+
+        } else {
+
+          isEmailInDatabase = false;
+
+          hideRecoverySignIn();
+          showInputs();
+
+          $("#noEmail").html("Email not found. Please sign up.")
+          console.log("No");
+        }
+      }
     });
+  });
   
   breakUpDateSelecter();
 
@@ -333,6 +335,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#startMonth").addClass('warning');
     }
+    
     else {
       isFilledOut = true;
     }
@@ -342,6 +345,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#startDay").addClass('warning');
     }
+   
     else {
       isFilledOut = true;
     }
@@ -351,6 +355,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#startYear").addClass('warning');
     }
+    
     else {
       isFilledOut = true;
     }
@@ -360,6 +365,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#nameInput").addClass('warning');
     }
+    
     else {
       isFilledOut = true;
     }
@@ -369,6 +375,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#emailInput").addClass('warning');
     }
+    
     else {
       isFilledOut = true;
     }
@@ -378,6 +385,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#genderSelector").addClass('warning');
     }
+    
     else {
       isFilledOut = true;
     }
@@ -387,6 +395,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#ageSelector").addClass('warning');
     }
+    
     else {
       isFilledOut = true;
     }
@@ -396,6 +405,7 @@ $(document).ready(function() {
       isFilledOut = false;
       $("#exInput").addClass('warning');
     }
+   
     else {
       isFilledOut = true;
     }
@@ -408,7 +418,7 @@ $(document).ready(function() {
       isFilledOut = true;
     }
 
-  //determining which stage to place the user
+    //determining which stage to place the user
     if (timeSinceBreakUpInDays < 14 && isFilledOut == true) {
       $("#stagePanel").append("Wow, you only recently broke up. We recommend starting out in the Denial stage.");
       showStageButtons();
@@ -474,20 +484,20 @@ $(document).ready(function() {
     }
 
     if (isFilledOut == true) {
-    var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
-    var email = $("#emailInput").val().trim();
-    var gender = $("#genderSelector option:selected").text();
-    var age = $("#ageSelector").val().trim();
-    var ex = $("#exInput").val().trim(); 
-    var newUser = { //making an object out of the information
-        name: name,
-        email: email,
-        gender: gender,
-        age: age,
-        breakupdate: dateEnteredString,
-    };
-    console.log(newUser);
-    database.ref().push(newUser); //pushing the new user info to firebase
+      var name = $("#nameInput").val().trim();  //collecting info from inputs and pushing user input to firebase
+      var email = $("#emailInput").val().trim();
+      var gender = $("#genderSelector option:selected").text();
+      var age = $("#ageSelector").val().trim();
+      var ex = $("#exInput").val().trim(); 
+      var newUser = { //making an object out of the information
+          name: name,
+          email: email,
+          gender: gender,
+          age: age,
+          breakupdate: dateEnteredString,
+      };
+      console.log(newUser);
+      database.ref().push(newUser); //pushing the new user info to firebase
     }
   });
 
@@ -501,21 +511,9 @@ $(document).ready(function() {
   $(document).on("click", "#recovering", function() { //taking user to the stages if clicking "I'm recovering"
     hideSignIn();
     showRecoverySignIn();
-    //showStageButtons();
-    // showSongs();
-    // showBooks();
-    // showMovies();
   });
 
-  // $(document).on("click", "#submitDetails", function(event) { //taking user to the stages after clicking "submit" in input fields
-  //   console.log("what's up?");
-  //   event.preventDefault();
-  //   hideSignIn();
-  //   hideInputs();
-  //   showStageButtons();
-  // });
-
-    function backToLogIn() {
+  function backToLogIn() {
     $(document).on("click", "#logo", function() {
       console.log("you clicked the logo!");
       $("#body").attr('background', 'assets/images/homePattern.jpg'); //homepage Background
@@ -531,52 +529,50 @@ $(document).ready(function() {
     });
   };
 
-    backToLogIn();
+  backToLogIn();
 
   //Stages on click functions////////////////////////////////////////////////////////////////////////////////////////////////////
   
   // Book Suggestions///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
-      "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
-      "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please", "Dune", "Neverwhere", 
-      "the+Girl+who+Drank+the+Moon", "the+Ghost+Bride"];
-    var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
-      "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
-      "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer", 
-      "the+Marsh+Kings+Daughter", "the+Last+Place+You+Look", "Here+and+Gone", "the+Weight+of+Lies"];
-    var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
-      "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
-      "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
-    var affirmationBooks = ["When+Life+Happened", "A+Man+Called+Ove", "Adulthood+is+a+Myth",
-      "The+Trials+of+Apollo", "Just+the+Way+You+Are", "My+Life+as+a+Ninja", "Milk+and+Honey",
-      "I+Am+the+Messenger", "Safe+Haven", "Eleanor+and+Park"];
-    var grooveOnBooks = ["I+Kissed+Dating+Goodbye", "The+More+We+Get+Together", "Where+the+Sidewalk+Ends",
-      "A+Midsummers+Dream", "First+Comes+Love+Then+Comes+Money", "Art+and+Soul",
-      "November+9", "The+Dating+Detox", "Why+We+Broke+Up", "On+Second+Thought", "Modern+Romance"]; 
-
-
-
+  var denialBooks = ["Under+the+Tuscan+Sun", "High+Fidelity", "Bridget+Jones+Diary", 
+    "Gone+Girl", "The+Skeleton+Crew", "MWF+Seeking+BFF", "Self-Help",
+    "Tiny+Beautiful+Things", "A+Rogue+by+Any+Other+Name", "Yes+Please", "Dune", "Neverwhere", 
+    "the+Girl+who+Drank+the+Moon", "the+Ghost+Bride"];
+  var angerBooks = ["The+Good+Widow", "Magpie+Murder", 
+    "A+Darker+Shade+of+Magic", "Year+Zero", "The+Silent+Corner", 
+    "A+Knight+of+the+Seven+Kingdoms", "Persona", "The+Child", "He+Said+She+Said", "Libriomancer", 
+    "the+Marsh+Kings+Daughter", "the+Last+Place+You+Look", "Here+and+Gone", "the+Weight+of+Lies"];
+  var miseryBooks = ["Hyperbole+and+a+Half", "No+Good+Deed", 
+    "The+Guest+Cat", "Hug+Me", "The+Perks+of+Being+a+Wallflower", "The+Martian", "Once+Upon+a+River",
+    "The+Way+I+Used+to+Be", "What+We+Talk+About+When+We+Talk+About+Love", "Love+Letters+to+the+Dead"];
+  var affirmationBooks = ["When+Life+Happened", "A+Man+Called+Ove", "Adulthood+is+a+Myth",
+    "The+Trials+of+Apollo", "Just+the+Way+You+Are", "My+Life+as+a+Ninja", "Milk+and+Honey",
+    "I+Am+the+Messenger", "Safe+Haven", "Eleanor+and+Park"];
+  var grooveOnBooks = ["I+Kissed+Dating+Goodbye", "The+More+We+Get+Together", "Where+the+Sidewalk+Ends",
+    "A+Midsummers+Dream", "First+Comes+Love+Then+Comes+Money", "Art+and+Soul",
+    "November+9", "The+Dating+Detox", "Why+We+Broke+Up", "On+Second+Thought", "Modern+Romance"]; 
 
   var songs = $("#stageDisplaySongs"); //variable of where to push songs items in html
   var books = $("#stageDisplayBooks"); //variable of where to push books items in html
-  //var movies = $("#stageDisplayMovies"); //variable of where to push movies items in html
   var movies = $("#movie1");
   var queryURL = "https://cors-anywhere.herokuapp.com/https://www.goodreads.com/search.xml?key=0wKYZNN20RnrtQAvwc1AA&q="; // GoodReads API Search
 
   // Denial button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////
   
   $(document).on("click", "#choseDenial", function() {
-      hideGrooveSuggestions();
-      showSongs();
-      showBooks();
-      showMovies();
+    hideGrooveSuggestions();
+    showSongs();
+    showBooks();
+    showMovies();
 
     $(".breakUpStage").empty().append("Denial");  // appends emotion slection to titles
     $("#body").attr('background', 'assets/images/denialPattern.jpg')  //background
     $(".panel-heading").css("color", "#333333");  // Leaves the panel heading color to black.
+    
     var denialIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/2fJkLyw3TDn4sp56QAGggb" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(denialIFrame);
     var randomBooks = getRandomIndexes(denialBooks, 3); // Books
+    
     $("#stageDisplayBooks").empty();
     for (var index = 0; index < 3; index++) { //Picks a random book from the Denial Books
 
@@ -585,22 +581,20 @@ $(document).ready(function() {
         method: "GET"}).done(function(response){
         console.log(response);
 
-        var bookInfoObject = xmlToJson(response);
-        // Locates the correct JSON information
-        var workArray = bookInfoObject.GoodreadsResponse.search.results.work;
+        var bookInfoObject = xmlToJson(response); 
+        var workArray = bookInfoObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
         console.log(workArray);
-        // Locates the image and title for the books.
-        var image = workArray[0].best_book.image_url["#text"];
-
+      
+        var image = workArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var workArray = bookInfoObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
         var denialImage = workArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
-        var denialTitle = workArray[0].best_book.title["#text"];
-        
+        var denialTitle = workArray[0].best_book.title["#text"];        
         var container = $('<div class="col-sm-4" id="allDenialBooks">');
         var allDenialBookTitles = $('<p class="denialBookTitles">' + denialTitle + '</p>');
         var denialBookCovers = $('<img class="bookImages">');
         denialBookCovers.attr("src", denialImage);
         container.append(denialBookCovers, allDenialBookTitles);
+        
         $("#stageDisplayBooks").append(container);
       }); 
     }
@@ -615,16 +609,16 @@ $(document).ready(function() {
       if(i==1)getMovies2(movie);
       if(i==2)getMovies3(movie, "#5a6751"); //call movie function
     };
-
   });
 
   // Anger button pressed////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAnger", function() {
-      hideGrooveSuggestions();
-      showSongs();
-      showBooks();
-      showMovies();
+    
+    hideGrooveSuggestions();
+    showSongs();
+    showBooks();
+    showMovies();
     
     $("#body").attr('background', 'assets/images/angerPattern.jpg');  //background
     $(".breakUpStage").empty().append("Anger");  // appends emotion slection to titles
@@ -642,15 +636,13 @@ $(document).ready(function() {
         var bookInfoAngerObject = xmlToJson(response);
         var workAngerArray = bookInfoAngerObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
         var angerImage = workAngerArray[0].best_book.image_url["#text"];// Locates the image and title for the books.
-        var angerTitle = workAngerArray[0].best_book.title["#text"];
-        
+        var angerTitle = workAngerArray[0].best_book.title["#text"];        
         var container = $('<div class="col-sm-4" id="allAngerBooks">');
         var allAngerBookTitles = $('<p class="angerBookTitles">' + angerTitle + '</p>');
         var angerBookCovers = $('<img class="bookImages">');
         angerBookCovers.attr("src", angerImage);
         container.append(angerBookCovers, allAngerBookTitles);
         $("#stageDisplayBooks").append(container);
-
       }); 
     }
  
@@ -668,10 +660,10 @@ $(document).ready(function() {
   // Misery button pressed///////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseMisery", function() {
-      hideGrooveSuggestions();
-      showSongs();
-      showBooks();
-      showMovies();
+    hideGrooveSuggestions();
+    showSongs();
+    showBooks();
+    showMovies();
     
     $("#body").attr('background', 'assets/images/miseryPattern.jpg'); //background
     $(".breakUpStage").empty().append("Misery");  // appends emotion slection to titles
@@ -690,7 +682,6 @@ $(document).ready(function() {
         var workMiseryArray = bookInfoMiseryObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information
         var miseryImage = workMiseryArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
         var miseryTitle = workMiseryArray[0].best_book.title["#text"];
-        
         var container = $('<div class="col-sm-4" id="allMiseryBooks">');
         var allMiseryBookTitles = $('<p class="miseryBookTitles">' + miseryTitle + '</p>');
         var miseryBookCovers = $('<img class="bookImages">');
@@ -714,17 +705,16 @@ $(document).ready(function() {
   // Affirmation button pressed///////////////////////////////////////////////////////////////////////////////////////////////////
 
   $(document).on("click", "#choseAffirmation", function() {
-      hideGrooveSuggestions();
-      showSongs();
-      showBooks();
-      showMovies();
+    hideGrooveSuggestions();
+    showSongs();
+    showBooks();
+    showMovies();
     
     $("#body").attr('background', 'assets/images/affirmationPattern.jpg');  //background
     $(".breakUpStage").empty().append("Affirmation");  // appends emotion slection to titles
 
     var affirmationIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/79qu0ABIQd0fzj7LqzJqWo" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>'  //Songs
     songs.html(affirmationIFrame);
-
     var randomAffirmationBooks = getRandomIndexes(affirmationBooks, 3); // Books
     $("#stageDisplayBooks").empty();
     for (var l = 0; l < 3; l++) { //Picks a random book from the Affirmation Books
@@ -748,7 +738,6 @@ $(document).ready(function() {
       }); 
     }
      
-  //$("#stageDisplayMovies").empty(); //Movies, empty container
     $("#movie1").empty(); //Movies
     $("#movie2").empty(); //Movies
     $("#movie3").empty(); //Movies
@@ -771,7 +760,6 @@ $(document).ready(function() {
 
     var grooveIFrame = '<iframe src="https://open.spotify.com/embed/user/megapowerrangers/playlist/1bsLiVYXgrHOdO2y8U0HCT" width="300" height="535" frameborder="0" allowtransparency="true"></iframe>' //Songs
     songs.html(grooveIFrame);
-
     var randomGrooveOnBooks = getRandomIndexes(grooveOnBooks, 3); // Books
     $("#stageDisplayBooks").empty();
     for (var m = 0; m < 3; m++) { //Picks a random book from the Groove On Books
@@ -783,8 +771,7 @@ $(document).ready(function() {
         var bookInfoGrooveOnObject = xmlToJson(response);     
         var workGrooveOnArray = bookInfoGrooveOnObject.GoodreadsResponse.search.results.work; // Locates the correct JSON information  
         var grooveOnImage = workGrooveOnArray[0].best_book.image_url["#text"];  // Locates the image and title for the books.
-        var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];
-        
+        var grooveOnTitle = workGrooveOnArray[0].best_book.title["#text"];        
         var container = $('<div class="col-sm-4" id="allGrooveBooks">');
         var allGrooveBookTitles = $('<p class="grooveBookTitles">' + grooveOnTitle + '</p>');
         var grooveBookCovers = $('<img class="bookImages">');
@@ -794,16 +781,16 @@ $(document).ready(function() {
       }); 
     }
 
-  // $("#stageDisplayMovies").empty(); //Movies empty container
       $("#movie1").empty(); //Movies
       $("#movie2").empty(); //Movies
       $("#movie3").empty(); //Movies
+      
       for(var i=0; i<grooveOnMovies.length; i++) {  //loop for grooveOn movies
         movie = grooveOnMovies[i]; //setting movie to new array value
       if(i==0){getMovies1(movie);}
       if(i==1)getMovies2(movie);
       if(i==2)getMovies3(movie, "#df8f5d"); //call movie function
-        };
+      };
   });
 
   //Book and movie select functions////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -815,6 +802,7 @@ $(document).ready(function() {
         "It can't be greater than the array length"
       );
     }
+    
     var randomIndexes = [];
     for (var i = 0; i < numberOfIndexes; i += 1) {
       randomIndexes.push(booksArray[getRandomIndex(booksArray)]);
@@ -839,15 +827,15 @@ $(document).ready(function() {
   var numMovie = ["#movie1","#movie2","#movie3"];
   var Movie = ""; //declaring movie var
 
-    function getMovies1(movieStage){ //function for movies
+  function getMovies1(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
     $.ajax({
         url: movieURL,
         method: "GET"
     })
+    
     .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
-  
-     
+      
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie1").append(movieImage); 
@@ -856,15 +844,15 @@ $(document).ready(function() {
     });
   }
 
-    function getMovies2(movieStage){ //function for movies
+  function getMovies2(movieStage){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
     $.ajax({
         url: movieURL,
         method: "GET"
     })
+    
     .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
-  
-      
+    
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie2").append(movieImage); 
@@ -873,15 +861,14 @@ $(document).ready(function() {
     });
   }
 
-    function getMovies3(movieStage, color){ //function for movies
+  function getMovies3(movieStage, color){ //function for movies
     var movieURL = "https://www.omdbapi.com/?t=" + movieStage + "&y=&plot=short&apikey=40e9cece";
     $.ajax({
         url: movieURL,
         method: "GET"
     })
     .done(function(response) {  // We store all of the retrieved data inside of an object called "response"
-  
-     
+   
       var movieImage = $('<img id="movieimage">');
       movieImage.attr("src", response.Poster);
       $("#movie3").append(movieImage); 
